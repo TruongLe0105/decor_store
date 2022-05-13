@@ -64,11 +64,11 @@ function DialogProduct({ product }) {
 
                     <DialogTitle id="alert-dialog-title"
                         sx={{
-                            backgroundColor: "black",
+                            backgroundColor: "#212121",
                             color: "white"
                         }}
                     >
-                        {product.name}
+                        {product.name.toUpperCase()}
                     </DialogTitle>
                     <Card sx={{ display: "flex" }}>
                         <CardMedia
@@ -110,7 +110,7 @@ function DialogProduct({ product }) {
                             <DialogActions sx={{ marginRight: 0 }}>
                                 <Button
                                     onClick={handleAddToCart}
-                                    sx={{ backgroundColor: "black" }}
+                                    sx={{ backgroundColor: "#212121" }}
                                 >
                                     <AddShoppingCartIcon sx={{ margin: 1 }} />
                                     <Typography

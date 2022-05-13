@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { PRODUCTS_HOME_PAGE } from '../../app/config';
 import DividerText from '../../components/form/DividerText';
-import FavoriteProducts from './FavoriteProducts';
 import ProductCard from './ProductCard';
-import ProductModel from './ProductModel';
 import { getProducts, resetProducts } from "./productSlice";
 
 
@@ -40,7 +38,7 @@ function ProductList() {
                 flexItem
             />
             <Grid container spacing={1}>
-                {arrCategoryTree[0] && arrCategoryTree.map(product => (
+                {arrCategoryTree.length && arrCategoryTree.map(product => (
                     <Grid key={product._id} item xs={6} md={4} lg={3}>
                         <ProductCard product={product} />
                     </Grid>
@@ -59,7 +57,7 @@ function ProductList() {
             </Button>
             <DividerText text="MÔ HÌNH TRANG TRÍ" />
             <Grid container spacing={1}>
-                {arrCategoryModel[0] && arrCategoryModel.map(product => (
+                {arrCategoryModel.length && arrCategoryModel.map(product => (
                     <Grid key={product._id} item xs={6} md={4} lg={3}>
                         <ProductCard product={product} />
                     </Grid>

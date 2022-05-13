@@ -9,8 +9,6 @@ import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import logoImg from "../logo.png";
 import useAuth from '../hooks/useAuth';
 import SearchInput from '../components/SearchInput';
-import Badge from '@mui/material/Badge';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AvatarMenu from '../components/form/AvatarMenu';
 import CartWidget from '../components/CartWidget';
 import Collections from '../components/Collections';
@@ -22,15 +20,9 @@ function MainHeader() {
     const [filterName, setFilterName] = React.useState("");
 
     const handleSubmit = (searchQuery) => {
-        navigate("/products/:categories")
-        setFilterName(searchQuery);
-    }
-    const handleNavigateCart = () => {
-        if (!user) {
-            const from = location.state?.from?.pathname || "/login";
-            navigate(from, { replace: true })
-        } else {
-            navigate("/cart")
+        if (searchQuery) {
+            navigate("/products/:categories")
+            setFilterName(searchQuery);
         }
     }
 

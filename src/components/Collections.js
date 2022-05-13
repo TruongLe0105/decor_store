@@ -40,7 +40,7 @@ function Collections() {
             onClose={handleMenuClose}
         >
             <Box sx={{ my: 1.5, px: 2.5 }}>
-                {categories[0] && categories.map((category, index) => (
+                {categories.length && categories.map((category, index) => (
                     <MenuItem key={index} onClick={() => handleNavigateCategory(category)}>
                         {category}
                     </MenuItem>
@@ -56,7 +56,6 @@ function Collections() {
             justifyContent: "space-between",
             alignItems: "center",
             marginTop: "6%",
-            // paddingTop: "2px",
             backgroundColor: "#eeeeee",
             height: "40px"
         }}>
@@ -66,7 +65,12 @@ function Collections() {
                 padding: 1,
                 fontSize: "16px"
             }}>
-                <Link sx={{ cursor: "pointer", color: "#424242" }} onClick={() => navigate("/")}>TRANG CHỦ</Link>
+                <Link sx={{
+                    cursor: "pointer",
+                    color: "#424242"
+                }}
+                    underline="none"
+                    onClick={() => navigate("/")}>TRANG CHỦ</Link>
                 <span>/</span>
                 <Typography sx={{ fontSize: "16px" }} color="#424242">DANH MỤC</Typography>
                 <KeyboardArrowDownIcon

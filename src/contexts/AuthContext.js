@@ -1,5 +1,4 @@
 import { createContext, useReducer, useEffect } from "react";
-import { useSelector } from "react-redux";
 import apiService from "../app/apiService";
 import { isValidToken } from "../utils/jwt";
 
@@ -107,8 +106,6 @@ function AuthProvider({ children }) {
     const login = async ({ email, password }, callback) => {
         const response = await apiService.post("/auth/login", { email, password });
         const { user, accessToken } = response.data;
-        console.log("user", user)
-        console.log(accessToken)
         setSession(accessToken);
         dispatch({
             type: LOGIN_SUCCESS,

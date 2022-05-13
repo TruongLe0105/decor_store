@@ -2,8 +2,9 @@ import { Badge } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Link as RouterLink } from "react-router-dom";
-// import useCartContext from "../hooks/useAuth";
+import { useLocation, useNavigate, Link as RouterLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+
 
 const WidgetStyle = styled(RouterLink)(({ theme }) => ({
     zIndex: 999,
@@ -23,13 +24,16 @@ const WidgetStyle = styled(RouterLink)(({ theme }) => ({
 }));
 
 function CartWidget() {
+
     // const { cartProducts } = useCartContext();
     // const totalItems = cartProducts.reduce(
     //     (acc, product) => acc + product.quantity,
     //     0
     // );
     return (
-        <WidgetStyle to="/checkout">
+        <WidgetStyle
+            to="/cart"
+        >
             <Badge badgeContent={1} color="success">
                 <ShoppingCartIcon />
             </Badge>

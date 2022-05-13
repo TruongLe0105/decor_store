@@ -2,7 +2,7 @@ function Icons() {
     return {
         MuiIcons: {
             defaultProps: {
-                underline: "hover",
+                // underline: "hover",
             },
         },
         styleOverrides: {
