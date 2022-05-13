@@ -103,7 +103,7 @@ function RegisterPage() {
                     marginLeft: "5rem",
                 }}
             >
-                <Typography sx={{ marginBottom: 1, fontSize: "1.5rem" }}>Sign Up</Typography>
+                <Typography sx={{ marginBottom: 1, fontSize: "1.5rem" }}>Đăng kí</Typography>
                 <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                     <Stack spacing={2}>
                         {!!errors.responseError && (
@@ -111,8 +111,8 @@ function RegisterPage() {
                         )}
                         <Alert severity="info">
                             Already have an account?{" "}
-                            <Link variant="subtitle2" component={RouterLink} to="/login">
-                                Sign in
+                            <Link color="primary" variant="subtitle2" component={RouterLink} to="/login">
+                                Đăng nhập
                             </Link>
                         </Alert>
 

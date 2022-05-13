@@ -6,7 +6,7 @@ import MainHeader from './MainHeader';
 
 function MainLayout() {
     return (
-        <Stack sx={{ minHeight: "100vh" }}>
+        <Stack sx={{ minHeight: "100vh", maxWidth: "100%" }}>
             <MainHeader />
             <Outlet />
             <Box sx={{ flexGrow: 1 }} />

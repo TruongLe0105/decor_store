@@ -64,45 +64,45 @@ const AuthContext = createContext({ ...initialState });
 function AuthProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    // useEffect(() => {
-    //     const initialize = async () => {
-    //         try {
-    //             const accessToken = window.localStorage.getItem("accessToken");
+    useEffect(() => {
+        const initialize = async () => {
+            try {
+                const accessToken = window.localStorage.getItem("accessToken");
 
-    //             if (accessToken && isValidToken(accessToken)) {
-    //                 setSession(accessToken);
+                if (accessToken && isValidToken(accessToken)) {
+                    setSession(accessToken);
 
-    //                 const response = await apiService.get("/users/me/get");
-    //                 const user = response.data;
+                    const response = await apiService.get("/users/me");
+                    const user = response.data;
 
-    //                 dispatch({
-    //                     type: INITIALIZE,
-    //                     payload: { isAuthenticated: true, user },
-    //                 });
-    //             } else {
-    //                 setSession(null);
+                    dispatch({
+                        type: INITIALIZE,
+                        payload: { isAuthenticated: true, user },
+                    });
+                } else {
+                    setSession(null);
 
-    //                 dispatch({
-    //                     type: INITIALIZE,
-    //                     payload: { isAuthenticated: false, user: null },
-    //                 });
-    //             }
-    //         } catch (err) {
-    //             console.error(err);
+                    dispatch({
+                        type: INITIALIZE,
+                        payload: { isAuthenticated: false, user: null },
+                    });
+                }
+            } catch (err) {
+                console.error(err);
 
-    //             setSession(null);
-    //             dispatch({
-    //                 type: INITIALIZE,
-    //                 payload: {
-    //                     isAuthenticated: false,
-    //                     user: null,
-    //                 },
-    //             });
-    //         }
-    //     };
+                setSession(null);
+                dispatch({
+                    type: INITIALIZE,
+                    payload: {
+                        isAuthenticated: false,
+                        user: null,
+                    },
+                });
+            }
+        };
 
-    //     initialize();
-    // }, []);
+        initialize();
+    }, []);
 
     const login = async ({ email, password }, callback) => {
         const response = await apiService.post("/auth/login", { email, password });
@@ -119,7 +119,7 @@ function AuthProvider({ children }) {
     };
 
     const register = async ({ name, email, password }, callback) => {
-        const response = await apiService.post("/user/register", {
+        const response = await apiService.post("/users/register", {
             name,
             email,
             password,

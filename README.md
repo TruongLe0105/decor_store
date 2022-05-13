@@ -25,3 +25,17 @@ Must have at least 2 animations (For example Loading spinner, animated search, o
 
 ### Pages
 - Main header chứa logo bên trái, number login sign up và cart bên phải
+
+# UI
+    - page login
+    - page register
+    - home page có các list products theo thể loại
+    - products category page
+    - detail page
+    - profile page
+    - cart page
+
+    - Search query để lại làm sau.
+
+    - Product list k call được dữ liệu khi dispatch action khác.
+    

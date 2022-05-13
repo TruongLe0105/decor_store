@@ -39,6 +39,7 @@ function LoginPage() {
     const auth = useAuth();
     const [showPassword, setShowPassword] = useState(false);
 
+
     const methods = useForm({
         resolver: yupResolver(LoginSchema),
         defaultValues,
@@ -51,10 +52,11 @@ function LoginPage() {
     } = methods;
 
     const onSubmit = async (data) => {
+        const from = location.state?.from?.pathname || "/";
         const { email, password } = data;
         try {
             await auth.login({ email, password }, () => {
-                navigate("/", { replace: true });
+                navigate(from, { replace: true });
             });
         } catch (error) {
             reset();
@@ -66,21 +68,22 @@ function LoginPage() {
         <Box
             sx={{
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
+                marginRight: 0,
                 backgroundColor: "#008e97",
                 width: "100%",
                 height: "85vh"
             }}
         >
-            <Box sx={{ display: "flex", margin: "5px" }}>
+            <Box sx={{ display: "flex", flexDirection: "column", }}>
                 <img src={logoImg} alt="Logo" style={{ width: 120, height: 110, borderRadius: "5px" }} />
                 <Typography
                     sx={{
                         color: "white",
                         fontSize: "3rem",
-                        margin: 1
+                        marginLeft: 1
                     }}
                 >
                     Titus
@@ -93,9 +96,11 @@ function LoginPage() {
                     padding: "15px",
                     borderRadius: "5px",
                     width: "30%",
+                    margin: 1,
+                    marginLeft: "5rem",
                 }}
             >
-                <Typography sx={{ marginBottom: 1, fontSize: "1.5rem" }}>Log In</Typography>
+                <Typography sx={{ marginBottom: 1, fontSize: "1.5rem" }}>Đăng nhập</Typography>
                 <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                     <Stack spacing={1}>
                         {!!errors.responseError && (
@@ -103,8 +108,8 @@ function LoginPage() {
                         )}
                         <Alert severity="info">
                             Don’t have an account?{" "}
-                            <Link variant="subtitle2" component={RouterLink} to="/register">
-                                Get started
+                            <Link color="primary" variant="subtitle2" component={RouterLink} to="/register">
+                                Đăng ký
                             </Link>
                         </Alert>
 
