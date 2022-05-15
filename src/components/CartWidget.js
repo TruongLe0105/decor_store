@@ -32,7 +32,7 @@ function CartWidget() {
     // );
     return (
         <WidgetStyle
-            to="/cart"
+            to="/checkout"
         >
             <Badge badgeContent={1} color="success">
                 <ShoppingCartIcon />

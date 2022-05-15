@@ -78,7 +78,7 @@ function LoginPage() {
             }}
         >
             <Box sx={{ display: "flex", flexDirection: "column", }}>
-                <img src={logoImg} alt="Logo" style={{ width: 120, height: 110, borderRadius: "5px" }} />
+                <img src={logoImg} alt="Logo" style={{ width: 130, height: 120, borderRadius: "5px" }} />
                 <Typography
                     sx={{
                         color: "white",

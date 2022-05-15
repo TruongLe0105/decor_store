@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
 import "../index.css";
-import { removeAccents } from "../utils/numberFormat";
 
 function Collections() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -20,7 +19,6 @@ function Collections() {
 
     function handleNavigateCategory(category) {
         handleMenuClose();
-        console.log("render", category)
         navigate(`/products/categories/${category.split(" ").join('-')}`);
     };
     const categoriesMenu = (

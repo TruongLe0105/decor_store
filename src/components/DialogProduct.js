@@ -2,22 +2,31 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import PreviewIcon from '@mui/icons-material/Preview';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { Card, CardMedia, Link, TextField, Typography } from "@mui/material";
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Card, CardMedia, Link, Box, Typography } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+// import QuantityCounter from './QuantityCounter';
+import { useDispatch } from 'react-redux';
+// import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
+import { addProductsToCart } from '../features/cart/cartSlice';
+import useAuth from '../hooks/useAuth';
+import { fCurrency } from '../utils/numberFormat';
+import { toast } from 'react-toastify';
+import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
 
 
 
-function DialogProduct({ product }) {
+function DialogProduct({ product, cartId }) {
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState(1)
+    const [value, setValue] = React.useState(1);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { user } = useAuth();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -33,16 +42,39 @@ function DialogProduct({ product }) {
     }
 
     const handleAddToCart = () => {
-        handleClose();
-        navigate("/cart")
+        if (user) {
+            const productId = product._id;
+            const quantity = value;
+            if (quantity < 10 && quantity > 0) {
+                handleClose();
+                if (cartId) {
+                    dispatch(addProductsToCart({ productId, cartId, quantity }))
+                }
+                toast.success("Thêm vào giỏ thành công");
+
+            } else {
+                if (quantity > 10) {
+                    toast.error(`Giới hạn sản phẩm là ${LIMIT_QUANTITY_PRODUCT}!`);
+                } else if (quantity < 1) {
+                    toast.error("Số lượng sản phẩm phải lớn hơn 0!")
+                }
+                setValue(1);
+            }
+        } else {
+            navigate("/login");
+        }
     }
 
     const handleAddAmount = () => {
-        setValue(value + 1);
+        if (value < 100) {
+            setValue(value + 1);
+        }
     }
 
     const handleRemoveAmount = () => {
-        setValue(value - 1)
+        if (value > 1) {
+            setValue(value - 1)
+        }
     }
 
     return (
@@ -81,42 +113,42 @@ function DialogProduct({ product }) {
                                 borderRadius: 1
                             }}
                         />
-                        <div>
+                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                             <DialogContentText sx={{
                                 color: "red",
                                 fontSize: "2rem"
                             }}
-                            >{product.price}đ
+                            >{fCurrency(product.price)}đ
                             </DialogContentText>
-                            <Typography sx={{ fontWeight: "bold" }}>Số lượng</Typography>
-                            <Button variant="link" onClick={handleAddAmount}>
-                                <AddIcon />
-                            </Button>
-                            <input
-                                style={{
-                                    width: "15%",
-                                    height: "10%",
-                                    textAlign: "center",
-                                    border: "1px solid gray",
-                                    margin: 1,
-                                    borderRadius: "5px"
-                                }}
-                                value={value}
-                                onChange={(event) => setValue(event.target.value)}
-                            />
-                            <Button variant="link" onClick={handleRemoveAmount}>
-                                <RemoveIcon />
-                            </Button>
-                            <DialogActions sx={{ marginRight: 0 }}>
+                            <Typography sx={{ fontWeight: "bold" }}>Số lượng:</Typography>
+                            <Box sx={{ display: "flex" }}>
+                                <Button variant="link" onClick={handleRemoveAmount}>
+                                    <RemoveIcon />
+                                </Button>
+                                <input
+                                    style={{
+                                        width: "15%",
+                                        height: "100%",
+                                        textAlign: "center",
+                                        border: "1px solid gray",
+                                        margin: 1,
+                                        borderRadius: "5px"
+                                    }}
+                                    value={value}
+                                    onChange={(event) => setValue(event.target.value)}
+                                />
+                                <Button variant="link" onClick={handleAddAmount}>
+                                    <AddIcon />
+                                </Button>
+                            </Box>
+                            <DialogActions>
                                 <Button
                                     onClick={handleAddToCart}
-                                    sx={{ backgroundColor: "#212121" }}
+                                    color="secondary"
+                                    variant="outlined"
                                 >
                                     <AddShoppingCartIcon sx={{ margin: 1 }} />
-                                    <Typography
-                                        sx={{ color: "white" }}
-                                        onClick={() => navigate("/cart")}
-                                    >THÊM VÀO GIỎ</Typography>
+                                    <Typography>THÊM VÀO GIỎ</Typography>
                                 </Button>
                                 <Typography sx={{ margin: 1 }}>Hoặc</Typography>
                                 <Link
@@ -136,3 +168,5 @@ function DialogProduct({ product }) {
 }
 
 export default DialogProduct;
+
+

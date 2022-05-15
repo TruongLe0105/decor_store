@@ -39,3 +39,9 @@ Must have at least 2 animations (For example Loading spinner, animated search, o
 
     - Product list k call được dữ liệu khi dispatch action khác.
     
+
+    B1: Trong cartShema tạo 1 customerId ref đến "Users"
+    gọi component trong productCard thì nó lại call api lại nhiều lần.
+
+    profile about: update profile, accountPage;
+    

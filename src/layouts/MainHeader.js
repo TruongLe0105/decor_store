@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import { Link, Divider, Stack } from '@mui/material';
-import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import logoImg from "../logo.png";
 import useAuth from '../hooks/useAuth';
 import SearchInput from '../components/SearchInput';
@@ -16,7 +16,6 @@ import Collections from '../components/Collections';
 function MainHeader() {
     const { user } = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
     const [filterName, setFilterName] = React.useState("");
 
     const handleSubmit = (searchQuery) => {
@@ -24,7 +23,7 @@ function MainHeader() {
             navigate("/products/:categories")
             setFilterName(searchQuery);
         }
-    }
+    };
 
     const AccessHandle = () => (
         <div style={{ display: "flex" }}>
@@ -46,7 +45,7 @@ function MainHeader() {
                 underline="none"
                 component={RouterLink} to='/login'>Đăng Nhập</Link >
         </div>
-    )
+    );
 
     return (
         <>
@@ -87,7 +86,6 @@ function MainHeader() {
                 </AppBar>
             </Stack>
             <Collections />
-
         </>
     );
 }

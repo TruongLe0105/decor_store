@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuItem from '@mui/material/MenuItem';
-import { Menu, Link, Avatar, Divider, Stack, Typography } from '@mui/material';
-import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, Avatar, Divider, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/system';
 import useAuth from '../../hooks/useAuth';
 
@@ -9,7 +9,6 @@ import useAuth from '../../hooks/useAuth';
 function AvatarMenu() {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 

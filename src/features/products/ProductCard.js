@@ -1,20 +1,40 @@
 import * as React from 'react';
+
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { fCurrency } from '../../utils/numberFormat';
-import { useNavigate } from 'react-router-dom';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Box, Button, Link } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
+import { useNavigate } from 'react-router-dom';
 import { Link as RouterLink } from "react-router-dom";
-import DialogProduct from '../../components/DialogProduct';
+import { useDispatch } from 'react-redux';
+
+import { fCurrency } from '../../utils/numberFormat';
+import DialogProduct from '../../components/DialogProduct'
+import { addProductsToCart } from '../cart/cartSlice';
+// import { resetProducts } from './productSlice';
+import useAuth from '../../hooks/useAuth';
 
 function ProductCard({ product }) {
     const navigate = useNavigate();
-    const handleAddToCart = () => {
-        console.log("chưa làm!!!")
+    const dispatch = useDispatch();
+    const { user } = useAuth();
+
+    const cartId = user ? user.cartId : {};
+
+    const HandleAddToCart = () => {
+        if (user) {
+            const productId = product._id;
+            console.log("cartIdne", cartId)
+            if (cartId) {
+                dispatch(addProductsToCart({ productId, cartId }))
+            };
+        } else {
+            navigate("/login")
+        }
     }
 
     return (
@@ -80,11 +100,11 @@ function ProductCard({ product }) {
                     <Button
                         sx={{ marginRight: 1 }}
                         variant="outlined"
-                        onClick={handleAddToCart}
+                        onClick={() => HandleAddToCart()}
                     >
                         <AddShoppingCartIcon />
                     </Button>
-                    <DialogProduct product={product} />
+                    <DialogProduct cartId={cartId} product={product} />
                 </Box>
             </CardActions>
         </Card>
