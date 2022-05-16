@@ -23,7 +23,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
 const RegisterSchema = Yup.object().shape({
-    name: Yup.string().required("Name is required"),
+    userName: Yup.string().required("Name is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string().required("Password is required"),
     passwordConfirmation: Yup.string()
@@ -32,7 +32,7 @@ const RegisterSchema = Yup.object().shape({
 });
 
 const defaultValues = {
-    name: "",
+    userName: "",
     email: "",
     password: "",
     passwordConfirmation: "",
@@ -57,9 +57,9 @@ function RegisterPage() {
     } = methods;
 
     const onSubmit = async (data) => {
-        const { name, email, password } = data;
+        const { userName, email, password } = data;
         try {
-            await auth.register({ name, email, password }, () => {
+            await auth.register({ userName, email, password }, () => {
                 navigate("/", { replace: true });
             });
         } catch (error) {
@@ -116,7 +116,7 @@ function RegisterPage() {
                             </Link>
                         </Alert>
 
-                        <FTextField name="name" label="UserName" />
+                        <FTextField name="userName" label="UserName" />
                         <FTextField name="email" label="Email address" />
                         <FTextField
                             name="password"

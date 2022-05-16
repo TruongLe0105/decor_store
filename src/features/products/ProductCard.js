@@ -15,22 +15,26 @@ import { useDispatch } from 'react-redux';
 import { fCurrency } from '../../utils/numberFormat';
 import DialogProduct from '../../components/DialogProduct'
 import { addProductsToCart } from '../cart/cartSlice';
-// import { resetProducts } from './productSlice';
 import useAuth from '../../hooks/useAuth';
+import { LIMIT_QUANTITY_PRODUCT } from '../../app/config';
+import { toast } from 'react-toastify';
 
-function ProductCard({ product }) {
+function ProductCard({ product, cart }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useAuth();
 
-    const cartId = user ? user.cartId : {};
-
     const HandleAddToCart = () => {
         if (user) {
+            const cartId = cart._id;
             const productId = product._id;
-            console.log("cartIdne", cartId)
-            if (cartId) {
+            const productInCartCurrent = cart.products.find(productCart => productCart._id === productId);
+            let productInCart = productInCartCurrent ? productInCartCurrent.quantity + 1 : 1;
+            if (productInCart <= LIMIT_QUANTITY_PRODUCT) {
                 dispatch(addProductsToCart({ productId, cartId }))
+                toast.success("Sản phẩm đã được thêm vào giỏ hàng")
+            } else {
+                toast.error(`Bạn chỉ được mua tối đa ${LIMIT_QUANTITY_PRODUCT} sản phẩm này`)
             };
         } else {
             navigate("/login")
@@ -104,7 +108,7 @@ function ProductCard({ product }) {
                     >
                         <AddShoppingCartIcon />
                     </Button>
-                    <DialogProduct cartId={cartId} product={product} />
+                    <DialogProduct cart={cart} product={product} />
                 </Box>
             </CardActions>
         </Card>

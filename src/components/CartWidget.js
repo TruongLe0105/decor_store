@@ -1,10 +1,9 @@
 import { Badge } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import React from "react";
+import React, { useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useLocation, useNavigate, Link as RouterLink } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const WidgetStyle = styled(RouterLink)(({ theme }) => ({
     zIndex: 999,
@@ -24,20 +23,31 @@ const WidgetStyle = styled(RouterLink)(({ theme }) => ({
 }));
 
 function CartWidget() {
+    const [showCartIcon, setShowCartIcon] = useState(true)
+    const { cart } = useSelector(state => state.cart);
+    const navigate = useNavigate();
+    let cartArray = Object.keys(cart);
+    const totalProducts = cartArray.length ? cart.products.reduce((acc, cur) => {
+        return acc + cur.quantity;
+    }, 0) : 0;
 
-    // const { cartProducts } = useCartContext();
-    // const totalItems = cartProducts.reduce(
-    //     (acc, product) => acc + product.quantity,
-    //     0
-    // );
+    const handleClick = () => {
+        setShowCartIcon(false)
+        // navigate("/checkout")
+        console.log(showCartIcon)
+    }
     return (
-        <WidgetStyle
-            to="/checkout"
-        >
-            <Badge badgeContent={1} color="success">
-                <ShoppingCartIcon />
-            </Badge>
-        </WidgetStyle>
+        <div onClick={() => setShowCartIcon(false)}>
+            <WidgetStyle
+                to="/checkout"
+            >
+                {/* {showCartIcon && ( */}
+                <Badge badgeContent={totalProducts} color="success">
+                    <ShoppingCartIcon />
+                </Badge>
+                {/* )} */}
+            </WidgetStyle>
+        </div>
     );
 }
 

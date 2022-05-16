@@ -8,6 +8,7 @@ const initialState = {
     isLoading: false,
     error: null,
     updatedProfile: null,
+    // updatePassword: null,
 };
 
 const slice = createSlice({
@@ -28,6 +29,12 @@ const slice = createSlice({
             const currentProfile = action.payload;
             state.updatedProfile = currentProfile;
         },
+        updatePasswordSuccess(state, action) {
+            state.isLoading = false;
+            state.hasError = null;
+            const updatedProfile = action.payload;
+            state.updatePassword = updatedProfile;
+        }
     }
 });
 
@@ -36,7 +43,7 @@ export default slice.reducer;
 export const updateUserProfile =
     ({
         userId,
-        name,
+        fullName,
         avatarUrl,
         city,
         country,
@@ -46,8 +53,8 @@ export const updateUserProfile =
         dispatch(slice.actions.startLoading());
         try {
             const data = {
-                name,
-                avatarUrl,
+                fullName,
+                // avatarUrl,
                 city,
                 country,
                 numberOfPhone,
@@ -74,5 +81,21 @@ export const getCurrentUserProfile = () => async (dispatch) => {
         dispatch(slice.actions.getCurrentUserProfileSuccess(response.data))
     } catch (error) {
         dispatch(slice.actions.hasError(error.message));
+        toast.error(error.message);
+    }
+};
+
+export const updatePassword = ({ password, newPassword }) => async (dispatch) => {
+    dispatch(slice.actions.isLoading());
+    console.log("first", password)
+    try {
+        const response = await apiService.put(`/users/password`, {
+            password,
+            newPassword
+        })
+        dispatch(slice.actions.updatePasswordSuccess(response.data))
+    } catch (error) {
+        dispatch(slice.actions.hasError(error.message));
+        toast.error(error.message);
     }
 }

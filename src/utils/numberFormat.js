@@ -20,8 +20,9 @@ export function fShortenNumber(number) {
 export function fData(number) {
     return numeral(number).format("0.0 b");
 }
-export function removeAccents(str) {
-    return str.normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/đ/g, 'd').replace(/Đ/g, 'D');
-}
+
+// export function removeAccents(str) {
+//     return str.normalize('NFD')
+//         .replace(/[\u0300-\u036f]/g, '')
+//         .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+// }

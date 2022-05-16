@@ -44,4 +44,5 @@ Must have at least 2 animations (For example Loading spinner, animated search, o
     gọi component trong productCard thì nó lại call api lại nhiều lần.
 
     profile about: update profile, accountPage;
-    
+
+    ## Đang lỗi avatar...

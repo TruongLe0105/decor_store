@@ -10,10 +10,8 @@ import { Card, CardMedia, Link, Box, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-// import QuantityCounter from './QuantityCounter';
-import { useDispatch } from 'react-redux';
-// import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
-import { addProductsToCart } from '../features/cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addProductsToCart, getProductInCart } from '../features/cart/cartSlice';
 import useAuth from '../hooks/useAuth';
 import { fCurrency } from '../utils/numberFormat';
 import { toast } from 'react-toastify';
@@ -21,12 +19,15 @@ import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
 
 
 
-function DialogProduct({ product, cartId }) {
+function DialogProduct({ product, cart }) {
+    // function DialogProduct({ product, cartId }) {
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState(1);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useAuth();
+    const cartId = cart._id;
+
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -44,19 +45,21 @@ function DialogProduct({ product, cartId }) {
     const handleAddToCart = () => {
         if (user) {
             const productId = product._id;
-            const quantity = value;
-            if (quantity < 10 && quantity > 0) {
+            let quantity = Number(value);
+            const productInCartCurrent = cart.products.find(productCart => productCart._id === productId);
+            let productInCart = productInCartCurrent ? (productInCartCurrent.quantity + quantity) : quantity;
+            console.log("quantity", quantity)
+            console.log(("productInCart"), productInCart)
+            if (productInCart <= LIMIT_QUANTITY_PRODUCT && productInCart > 0) {
                 handleClose();
                 if (cartId) {
                     dispatch(addProductsToCart({ productId, cartId, quantity }))
                 }
-                toast.success("Thêm vào giỏ thành công");
+                toast.success(`Thành công! Bạn đã có ${productInCart} sản phẩm này trong giỏ hàng`);
 
             } else {
-                if (quantity > 10) {
-                    toast.error(`Giới hạn sản phẩm là ${LIMIT_QUANTITY_PRODUCT}!`);
-                } else if (quantity < 1) {
-                    toast.error("Số lượng sản phẩm phải lớn hơn 0!")
+                if (productInCart > LIMIT_QUANTITY_PRODUCT) {
+                    toast.error(`Giới hạn mỗi sản phẩm là ${LIMIT_QUANTITY_PRODUCT}!`);
                 }
                 setValue(1);
             }

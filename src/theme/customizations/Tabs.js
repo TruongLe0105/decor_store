@@ -18,6 +18,9 @@ function Tabs(theme) {
             minWidth: 48,
           },
         },
+        orientation: {
+          horizontal: theme.breakpoints.up("xs"),
+        },
         labelIcon: {
           minHeight: 48,
           flexDirection: "row",

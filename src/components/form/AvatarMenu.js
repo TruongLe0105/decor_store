@@ -44,10 +44,10 @@ function AvatarMenu() {
                 <Avatar
                     onClick={handleProfileMenuOpen}
                     src={user.avatarUrl}
-                    alt={user.name}
+                    alt={user.userName}
                     sx={{ width: 32, height: 32 }}
                 />
-                <Typography sx={{ margin: "5px" }}>{user.name}</Typography>
+                <Typography sx={{ margin: "5px" }}>{user.userName}</Typography>
                 <Menu
                     id="menu-appbar"
                     anchorEl={anchorEl}
@@ -65,7 +65,7 @@ function AvatarMenu() {
                 >
                     <Box sx={{ my: 1.5, px: 2.5 }}>
                         <Typography>
-                            {user.name}
+                            {user.userName}
                         </Typography>
                     </Box>
                     <Divider sx={{ borderStyle: "dashed" }} />

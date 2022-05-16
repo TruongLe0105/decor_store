@@ -1,88 +1,128 @@
-import { Container, Divider, Menu, MenuItem, Stack, Tab, Tabs, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import LogoutIcon from '@mui/icons-material/Logout';
-import Profile from '../../features/user/Profile';
-import Bank from '../../features/user/Bank';
-import Address from '../../features/user/Address';
-import UpdatePassword from '../../features/user/UpdatePassword';
+import React, { useState } from "react";
 
+import { Box, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+
+// import { capitalCase } from "change-case";
+import useAuth from "../../hooks/useAuth";
+import Profile from "../../features/user/ProfileForm";
+import Bank from "../../features/user/Bank";
+import Address from "../../features/user/Address";
+import UpdatePassword from "../../features/user/PasswordForm";
+
+const TabsWrapperStyle = styled("div")(({ theme }) => ({
+    // zIndex: 9,
+    // width: "15%",
+    // backgroundColor: "#fff",
+    // [theme.breakpoints.up("xs")]: {
+    //     display: "flex",
+    //     justifyContent: "center",
+    // },
+    // [theme.breakpoints.up("md")]: {
+    //     justifyContent: "flex-start",
+    //     paddingRight: theme.spacing(1),
+    // },
+}));
 
 function ProfilePage() {
-    const { user, logout } = useAuth();
-    const [showProfile, setShowProfile] = useState(false)
-    // const [currentTab, setCurrentTab] = useState("Hồ")
-    const navigate = useNavigate();
+    const { user } = useAuth();
+    const [currentTab, setCurrentTab] = useState("Hồ sơ");
+    const [showProfile, setShowProfile] = useState(true);
 
-    const handleLogout = async () => {
-        try {
-            await logout(() => {
-                navigate("/login")
-            });
-        } catch (error) {
-            console.error(error)
-        }
+
+    const handleChangeTab = (newValue) => {
+        setCurrentTab(newValue);
     };
-    // const handleChangeTab = (newValue) => {
-    //     setCurrentTab(newValue);
-    // }
 
-    // const PROFILE_TAB = [
-    //     {
-    //         value: "Hồ sơ",
-    //         // value: "profile",
-    //         component: <Profile />
-    //     },
-    //     {
-    //         value: "Ngân hàng",
-    //         component: <Bank />
-    //     },
-    //     {
-    //         value: "Địa chỉ",
-    //         component: <Address />
-    //     },
-    //     {
-    //         value: "Đổi mật khẩu",
-    //         component: <UpdatePassword />
-    //     },
-    // ]
+    const PROFILE_TABS = [
+        {
+            value: "Hồ sơ",
+            component: <Profile profile={user} />,
+        },
+        {
+            value: "Ngân hàng",
+            component: <Bank />,
+        },
+        {
+            value: "Địa chỉ",
+            component: <Address />,
+        },
+        {
+            value: "Đổi mật khẩu",
+            component: <UpdatePassword />,
+        },
+    ];
 
     return (
-        <Stack sx={{ mt: "10px  " }}>
-            <Typography sx={{ textAlign: "center", mb: 2 }}>TÀI KHOẢN CỦA TÔI</Typography>
-            <Container>
-                <Box
-                    sx={{ display: "flex" }}
-                    onClick={() => setShowProfile(true)}
+        <Stack sx={{ backgroundColor: "#fafafa", height: "100vh" }}>
+            <Grid container spacing={2}
+                sx={{
+                    // display: "flex",
+                    marginTop: 10,
+                }}
+            >
+                <Grid item xs={12} md={2}
+                    sx={{
+                        marginLeft: 2,
+                        backgroundColor: "#fafafa"
+                    }}
                 >
-                    <PersonOutlineIcon />
-                    <Typography sx={{ fontSize: "1.1rem" }}>Thông tin tài khoản</Typography>
-                </Box>
-                {showProfile && (
-                    <div style={{
-                        paddingLeft: "5%",
-                        marginBottom: "10px",
+                    <Box sx={{
+                        cursor: "pointer",
                         display: "flex",
-                        flexDirection: "column",
-                    }}>
-                        <Box>Hồ sơ</Box>
-                        <Box>Ngân hàng</Box>
-                        <Box>Địa chỉ</Box>
-                        <Box>Đổi mật khẩu</Box>
-                    </div>
-                )}
-                <Box sx={{ display: "flex" }}>
-                    <LogoutIcon />
-                    <Typography sx={{ cursor: "pointer" }} onClick={handleLogout}>Đăng xuất</Typography>
-                </Box>
-            </Container>
-        </Stack>
-    )
-};
+                    }}
+                        onClick={() => setShowProfile(true)}
+                    >
+                        <AccountBoxIcon sx={{ fontSize: 24 }} />
+                        <Typography sx={{ fontSize: "1.1rem" }}>Thông tin tài khoản</Typography>
+                    </Box>
+
+                    {showProfile && (
+                        <TabsWrapperStyle>
+                            <Tabs
+                                orientation="vertical"
+                                // orientation="horizontal"
+                                value={currentTab}
+                                scrollButtons="auto"
+                                variant="scrollable"
+                                allowScrollButtonsMobile
+                                onChange={(e, value) => handleChangeTab(value)}
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "flex-start",
+                                    marginLeft: 4,
+                                }}
+                            >
+                                {PROFILE_TABS.map((tab) => (
+                                    <Tab
+                                        sx={{
+                                            display: "flex",
+                                            alignItems: "flex-start",
+                                            fontSize: "0.8rem"
+                                        }}
+                                        disableRipple
+                                        key={tab.value}
+                                        value={tab.value}
+                                        icon={tab.icon}
+                                        label={tab.value}
+                                    />
+                                ))}
+                            </Tabs>
+                        </TabsWrapperStyle>
+                    )}
+                </Grid>
+                <Grid item xs={12} md={9}>
+                    {
+                        PROFILE_TABS.map((tab) => {
+                            const isMatched = tab.value === currentTab;
+                            return isMatched && <Box key={tab.value}>{tab.component}</Box>;
+                        })
+                    }
+                </Grid>
+            </Grid>
+        </Stack >
+    );
+}
 
 export default ProfilePage;
-
-

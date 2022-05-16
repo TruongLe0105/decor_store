@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FormProvider, FTextField } from "../components/form";
 import { Button, Container, Stack, Typography } from "@mui/material";
-import useCartContext from "../hooks/useCartContext";
 
 const DeliverySchema = yup.object().shape({
   address: yup.string().required("Adress is required"),
@@ -15,6 +14,7 @@ const defaultValues = {
   address: "",
   city: "",
   country: "",
+  numberOfPhone: "",
 };
 
 function CheckoutDelivery({ setActiveStep }) {
@@ -25,7 +25,7 @@ function CheckoutDelivery({ setActiveStep }) {
     resolver: yupResolver(DeliverySchema),
   });
   const { handleSubmit } = methods;
-  const { dispatch } = useCartContext();
+  // const { dispatch } = useCartContext();
 
   const onSubmit = (data) => {
     setActiveStep((step) => step + 1);

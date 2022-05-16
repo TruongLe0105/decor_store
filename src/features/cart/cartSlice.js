@@ -33,7 +33,6 @@ const slice = createSlice({
             state.hasError = null;
             const { cart } = action.payload;
             state.cart = cart;
-            // state.totalPrice = totalPrice;
         },
         addProductsTocartSuccess(state, action) {
             state.isLoading = false;
@@ -42,7 +41,6 @@ const slice = createSlice({
             state.cart = cart;
         }
     }
-
 });
 
 export default slice.reducer;
@@ -63,10 +61,9 @@ export const addProductsToCart = ({ productId, quantity, cartId }) => async (dis
     dispatch(slice.actions.startLoading);
     try {
         if (!quantity) quantity = 1;
-        console.log("quantity", quantity)
         const response = await apiService.post("/cart/add", { productId, quantity, cartId });
         dispatch(slice.actions.addProductsTocartSuccess(response.data));
-        dispatch(getProductInCart());
+        dispatch(getProductInCart({ cartId }));
     } catch (error) {
         dispatch(slice.actions.hasError(error.message));
         toast.error(error.message);

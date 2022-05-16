@@ -45,7 +45,7 @@ const reducer = (state, action) => {
             };
         case UPDATE_PROFILE:
             const {
-                name,
+                userName,
                 avatarUrl,
                 city,
                 country,
@@ -56,7 +56,7 @@ const reducer = (state, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    name,
+                    userName,
                     avatarUrl,
                     city,
                     country,
@@ -142,9 +142,9 @@ function AuthProvider({ children }) {
         callback();
     };
 
-    const register = async ({ name, email, password }, callback) => {
+    const register = async ({ userName, email, password }, callback) => {
         const response = await apiService.post("/users/register", {
-            name,
+            userName,
             email,
             password,
         });

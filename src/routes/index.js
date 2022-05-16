@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import BlankLayout from '../layouts/BlankLayout';
 import MainLayout from '../layouts/MainLayout';
 import ProfilePage from '../pages/account/ProfilePage';
-import Ppage from '../pages/account/Ppage';
 import CategoryPage from '../pages/CategoryPage';
 import DetailPage from '../pages/DetailPage';
 import HomePage from '../pages/HomePage';
@@ -23,8 +22,7 @@ function Router() {
                     <MainLayout />
                 </AuthRequire>
             } >
-                {/* <Route path="/user/account/profile" element={<ProfilePage />} /> */}
-                <Route path="/user/account/profile" element={<Ppage />} />
+                <Route path="/user/account/profile" element={<ProfilePage />} />
                 <Route path="/user/purchase" element={<PurchasePage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
             </Route>

@@ -16,6 +16,7 @@ import Collections from '../components/Collections';
 function MainHeader() {
     const { user } = useAuth();
     const navigate = useNavigate();
+    const [showCartIcon, setShowCartIcon] = React.useState(true)
     const [filterName, setFilterName] = React.useState("");
 
     const handleSubmit = (searchQuery) => {
@@ -75,17 +76,17 @@ function MainHeader() {
                             </Typography>
                         </Box>
                         <SearchInput handleSubmit={handleSubmit} />
-                        <CartWidget />
+                        {/* {showCartIcon && <CartWidget onClick={() => setShowCartIcon(false)} />} */}
                         {user && (
                             <AvatarMenu />
                         )}
                         {!user && (
                             < AccessHandle />
                         )}
+                        <CartWidget />
                     </Toolbar>
                 </AppBar>
             </Stack>
-            <Collections />
         </>
     );
 }

@@ -25,9 +25,10 @@ function CartProductList({ cart, setActiveStep }) {
     const cartId = cart._id;
     //setActiveStep
     let productsInCart = [];
-    if (cart.products) productsInCart = cart.products;
-    const handleDeleteProduct = ({ productId, quantity }) => {
-        quantity = -100;
+    if (cart.products)
+        productsInCart = cart.products;
+    const handleDeleteProduct = ({ productId }) => {
+        const quantity = -100;
         if (cartId) {
             dispatch(addProductsToCart({ productId, cartId, quantity }))
         }
@@ -87,7 +88,7 @@ function CartProductList({ cart, setActiveStep }) {
                                 <TableCell>
                                     <IconButton
                                         sx={{ color: "red" }}
-                                        onClick={() => handleDeleteProduct({ productId, quantity })}
+                                        onClick={() => handleDeleteProduct({ productId })}
                                     >
                                         <DeleteForeverIcon />
                                     </IconButton>
@@ -125,7 +126,7 @@ function QuantityCounter({ dispatch, quantity, productId, cartId }) {
         }
     };
     const handleIncQuantity = () => {
-        if (quantity < 9) {
+        if (quantity < LIMIT_QUANTITY_PRODUCT) {
             if (cartId) dispatch(addProductsToCart({ productId, cartId }))
         }
     }

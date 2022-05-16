@@ -19,6 +19,8 @@ import CartProductList from "../components/CartProductList";
 import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../hooks/useAuth";
 import { getProductInCart } from "../features/cart/cartSlice";
+import Collection from "../components/Collections";
+
 
 const STEPS = ["Cart", "Delivery", "Summary"];
 
@@ -42,32 +44,37 @@ function CheckoutPage() {
     };
 
     return (
-        <Container sx={{ my: 2 }}>
-            <Breadcrumbs sx={{ mb: 4 }}>
-                <Link underline="hover" color="inherit" component={RouterLink} to="/">
-                    TitusScore
-                </Link>
-                <Typography color="text.primary">Checkout</Typography>
-            </Breadcrumbs>
+        <>
+            <Collection />
+            <Container sx={{
+                mt: 2
+            }}>
+                <Breadcrumbs sx={{ mb: 4 }}>
+                    <Link underline="hover" color="inherit" component={RouterLink} to="/">
+                        TitusScore
+                    </Link>
+                    <Typography color="text.primary">Checkout</Typography>
+                </Breadcrumbs>
 
-            <Stack spacing={2}>
-                <Box sx={{ width: "100%" }}>
-                    <Stepper nonLinear activeStep={activeStep}>
-                        {STEPS.map((label, index) => (
-                            <Step key={label}>
-                                <StepButton onClick={() => handleStep(index)}>
-                                    {label}
-                                </StepButton>
-                            </Step>
-                        ))}
-                    </Stepper>
-                </Box>
+                <Stack spacing={2}>
+                    <Box sx={{ width: "100%" }}>
+                        <Stepper nonLinear activeStep={activeStep}>
+                            {STEPS.map((label, index) => (
+                                <Step key={label}>
+                                    <StepButton onClick={() => handleStep(index)}>
+                                        {label}
+                                    </StepButton>
+                                </Step>
+                            ))}
+                        </Stepper>
+                    </Box>
 
-                {activeStep === 0 && <CartProductList cart={cart} setActiveStep={setActiveStep} />}
-                {/* {activeStep === 1 && <CheckoutDelivery setActiveStep={setActiveStep} />}
+                    {activeStep === 0 && <CartProductList cart={cart} setActiveStep={setActiveStep} />}
+                    {/* {activeStep === 1 && <CheckoutDelivery setActiveStep={setActiveStep} />}
                 {activeStep === 2 && <CheckoutSummary />} */}
-            </Stack>
-        </Container>
+                </Stack>
+            </Container>
+        </>
     );
 }
 
