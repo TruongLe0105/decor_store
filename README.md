@@ -46,3 +46,5 @@ Must have at least 2 animations (For example Loading spinner, animated search, o
     profile about: update profile, accountPage;
 
     ## Đang lỗi avatar...
+
+sx={{ width: { md: "350px", xs: "200px" } }}

@@ -51,11 +51,12 @@ const slice = createSlice({
 export default slice.reducer;
 export const { resetProducts } = slice.actions;
 
-export const getProducts = ({ categories, filterName, page, limit }) => async (dispatch) => {
+export const getProducts = ({ categories, name, page, limit }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
         const params = { page, limit };
-        if (filterName) params.filterName = filterName;
+        if (name) params.name = name;
+
         if (categories) params.categories = categories;
         const response = await apiService.get(`/products`, {
             params,

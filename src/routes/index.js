@@ -13,10 +13,24 @@ import AuthRequire from './AuthRequire';
 import InitRequire from './InitRequire';
 import CheckoutPage from '../pages/CheckoutPage';
 import PurchasePage from '../pages/account/PurchasePage';
+import CheckoutCompletedPage from '../pages/CheckoutCompletedPage';
+import SearchPage from '../pages/SearchPage';
 
 function Router() {
     return (
         <Routes>
+            <Route path="/"
+                element={
+                    <InitRequire>
+                        <MainLayout />
+                    </InitRequire>
+                }
+            >
+                <Route index element={<HomePage />} />
+                <Route path="/products/categories/:category" element={<CategoryPage />} />
+                <Route path="/products/:id" element={<DetailPage />} />
+            </Route>
+
             <Route element={
                 <AuthRequire>
                     <MainLayout />
@@ -27,19 +41,11 @@ function Router() {
                 <Route path="/checkout" element={<CheckoutPage />} />
             </Route>
 
-            <Route path="/" element={
-                <InitRequire>
-                    <MainLayout />
-                </InitRequire>
-            }>
-                <Route index element={<HomePage />} />
-                <Route path="/products/categories/:category" element={<CategoryPage />} />
-                <Route path="/products/:id" element={<DetailPage />} />
-            </Route>
-
             <Route element={<BlankLayout />} >
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/search" element={<SearchPage />} />
+                <Route path="/checkout/completed" element={<CheckoutCompletedPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>

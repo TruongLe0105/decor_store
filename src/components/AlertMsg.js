@@ -3,12 +3,17 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 const AlertMsg = () => {
+
+
+
   return (
     <ToastContainer
-      position="top-right"
+      position="top-center"
       hideProgressBar={false}
       newestOnTop={false}
+      autoClose={300}
       pauseOnHover
+      limit={2}
     />
   );
 };

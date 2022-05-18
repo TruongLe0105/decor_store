@@ -10,21 +10,16 @@ import logoImg from "../logo.png";
 import useAuth from '../hooks/useAuth';
 import SearchInput from '../components/SearchInput';
 import AvatarMenu from '../components/form/AvatarMenu';
-import CartWidget from '../components/CartWidget';
-import Collections from '../components/Collections';
 
 function MainHeader() {
     const { user } = useAuth();
     const navigate = useNavigate();
-    const [showCartIcon, setShowCartIcon] = React.useState(true)
-    const [filterName, setFilterName] = React.useState("");
 
-    const handleSubmit = (searchQuery) => {
-        if (searchQuery) {
-            navigate("/products/:categories")
-            setFilterName(searchQuery);
-        }
+    const handleSubmit = (filterName) => {
+        console.log("filtername", filterName)
+        navigate(`/search?q=${filterName}`);
     };
+
 
     const AccessHandle = () => (
         <div style={{ display: "flex" }}>
@@ -76,19 +71,17 @@ function MainHeader() {
                             </Typography>
                         </Box>
                         <SearchInput handleSubmit={handleSubmit} />
-                        {/* {showCartIcon && <CartWidget onClick={() => setShowCartIcon(false)} />} */}
                         {user && (
                             <AvatarMenu />
                         )}
                         {!user && (
                             < AccessHandle />
                         )}
-                        <CartWidget />
                     </Toolbar>
                 </AppBar>
             </Stack>
         </>
     );
-}
 
+}
 export default MainHeader;

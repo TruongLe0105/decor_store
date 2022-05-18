@@ -18,13 +18,14 @@ function ProfileForm() {
     const { user } = useAuth();
 
     const isLoading = useSelector(state => state.user.isLoading);
+
     const defaultValues = {
         userName: user?.userName || "",
         fullName: user?.fullName || "",
         email: user?.email || "",
         numberOfPhone: user?.numberOfPhone || "",
         country: user?.country || "",
-        address: user?.address || "",
+        city: user?.city || "",
         avatarUrl: user?.avatarUrl || "",
     };
 
@@ -63,7 +64,7 @@ function ProfileForm() {
 
     return (
         <Box sx={{ padding: 1 }}>
-            <Typography sx={{ fontSize: "1.2rem", marginLeft: "40px" }}>Hồ sơ của tôi</Typography>
+            <Typography sx={{ fontSize: "1.5rem", textAlign: "center" }}>Hồ sơ của tôi</Typography>
             <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
                 <Grid container spacing={1} sx={{ marginTop: 1 }}>
                     <Grid item xs={12} md={8}>
@@ -73,8 +74,8 @@ function ProfileForm() {
                                 px: 2,
                                 textAlign: "center",
                                 display: "grid",
-                                rowGap: 5,
-                                columnGap: 3,
+                                rowGap: 6,
+                                columnGap: 2,
                                 gridTemplateColumns: {
                                     xs: "repeat(1, 1fr)",
                                     sm: "repeat(2, 1fr)",
@@ -85,14 +86,13 @@ function ProfileForm() {
                             <FTextField name="email" label="Email" disabled />
                             <FTextField name="fullName" label="Họ Tên" />
                             <FTextField name="country" label="Quốc Gia" />
-                            <FTextField name="address" label="Địa chỉ" />
+                            <FTextField name="city" label="Thành Phố" />
                             <FTextField name="numberOfPhone" label="Số Điện Thoại" />
                         </Card>
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <Card sx={{
-                            py: 6,
-                            px: 2,
+                            py: 7,
                             textAlign: "center",
                         }}>
                             <FUploadAvatar

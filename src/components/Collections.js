@@ -1,8 +1,9 @@
 import { Box, Menu, MenuItem, Stack, Typography, Link } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
 import "../index.css";
+import CartWidget from './CartWidget';
 
 function Collections() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -77,6 +78,7 @@ function Collections() {
                 <span>/</span>
                 {categoriesMenu}
             </Box>
+            <CartWidget />
         </Stack>
     )
 }

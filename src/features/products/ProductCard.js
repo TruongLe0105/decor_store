@@ -10,7 +10,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { useNavigate } from 'react-router-dom';
 import { Link as RouterLink } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { fCurrency } from '../../utils/numberFormat';
 import DialogProduct from '../../components/DialogProduct'
@@ -19,17 +19,20 @@ import useAuth from '../../hooks/useAuth';
 import { LIMIT_QUANTITY_PRODUCT } from '../../app/config';
 import { toast } from 'react-toastify';
 
-function ProductCard({ product, cart }) {
+function ProductCard({ product }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useAuth();
+    const { cart } = useSelector(state => state.cart);
+    let productsCart = Object.keys(cart).length > 0 ? cart.products : [];
+
 
     const HandleAddToCart = () => {
         if (user) {
-            const cartId = cart._id;
+            const cartId = user.cartId;
             const productId = product._id;
-            const productInCartCurrent = cart.products.find(productCart => productCart._id === productId);
-            let productInCart = productInCartCurrent ? productInCartCurrent.quantity + 1 : 1;
+            const productsCartCurrent = productsCart.find(productCart => productCart._id === productId);
+            let productInCart = productsCartCurrent ? productsCartCurrent.quantity + 1 : 1;
             if (productInCart <= LIMIT_QUANTITY_PRODUCT) {
                 dispatch(addProductsToCart({ productId, cartId }))
                 toast.success("Sản phẩm đã được thêm vào giỏ hàng")

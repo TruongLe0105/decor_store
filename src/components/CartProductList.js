@@ -23,16 +23,21 @@ import { fCurrency } from "../utils/numberFormat";
 function CartProductList({ cart, setActiveStep }) {
     const dispatch = useDispatch();
     const cartId = cart._id;
-    //setActiveStep
     let productsInCart = [];
     if (cart.products)
         productsInCart = cart.products;
+
     const handleDeleteProduct = ({ productId }) => {
         const quantity = -100;
         if (cartId) {
             dispatch(addProductsToCart({ productId, cartId, quantity }))
         }
     };
+    const handleActiveStep = () => {
+        if (productsInCart.length > 0) {
+            setActiveStep((step) => step + 1)
+        }
+    }
 
     return (
 
@@ -41,10 +46,10 @@ function CartProductList({ cart, setActiveStep }) {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Product</TableCell>
-                            <TableCell>Quantity</TableCell>
-                            <TableCell>Price</TableCell>
-                            <TableCell>Total Price</TableCell>
+                            <TableCell>Sản phẩm</TableCell>
+                            <TableCell>Số lượng</TableCell>
+                            <TableCell>Đơn giá</TableCell>
+                            <TableCell>Tổng</TableCell>
                             <TableCell />
                         </TableRow>
                     </TableHead>
@@ -109,9 +114,10 @@ function CartProductList({ cart, setActiveStep }) {
             <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
                 <Button
                     variant="contained"
-                    onClick={() => setActiveStep((step) => step + 1)}
+                    // onClick={() => setActiveStep((step) => step + 1)}
+                    onClick={() => handleActiveStep()}
                 >
-                    Next
+                    Tiếp theo
                 </Button>
             </Box>
         </Box>

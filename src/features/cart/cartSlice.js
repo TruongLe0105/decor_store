@@ -6,10 +6,10 @@ const initialState = {
     isLoading: false,
     error: null,
     cart: {},
+    orders: [],
     delivery: {
         address: "",
-        city: "",
-        country: "",
+        receiver: "",
         numberOfPhone: "",
     },
 };
@@ -39,6 +39,17 @@ const slice = createSlice({
             state.hasError = null;
             const { cart } = action.payload;
             state.cart = cart;
+        },
+        checkoutSuccess(state, action) {
+            state.isLoading = false;
+            state.hasError = null;
+
+            const { order } = action.payload;
+            state.orders = state.orders.push(order);
+        },
+        setDeliverySuccess(state, action) {
+            const delivery = action.payload;
+            state.delivery = { ...delivery, delivery }
         }
     }
 });
@@ -46,10 +57,10 @@ const slice = createSlice({
 export default slice.reducer;
 export const { resetCart } = slice.actions;
 
-export const getProductInCart = ({ cartId }) => async (dispatch) => {
+export const getProductInCart = () => async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-        const response = await apiService.get("/cart", { cartId });
+        const response = await apiService.get("/cart");
         dispatch(slice.actions.getProductsInCartSuccess(response.data));
     } catch (error) {
         dispatch(slice.actions.hasError(error.message));
@@ -58,12 +69,28 @@ export const getProductInCart = ({ cartId }) => async (dispatch) => {
 };
 
 export const addProductsToCart = ({ productId, quantity, cartId }) => async (dispatch) => {
-    dispatch(slice.actions.startLoading);
+    dispatch(slice.actions.startLoading());
     try {
         if (!quantity) quantity = 1;
         const response = await apiService.post("/cart/add", { productId, quantity, cartId });
         dispatch(slice.actions.addProductsTocartSuccess(response.data));
-        dispatch(getProductInCart({ cartId }));
+        dispatch(getProductInCart());
+    } catch (error) {
+        dispatch(slice.actions.hasError(error.message));
+        toast.error(error.message);
+    }
+};
+
+export const setDelivery = ({ address, numberOfPhone, receiver }) => (dispatch) => {
+    dispatch(slice.actions.setDeliverySuccess({ address, numberOfPhone, receiver }))
+};
+
+export const checkout = ({ cartProducts, delivery, totalPrice, user }) => async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+        const response = await apiService.post("/orders/add", { cartProducts, delivery, totalPrice, user });
+        dispatch(slice.actions.checkoutSuccess(response.data));
+        dispatch(resetCart());
     } catch (error) {
         dispatch(slice.actions.hasError(error.message));
         toast.error(error.message);

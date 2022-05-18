@@ -4,15 +4,14 @@ import { Box, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
-// import { capitalCase } from "change-case";
 import useAuth from "../../hooks/useAuth";
 import Profile from "../../features/user/ProfileForm";
 import Bank from "../../features/user/Bank";
-import Address from "../../features/user/Address";
+import AddressForm from "../../features/user/AddressForm";
 import UpdatePassword from "../../features/user/PasswordForm";
 
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
-    // zIndex: 9,
+    zIndex: 9,
     // width: "15%",
     // backgroundColor: "#fff",
     // [theme.breakpoints.up("xs")]: {
@@ -46,7 +45,7 @@ function ProfilePage() {
         },
         {
             value: "Địa chỉ",
-            component: <Address />,
+            component: <AddressForm />,
         },
         {
             value: "Đổi mật khẩu",
@@ -55,27 +54,28 @@ function ProfilePage() {
     ];
 
     return (
-        <Stack sx={{ backgroundColor: "#fafafa", height: "100vh" }}>
-            <Grid container spacing={2}
+        <Stack sx={{ backgroundColor: "#f5f5f5", height: "100%" }}>
+            <Grid container
                 sx={{
-                    // display: "flex",
-                    marginTop: 10,
+                    marginTop: 12,
                 }}
             >
                 <Grid item xs={12} md={2}
                     sx={{
                         marginLeft: 2,
-                        backgroundColor: "#fafafa"
+                        // backgroundColor: "#eeeeee"   
+                        backgroundColor: "#f5f5f5"
                     }}
                 >
                     <Box sx={{
                         cursor: "pointer",
                         display: "flex",
+                        margin: 1,
                     }}
                         onClick={() => setShowProfile(true)}
                     >
                         <AccountBoxIcon sx={{ fontSize: 24 }} />
-                        <Typography sx={{ fontSize: "1.1rem" }}>Thông tin tài khoản</Typography>
+                        <Typography sx={{ fontSize: "1.2rem" }}>Thông tin tài khoản</Typography>
                     </Box>
 
                     {showProfile && (
@@ -89,8 +89,6 @@ function ProfilePage() {
                                 allowScrollButtonsMobile
                                 onChange={(e, value) => handleChangeTab(value)}
                                 sx={{
-                                    display: "flex",
-                                    alignItems: "flex-start",
                                     marginLeft: 4,
                                 }}
                             >
@@ -99,12 +97,12 @@ function ProfilePage() {
                                         sx={{
                                             display: "flex",
                                             alignItems: "flex-start",
-                                            fontSize: "0.8rem"
+                                            fontSize: "0.8rem",
+                                            // color: "red"
                                         }}
                                         disableRipple
                                         key={tab.value}
                                         value={tab.value}
-                                        icon={tab.icon}
                                         label={tab.value}
                                     />
                                 ))}
