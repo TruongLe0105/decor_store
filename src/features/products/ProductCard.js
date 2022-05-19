@@ -46,15 +46,15 @@ function ProductCard({ product }) {
 
     return (
         <Card sx={{
-            maxWidth: 345,
-            minHeight: 390,
+            maxWidth: { xs: "200px", md: "340px" },
+            minHeight: { xs: "210px", md: "380px" },
         }}>
             <CardMedia
                 component="img"
-                height="250"
                 image={product.imageUrl}
                 alt={product.name}
                 sx={{
+                    height: { xs: "140px", md: "250px" },
                     position: "absolute",
                     top: 0,
                     cursor: "pointer"
@@ -63,7 +63,7 @@ function ProductCard({ product }) {
             />
             <CardContent sx={{
                 position: "absolute",
-                top: "78%",
+                top: "75%",
                 width: "100%",
                 textAlign: "center"
             }}>
@@ -83,7 +83,7 @@ function ProductCard({ product }) {
                     sx={{
                         color: "red",
                         fontFamily: "serif",
-                        fontWeight: "bold"
+                        fontSize: { xs: "0.6rem", md: "1.2rem" }
                     }}
                 >
                     {fCurrency(product.price)}đ
@@ -105,16 +105,20 @@ function ProductCard({ product }) {
                         width: "100%",
                     }}>
                     <Button
-                        sx={{ marginRight: 1 }}
-                        variant="outlined"
+                        sx={{
+                            marginRight: { xs: 0, md: 1 },
+                            border: {
+                                xs: "none", md: "1px solid #C4CDD5"
+                            }
+                        }}
                         onClick={() => HandleAddToCart()}
                     >
-                        <AddShoppingCartIcon />
+                        <AddShoppingCartIcon sx={{ fontSize: { xs: "0.7rem", md: "1.1rem" } }} />
                     </Button>
-                    <DialogProduct cart={cart} product={product} />
+                    <DialogProduct product={product} />
                 </Box>
             </CardActions>
-        </Card>
+        </Card >
     );
 }
 

@@ -25,7 +25,7 @@ function CategoryPage() {
         const limit = PRODUCTS_PER_PAGE;
         if (categories) {
             dispatch(getProducts({ categories, page, limit }));
-            dispatch(resetProducts());
+            // dispatch(resetProducts());
         }
     }, [dispatch, categories, page]);
 
@@ -33,9 +33,6 @@ function CategoryPage() {
         <>
             <Collections />
             <Container>
-                <Typography>
-                    {products.length > 0 ? products.description : "Product not description"}
-                </Typography>
                 <Grid container spacing={1}>
                     {products.length > 0 && products.map(product => (
                         <Grid key={product._id} item xs={6} md={4} lg={3}>

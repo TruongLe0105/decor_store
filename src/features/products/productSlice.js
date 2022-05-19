@@ -32,10 +32,8 @@ const slice = createSlice({
             const { products, count, totalPage } = action.payload;
             products.forEach(product => {
                 state.productsById[product._id] = product;
-                if (!state.currentPageProducts.includes(product._id)) {
-                    state.currentPageProducts.push(product._id);
-                }
             })
+            state.currentPageProducts = products.map(product => product._id);
             state.totalProducts = count;
             state.totalPage = totalPage;
         },
@@ -56,7 +54,6 @@ export const getProducts = ({ categories, name, page, limit }) => async (dispatc
     try {
         const params = { page, limit };
         if (name) params.name = name;
-
         if (categories) params.categories = categories;
         const response = await apiService.get(`/products`, {
             params,

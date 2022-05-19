@@ -1,28 +1,12 @@
 import React, { useState } from "react";
 
 import { Box, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 import useAuth from "../../hooks/useAuth";
 import Profile from "../../features/user/ProfileForm";
-import Bank from "../../features/user/Bank";
 import AddressForm from "../../features/user/AddressForm";
 import UpdatePassword from "../../features/user/PasswordForm";
-
-const TabsWrapperStyle = styled("div")(({ theme }) => ({
-    zIndex: 9,
-    // width: "15%",
-    // backgroundColor: "#fff",
-    // [theme.breakpoints.up("xs")]: {
-    //     display: "flex",
-    //     justifyContent: "center",
-    // },
-    // [theme.breakpoints.up("md")]: {
-    //     justifyContent: "flex-start",
-    //     paddingRight: theme.spacing(1),
-    // },
-}));
 
 function ProfilePage() {
     const { user } = useAuth();
@@ -40,10 +24,6 @@ function ProfilePage() {
             component: <Profile profile={user} />,
         },
         {
-            value: "Ngân hàng",
-            component: <Bank />,
-        },
-        {
             value: "Địa chỉ",
             component: <AddressForm />,
         },
@@ -58,47 +38,44 @@ function ProfilePage() {
             <Grid container
                 sx={{
                     marginTop: 12,
+                    display: "flex",
+                    alignItems: "flex-start",
                 }}
             >
-                <Grid item xs={12} md={2}
-                    sx={{
-                        marginLeft: 2,
-                        // backgroundColor: "#eeeeee"   
-                        backgroundColor: "#f5f5f5"
-                    }}
-                >
+
+                <Grid item xs={12} md={2}>
                     <Box sx={{
                         cursor: "pointer",
                         display: "flex",
-                        margin: 1,
                     }}
                         onClick={() => setShowProfile(true)}
                     >
-                        <AccountBoxIcon sx={{ fontSize: 24 }} />
-                        <Typography sx={{ fontSize: "1.2rem" }}>Thông tin tài khoản</Typography>
+                        <AccountBoxIcon sx={{ fontSize: { xs: 18, md: 24 } }} />
+                        <Typography sx={{ fontSize: { xs: "0.9rem", md: "1.1rem" } }}>Thông tin tài khoản</Typography>
                     </Box>
-
+                </Grid>
+                <Grid item xs={12} md={9}    >
                     {showProfile && (
-                        <TabsWrapperStyle>
+                        <Box sx={{
+                            mt: 3
+                        }}>
                             <Tabs
-                                orientation="vertical"
-                                // orientation="horizontal"
                                 value={currentTab}
-                                scrollButtons="auto"
                                 variant="scrollable"
                                 allowScrollButtonsMobile
                                 onChange={(e, value) => handleChangeTab(value)}
                                 sx={{
-                                    marginLeft: 4,
+
+                                    bgcolor: "#f5f5f5",
+                                    width: "100%",
+                                    orientation: { xs: "vertical", md: "vertical" }
                                 }}
                             >
                                 {PROFILE_TABS.map((tab) => (
                                     <Tab
                                         sx={{
                                             display: "flex",
-                                            alignItems: "flex-start",
-                                            fontSize: "0.8rem",
-                                            // color: "red"
+                                            fontSize: { xs: "0.6rem", md: "0.8rem" }
                                         }}
                                         disableRipple
                                         key={tab.value}
@@ -107,10 +84,8 @@ function ProfilePage() {
                                     />
                                 ))}
                             </Tabs>
-                        </TabsWrapperStyle>
+                        </Box >
                     )}
-                </Grid>
-                <Grid item xs={12} md={9}>
                     {
                         PROFILE_TABS.map((tab) => {
                             const isMatched = tab.value === currentTab;

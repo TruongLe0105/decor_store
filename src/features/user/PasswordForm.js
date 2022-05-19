@@ -52,7 +52,7 @@ function PasswordForm() {
         <Box sx={{ padding: 1 }}>
             <Typography sx={{
                 textAlign: "center",
-                fontSize: "1.5rem",
+                fontSize: { xs: "0.9rem", md: "1.5rem" },
             }}>Đổi Mật Khẩu</Typography>
             <Card sx={{
                 display: "flex",
@@ -60,11 +60,23 @@ function PasswordForm() {
                 alignItems: "center",
                 margin: 2,
             }} >
-                <Box sx={{ width: "40%", margin: 3, textAlign: "center" }}>
+                <Box sx={{ width: { xs: "80%", md: "40%" }, margin: 3, textAlign: "center" }}>
                     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-                        <FTextField sx={{ margin: 2 }} name="password" label="Mật Khẩu Hiện Tại" type="password" />
-                        <FTextField sx={{ margin: 2 }} name="newPassword" label="Mật Khẩu Mới" type="password" />
-                        <FTextField sx={{ margin: 2 }} name="ConfirmNewPassword" label="Xác Nhận Mật Khẩu Mới" type="password" />
+                        <FTextField sx={{
+                            mt: { xs: 2, md: 0 },
+                            margin: { xs: 0, md: 2 }
+                        }}
+                            name="password" label="Mật Khẩu Hiện Tại" type="password" />
+                        <FTextField sx={{
+                            mt: { xs: 1, md: 0 },
+                            margin: { xs: 0, md: 2 }
+                        }}
+                            name="newPassword" label="Mật Khẩu Mới" type="password" />
+                        <FTextField sx={{
+                            mt: { xs: 1, md: 0 },
+                            margin: { xs: 0, md: 2 }
+                        }}
+                            name="ConfirmNewPassword" label="Xác Nhận Mật Khẩu Mới" type="password" />
                         <LoadingButton
                             type="submit"
                             variant="contained"

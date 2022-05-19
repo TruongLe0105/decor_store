@@ -9,16 +9,21 @@ function SearchInput({ handleSubmit }) {
     const onSubmit = (event) => {
         event.preventDefault();
         handleSubmit(searchQuery);
+        setSearchQuery("")
     };
 
     return (
-        <form onSubmit={onSubmit} style={{ width: "40%" }}>
+        <form onSubmit={onSubmit} style={{ width: "45%" }}>
             <TextField
+                size="small"
                 placeholder="Tìm kiếm"
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
-                sx={{ width: "100%" }}
-                size="small"
+                sx={{
+                    width: "100%",
+                    height: "40px",
+                    border: "none"
+                }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
@@ -33,7 +38,7 @@ function SearchInput({ handleSubmit }) {
                     ),
                 }}
             />
-        </form>
+        </form >
     );
 }
 

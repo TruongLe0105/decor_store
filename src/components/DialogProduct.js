@@ -10,7 +10,7 @@ import { Card, CardMedia, Link, Box, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProductsToCart } from '../features/cart/cartSlice';
 import useAuth from '../hooks/useAuth';
 import { fCurrency } from '../utils/numberFormat';
@@ -19,15 +19,15 @@ import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
 
 
 
-function DialogProduct({ product, cart }) {
+function DialogProduct({ product }) {
     // function DialogProduct({ product, cartId }) {
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState(1);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useAuth();
-    const cartId = cart._id;
 
+    const { cart } = useSelector(state => state.cart);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -44,9 +44,10 @@ function DialogProduct({ product, cart }) {
 
     const handleAddToCart = () => {
         if (user) {
+            const cartId = user.cartId;
             const productId = product._id;
             let quantity = Number(value);
-            const productInCartCurrent = cart.products.find(productCart => productCart._id === productId);
+            const productInCartCurrent = cart.products?.find(productCart => productCart._id === productId);
             let productInCart = productInCartCurrent ? (productInCartCurrent.quantity + quantity) : quantity;
             console.log("quantity", quantity)
             console.log(("productInCart"), productInCart)
@@ -55,7 +56,7 @@ function DialogProduct({ product, cart }) {
                 if (cartId) {
                     dispatch(addProductsToCart({ productId, cartId, quantity }))
                 }
-                toast.success(`Thành công! Bạn đã có ${productInCart} sản phẩm này trong giỏ hàng`);
+                toast.success(`Thêm vào giỏ hàng thành công!`);
 
             } else {
                 if (productInCart > LIMIT_QUANTITY_PRODUCT) {
@@ -82,8 +83,14 @@ function DialogProduct({ product, cart }) {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                <PreviewIcon />
+            <Button onClick={handleClickOpen} sx={{
+                border: {
+                    xs: "none", md: "1px solid #C4CDD5"
+                }
+            }}>
+                <PreviewIcon sx={{
+                    fontSize: { xs: "0.7rem", md: "1.1rem" }
+                }} />
             </Button>
             <Dialog
                 open={open}
@@ -99,6 +106,7 @@ function DialogProduct({ product, cart }) {
 
                     <DialogTitle id="alert-dialog-title"
                         sx={{
+                            fontSize: { xs: "0.7rem", md: "1.2rem" },
                             backgroundColor: "#212121",
                             color: "white"
                         }}
@@ -119,19 +127,22 @@ function DialogProduct({ product, cart }) {
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                             <DialogContentText sx={{
                                 color: "red",
-                                fontSize: "2rem"
+                                fontSize: { xs: "1rem", md: "2rem" }
                             }}
                             >{fCurrency(product.price)}đ
                             </DialogContentText>
-                            <Typography sx={{ fontWeight: "bold" }}>Số lượng:</Typography>
-                            <Box sx={{ display: "flex" }}>
+                            <Typography sx={{ fontWeight: "bold", fontSize: { xs: "0.6rem", md: "1rem" } }}>Số lượng:</Typography>
+                            <Box sx={{
+                                width: "50%",
+                                display: "flex",
+                                justifyContent: "space-around"
+                            }}>
                                 <Button variant="link" onClick={handleRemoveAmount}>
-                                    <RemoveIcon />
+                                    <RemoveIcon sx={{ fontSize: { xs: "0.7rem", md: "1.2rem" } }} />
                                 </Button>
                                 <input
                                     style={{
-                                        width: "15%",
-                                        height: "100%",
+                                        width: "30px",
                                         textAlign: "center",
                                         border: "1px solid gray",
                                         margin: 1,
@@ -140,24 +151,27 @@ function DialogProduct({ product, cart }) {
                                     value={value}
                                     onChange={(event) => setValue(event.target.value)}
                                 />
-                                <Button variant="link" onClick={handleAddAmount}>
-                                    <AddIcon />
+                                <Button variant="link" onClick={handleAddAmount} >
+                                    <AddIcon sx={{ fontSize: { xs: "0.7rem", md: "1.2rem" } }} />
                                 </Button>
                             </Box>
                             <DialogActions>
-                                <Button
+                                <Button sx={{
+                                    border: {
+                                        xs: "none", md: "1px solid #C4CDD5"
+                                    }
+                                }}
                                     onClick={handleAddToCart}
                                     color="secondary"
-                                    variant="outlined"
                                 >
                                     <AddShoppingCartIcon sx={{ margin: 1 }} />
-                                    <Typography>THÊM VÀO GIỎ</Typography>
+                                    <Typography sx={{ display: { xs: "none", md: "block" } }}>THÊM VÀO GIỎ</Typography>
                                 </Button>
-                                <Typography sx={{ margin: 1 }}>Hoặc</Typography>
+                                <Typography sx={{ margin: { xs: 0, md: 1 }, fontSize: { xs: "0.5rem", md: "1rem" } }}>Hoặc</Typography>
                                 <Link
                                     onClick={handleOpenDetail}
                                     underline="none"
-                                    sx={{ cursor: "pointer" }}
+                                    sx={{ cursor: "pointer", marginLeft: 1, fontSize: { xs: "0.6rem", md: "1.1rem" } }}
                                 >
                                     Xem chi tiết
                                 </Link>

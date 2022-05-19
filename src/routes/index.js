@@ -29,6 +29,7 @@ function Router() {
                 <Route index element={<HomePage />} />
                 <Route path="/products/categories/:category" element={<CategoryPage />} />
                 <Route path="/products/:id" element={<DetailPage />} />
+                <Route path="/search" element={<SearchPage />} />
             </Route>
 
             <Route element={
@@ -39,14 +40,13 @@ function Router() {
                 <Route path="/user/account/profile" element={<ProfilePage />} />
                 <Route path="/user/purchase" element={<PurchasePage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/checkout/completed" element={<CheckoutCompletedPage />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Route>
 
             <Route element={<BlankLayout />} >
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/search" element={<SearchPage />} />
-                <Route path="/checkout/completed" element={<CheckoutCompletedPage />} />
-                <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
     );

@@ -14,11 +14,11 @@ function ProductList() {
 
     const { productsById, currentPageProducts } = useSelector(state => state.product);
     const products = currentPageProducts.map((productId) => productsById[productId]);
+    const limit = PRODUCTS_HOME_PAGE;
 
     useEffect(() => {
-        const limit = PRODUCTS_HOME_PAGE;
         dispatch(getProducts({ limit }));
-    }, [dispatch]);
+    }, [dispatch, limit]);
 
     const arrCategoryTree = products.filter(product => product.categories === "Cây cảnh").slice(0, 8);
     const arrCategoryModel = products.filter(product => product.categories === "Mô hình trang trí").slice(0, 8);
@@ -28,7 +28,8 @@ function ProductList() {
             <Container
                 sx={{
                     mt: 1,
-                    textAlign: "center"
+                    textAlign: "center",
+                    fontSize: { xs: "0.4rem", md: "1.2rem" }
                 }}>
                 <DividerText text="SẢN PHẨM NỔI BẬT" />
                 <Divider
@@ -45,10 +46,11 @@ function ProductList() {
                     }
                 </Grid>
                 <Button
-                    size="large"
+                    // size="large"
                     sx={{
-                        marginBottom: 6,
+                        marginBottom: { xs: 1, md: 3 },
                         marginTop: 2,
+                        fontSize: { xs: "0.6rem", md: "1.2rem" },
                         border: "1px solid #C4CDD5"
                     }}
                     onClick={() => navigate("/products/categories/Cây-cảnh")}>
@@ -64,9 +66,10 @@ function ProductList() {
                     }
                 </Grid>
                 <Button
-                    size="large"
+                    // size="large"
                     sx={{
                         margin: 2,
+                        fontSize: { xs: "0.6rem", md: "1.2rem" },
                         border: "1px solid #C4CDD5"
                     }}
                     onClick={() => navigate("/products/categories/Mô-hình-trang-trí")}>

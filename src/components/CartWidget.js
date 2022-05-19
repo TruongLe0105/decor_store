@@ -1,9 +1,11 @@
 import { Badge } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import React from "react";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Link as RouterLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import ShopOutlinedIcon from '@mui/icons-material/ShopOutlined';
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import useAuth from "../hooks/useAuth"
+import { getProductInCart } from "../features/cart/cartSlice";
 
 const WidgetStyle = styled(RouterLink)(({ theme }) => ({
     zIndex: 999,
@@ -12,33 +14,47 @@ const WidgetStyle = styled(RouterLink)(({ theme }) => ({
     justifyContent: "center",
     position: "fixed",
     right: "15px",
-    // top: "10px",
-    height: "40px",
-    width: "40px",
-    padding: "8px",
+    height: { xs: "10px", md: "40px" },
+    width: { xs: "10px", md: "40px" },
+    padding: "4px",
     backgroundColor: "#fff",
     borderRadius: "50%",
-    // color: theme.palette.text.secondary,
     cursor: "pointer",
 }));
 
 function CartWidget() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { user } = useAuth();
     const { cart } = useSelector(state => state.cart);
-    let cartArray = Object.keys(cart);
-    // const totalProducts = cartArray.length ? cart.products.reduce((acc, cur) => {
-    //     return acc + cur.quantity;
-    // }, 0) : 0;
+    let products = cart ? cart.products : [];
 
-    const totalProducts = cartArray.length ? cart.products.length : 0;
+    useEffect(() => {
+        if (user) {
+            dispatch(getProductInCart())
+        }
+    }, []);
+
+    const totalProducts = products?.length > 0 ? products.length : 0;
 
     return (
-        <WidgetStyle
-            to="/checkout"
+        <Badge
+            sx={{
+                position: "fixed",
+                zIndex: 999,
+                right: 8,
+                cursor: "pointer"
+            }}
+            badgeContent={totalProducts}
+            color="secondary"
+            onClick={() => navigate("/checkout")}
         >
-            <Badge badgeContent={totalProducts} color="success">
-                <ShoppingCartIcon />
-            </Badge>
-        </WidgetStyle>
+            <ShopOutlinedIcon sx={{
+                color: "#0097a7",
+                width: { xs: "20px", md: "35px" },
+                height: { xs: "20px", md: "35px" }
+            }} />
+        </Badge>
     );
 }
 

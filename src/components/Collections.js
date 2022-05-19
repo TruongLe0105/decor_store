@@ -38,9 +38,9 @@ function Collections() {
             open={handleMenuOpen}
             onClose={handleMenuClose}
         >
-            <Box sx={{ my: 1.5, px: 2.5 }}>
+            <Box >
                 {categories.length && categories.map((category, index) => (
-                    <MenuItem key={index} onClick={() => handleNavigateCategory(category)}>
+                    <MenuItem sx={{ fontSize: { xs: "0.6rem", md: "1.1rem" } }} key={index} onClick={() => handleNavigateCategory(category)}>
                         {category}
                     </MenuItem>
                 ))}
@@ -54,32 +54,32 @@ function Collections() {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            marginTop: "6%",
-            backgroundColor: "#eeeeee",
+            marginTop: { xs: "50px", md: "60px" },
+            backgroundColor: "#fafafa",
             height: "40px"
         }}>
             <Box sx={{
                 display: "flex",
-                margin: 2,
-                padding: 1,
-                fontSize: "16px"
+                alignItems: "center",
+                marginLeft: 2,
             }}>
                 <Link sx={{
+                    fontSize: { xs: "0.7rem", md: "1.3rem" },
                     cursor: "pointer",
                     color: "#424242"
                 }}
                     underline="none"
                     onClick={() => navigate("/")}>TRANG CHỦ</Link>
                 <span>/</span>
-                <Typography sx={{ fontSize: "16px" }} color="#424242">DANH MỤC</Typography>
-                <KeyboardArrowDownIcon
+                <Typography sx={{ fontSize: { xs: "0.6rem", md: "1.2rem" }, }} color="#424242">DANH MỤC</Typography>
+                <KeyboardArrowDownIcon sx={{ fontSize: { xs: "16px", md: "20px" } }}
                     onClick={handleOpenMenuCategory}
                 />
                 <span>/</span>
                 {categoriesMenu}
             </Box>
             <CartWidget />
-        </Stack>
+        </Stack >
     )
 }
 

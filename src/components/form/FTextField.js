@@ -10,6 +10,7 @@ function FTextField({ name, ...other }) {
       control={control}
       render={({ field, fieldState: { error } }) => (
         <TextField
+          sx={{ height: "50px", marginBottom: "5px" }}
           size="small"
           {...field}
           fullWidth

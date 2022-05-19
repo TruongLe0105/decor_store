@@ -15,9 +15,9 @@ function AddressForm() {
     }, [dispatch]);
 
     return (
-        <Stack >
+        <Stack sx={{ height: "100vh" }}>
             <Typography sx={{
-                fontSize: "1.5rem",
+                fontSize: { xs: "0.9rem", md: "1.4rem" },
                 textAlign: "center",
                 margin: 1
             }}>Địa Chỉ Của Tôi</Typography>
@@ -29,7 +29,6 @@ function AddressForm() {
             >
                 <Button sx={{
                     textAlign: "right",
-                    margin: 2
                 }}>
                     <AddRoundedIcon />
                     <DialogNewAddress />
@@ -53,33 +52,33 @@ function AddressForm() {
                             }}>
                                 <Typography sx={{
                                     opacity: 0.8,
-                                    fontSize: "0.8rem",
+                                    fontSize: { xs: "0.6rem", md: "0.8rem" },
                                     marginRight: 8,
                                     marginBottom: 2
                                 }}>Họ Và Tên</Typography>
-                                <Typography sx={{ fontSize: "0.9rem" }}>{receiver}</Typography>
+                                <Typography sx={{ fontSize: { xs: "0.6rem", md: "0.8rem" } }}>{receiver}</Typography>
                             </Box>
                             <Box sx={{
                                 display: "flex",
                             }}>
                                 <Typography sx={{
                                     opacity: 0.8,
-                                    fontSize: "0.8rem",
+                                    fontSize: { xs: "0.6rem", md: "0.8rem" },
                                     marginRight: 5,
                                     marginBottom: 2
                                 }}>Số Điện Thoại</Typography>
-                                <Typography sx={{ fontSize: "0.9rem" }}>{numberOfPhone}</Typography>
+                                <Typography sx={{ fontSize: { xs: "0.7rem", md: "0.8rem" } }}>{numberOfPhone}</Typography>
                             </Box>
                             <Box sx={{
                                 display: "flex",
                             }}>
                                 <Typography sx={{
                                     opacity: 0.8,
-                                    fontSize: "0.8rem",
+                                    fontSize: { xs: "0.6rem", md: "0.8rem" },
                                     marginRight: 11,
                                     marginBottom: 2
                                 }}>Địa Chỉ</Typography>
-                                <Typography sx={{ fontSize: "0.9rem" }}>{address}</Typography>
+                                <Typography sx={{ fontSize: { xs: "0.6rem", md: "0.8rem" } }}>{address}</Typography>
                             </Box>
                         </Box>
                         <Box sx={{
@@ -101,9 +100,6 @@ function AddressForm() {
                                 />
                                 <DeleteAddress addressId={_id} />
                             </Box>
-                            {/* <Button sx={{
-                                fontSize: "0.8rem",
-                            }}>Mặc Định</Button> */}
                         </Box>
 
                     </Card>

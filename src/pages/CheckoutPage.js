@@ -22,7 +22,6 @@ import CheckoutSummary from "../components/CheckoutSummary";
 const STEPS = ["Giỏ hàng", "Địa chỉ", "Thanh toán"];
 
 function CheckoutPage() {
-    // const { cartProducts, dispatch } = useCartContext();
     const dispatch = useDispatch();
     const { user } = useAuth();
     const cartId = user.cartId;
@@ -36,7 +35,7 @@ function CheckoutPage() {
         if (cartId) {
             dispatch(getProductInCart())
         };
-    }, [dispatch]);
+    }, [dispatch, cartId]);
 
     const handleStep = (step) => {
         if (cartProducts.length > 0) {
@@ -50,18 +49,18 @@ function CheckoutPage() {
                 mt: 9
             }}>
                 <Breadcrumbs sx={{ mb: 2 }}>
-                    <Link underline="hover" color="inherit" sx={{ fontSize: "1.5rem" }} component={RouterLink} to="/">
+                    <Link underline="hover" color="inherit" sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }} component={RouterLink} to="/">
                         TitusScore
                     </Link>
-                    <Typography color="text.primary">Thanh Toán</Typography>
+                    <Typography color="text.primary" sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}>Thanh Toán</Typography>
                 </Breadcrumbs>
 
-                <Stack spacing={2}>
-                    <Box sx={{ width: "100%" }}>
+                <Stack>
+                    <Box sx={{ display: { xs: "none", md: "block" }, width: { xs: "70%", md: "100%" }, }}>
                         <Stepper nonLinear activeStep={activeStep}>
                             {STEPS.map((label, index) => (
                                 <Step key={label}>
-                                    <StepButton onClick={() => handleStep(index)}>
+                                    <StepButton sx={{ width: { xs: "76px", md: "86px" } }} onClick={() => handleStep(index)}>
                                         {label}
                                     </StepButton>
                                 </Step>

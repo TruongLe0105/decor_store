@@ -12,7 +12,7 @@ import { LoadingButton } from '@mui/lab';
 const AddNewAddress = Yup.object().shape({
     receiver: Yup.string().required("Nhập họ và tên"),
     address: Yup.string().required("Nhập địa chỉ"),
-    numberOfPhone: Yup.number().required("Nhập số điện thoại")
+    numberOfPhone: Yup.string().required("Nhập số điện thoại")
 });
 
 function DialogNewAddress() {
@@ -53,7 +53,7 @@ function DialogNewAddress() {
 
     return (
         <div>
-            <Typography onClick={handleClickOpen}>Thêm Địa Chỉ Mới</Typography>
+            <Typography sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleClickOpen}>Thêm Địa Chỉ Mới</Typography>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -62,25 +62,32 @@ function DialogNewAddress() {
                 maxWidth="md"
 
             >
-                <Card>
+                <Card sx={{
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                }}>
                     <Container sx={{
                         display: "flex",
                         flexDirection: "column",
-                        my: 4,
+                        justifyContent: "flex-start",
+                        my: 1,
                         alignItems: "center",
-                    }}>
-                        <Typography sx={{ fontSize: "1.5rem" }}>Địa chỉ mới</Typography>
+                    }
+                    } >
+                        <Typography sx={{ fontSize: { xs: "0.9rem", md: "1.5rem" } }}>Địa chỉ mới</Typography>
                         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                             <Box sx={{
-                                width: 350,
+                                width: { xs: "220px", md: "300px" },
                                 textAlign: "center",
                             }} >
                                 <FTextField sx={{
-                                    marginTop: 3,
+                                    marginTop: 1
                                 }} name="receiver" label="Họ và tên" />
-                                <FTextField sx={{ marginTop: 3 }} name="numberOfPhone" label="Số điện thoại" />
-                                <FTextField sx={{ marginTop: 3, marginBottom: 3 }} name="address" label="Địa chỉ cụ thể" multiline rows={4} />
+                                <FTextField sx={{ marginTop: 2, fontSize: "0.4rem" }} name="numberOfPhone" label="Số điện thoại" />
+                                <FTextField sx={{ marginTop: 2, marginBottom: { xs: 1, md: 1 } }} name="address" label="Địa chỉ cụ thể" multiline rows={4} />
                                 <LoadingButton
+                                    sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }}
                                     type="submit"
                                     variant="contained"
                                     loading={isSubmitting || isLoading}
@@ -92,7 +99,7 @@ function DialogNewAddress() {
                     </Container>
                 </Card>
             </Dialog>
-        </div>
+        </div >
     );
 }
 

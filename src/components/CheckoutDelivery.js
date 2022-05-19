@@ -46,11 +46,12 @@ function CheckoutDelivery({ setActiveStep }) {
     <Container sx={{ display: "flex", justifyContent: "center" }}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3} sx={{ width: { md: "350px", xs: "200px" } }}>
-          <Typography variant="h4" textAlign="center">
+          <Typography sx={{
+            fontSize: { xs: "1.4rem", md: "1.4rem" }
+          }} textAlign="center">
             Địa chỉ nhận hàng
           </Typography>
-
-          <FTextField name="receiver" label="Họ Tên" />
+          <FTextField name="receiver" label="Họ Tên" fontSize="0.2rem" />
           <FTextField name="numberOfPhone" label="Số Điện Thoại" />
           <FTextField name="address" multiline rows={2} label="Địa Chỉ" />
 
@@ -58,6 +59,7 @@ function CheckoutDelivery({ setActiveStep }) {
             type="submit"
             variant="contained"
             loading={isSubmitting || isLoading}
+            sx={{ fontSize: { xs: "1.2rem", md: "1.2rem" } }}
           >
             Đặt Hàng
           </LoadingButton>

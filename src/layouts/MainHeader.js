@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { Link, Divider, Stack } from '@mui/material';
+import { Link, Divider, Stack, CardMedia } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import logoImg from "../logo.png";
 import useAuth from '../hooks/useAuth';
@@ -20,12 +20,14 @@ function MainHeader() {
         navigate(`/search?q=${filterName}`);
     };
 
-
     const AccessHandle = () => (
         <div style={{ display: "flex" }}>
             <Link
                 color="white"
-                sx={{ margin: 1 }}
+                sx={{
+                    margin: 1,
+                    fontSize: { xs: "0.5rem", md: "1rem" }
+                }}
                 underline="none"
                 component={RouterLink}
                 to="/register ">
@@ -37,7 +39,10 @@ function MainHeader() {
                 flexItem />
             <Link
                 color="white"
-                sx={{ margin: 1 }}
+                sx={{
+                    margin: 1,
+                    fontSize: { xs: "0.5rem", md: "1rem" }
+                }}
                 underline="none"
                 component={RouterLink} to='/login'>Đăng Nhập</Link >
         </div>
@@ -63,10 +68,21 @@ function MainHeader() {
                                 aria-label="open drawer"
                                 onClick={() => navigate("/")}
                             >
-                                <img src={logoImg} alt="logo" style={{ width: "45px", height: "45px", borderRadius: "5px" }}
+                                <CardMedia
+                                    component="img"
+                                    src={logoImg}
+                                    alt="logo"
+                                    sx={{
+                                        width: { xs: "20px", md: "45px" },
+                                        height: { xs: "20px", md: "45px" },
+                                        borderRadius: "5px"
+                                    }}
                                 />
                             </IconButton>
-                            <Typography variant="h6" component="div" sx={{ margin: 0, fontSize: "2em" }}>
+                            <Typography component="div" sx={{
+                                margin: { xs: "5px", md: "0" },
+                                fontSize: { xs: "1rem", md: "2rem" }
+                            }}>
                                 Titus
                             </Typography>
                         </Box>

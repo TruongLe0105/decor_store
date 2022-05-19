@@ -40,16 +40,31 @@ function AvatarMenu() {
 
     return (
         <>
-            <Box sx={{ display: "flex" }}>
+            <Box sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}>
                 <Avatar
                     onClick={handleProfileMenuOpen}
                     src={user.avatarUrl}
                     alt={user.userName}
-                    sx={{ width: 32, height: 32 }}
+                    sx={{
+                        width: { xs: "20px", md: "42px" },
+                        height: { xs: "20px", md: "42px" }
+                    }}
                 />
-                <Typography sx={{ margin: "5px" }}>{user.userName}</Typography>
+                <Typography sx={{
+                    margin: "5px",
+                    marginRight: 0,
+                    fontSize: { xs: "0.6rem", md: "1rem" }
+                }}>{user.userName}</Typography>
                 <Menu
                     id="menu-appbar"
+                    sx={{
+                        width: { xs: "30%", md: "50%" },
+                        // height: { xs: "250px" }
+                    }}
                     anchorEl={anchorEl}
                     anchorOrigin={{
                         vertical: 'bottom',
@@ -64,21 +79,29 @@ function AvatarMenu() {
                     onClose={handleMenuClose}
                 >
                     <Box sx={{ my: 1.5, px: 2.5 }}>
-                        <Typography>
+                        <Typography sx={{ fontSize: { xs: "0.5rem", md: "1rem" } }}>
                             {user.userName}
                         </Typography>
                     </Box>
                     <Divider sx={{ borderStyle: "dashed" }} />
                     <MenuItem
                         onClick={handleComeToProfile}
-                        sx={{ mx: 1 }}
+                        sx={{
+                            mx: 0.5,
+                            my: 0,
+                            fontSize: { xs: "0.5rem", md: "1rem" }
+                        }}
                     >
                         Tài Khoản
                     </MenuItem>
                     <Divider sx={{ borderStyle: "dashed" }} />
                     <MenuItem
                         onClick={handleLogout}
-                        sx={{ mx: 1 }}
+                        sx={{
+                            mx: 0.5,
+                            px: 2,
+                            fontSize: { xs: "0.5rem", md: "1rem" }
+                        }}
                     >
                         Đăng xuất
                     </MenuItem>

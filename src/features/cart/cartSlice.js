@@ -45,6 +45,7 @@ const slice = createSlice({
             state.hasError = null;
 
             const { order } = action.payload;
+            console.log("order", order)
             state.orders = state.orders.push(order);
         },
         setDeliverySuccess(state, action) {
@@ -95,4 +96,5 @@ export const checkout = ({ cartProducts, delivery, totalPrice, user }) => async 
         dispatch(slice.actions.hasError(error.message));
         toast.error(error.message);
     }
-}
+};
+

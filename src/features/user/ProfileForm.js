@@ -63,18 +63,19 @@ function ProfileForm() {
     };
 
     return (
-        <Box sx={{ padding: 1 }}>
-            <Typography sx={{ fontSize: "1.5rem", textAlign: "center" }}>Hồ sơ của tôi</Typography>
+        <Box >
+            <Typography sx={{ fontSize: { xs: "1rem", md: "1.5rem" }, textAlign: "center" }}>Hồ sơ của tôi</Typography>
             <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
-                <Grid container spacing={1} sx={{ marginTop: 1 }}>
+                <Grid container sx={{ marginTop: 1 }}>
                     <Grid item xs={12} md={8}>
                         <Card
                             sx={{
-                                py: 6,
-                                px: 2,
+                                height: "280px",
+                                py: { xs: 2, md: 4 },
+                                px: { xs: 4, md: 2 },
                                 textAlign: "center",
                                 display: "grid",
-                                rowGap: 6,
+                                rowGap: { xs: 0, md: 2 },
                                 columnGap: 2,
                                 gridTemplateColumns: {
                                     xs: "repeat(1, 1fr)",
@@ -92,8 +93,9 @@ function ProfileForm() {
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <Card sx={{
-                            py: 7,
+                            py: { xs: 1, md: 7 },
                             textAlign: "center",
+                            height: { xs: "200px", md: "280px" },
                         }}>
                             <FUploadAvatar
                                 name="avatarUrl"
@@ -104,7 +106,7 @@ function ProfileForm() {
                                     <Typography
                                         variant="caption"
                                         sx={{
-                                            mt: 2,
+                                            mt: { xs: 0, md: 2 },
                                             mx: "auto",
                                             display: "block",
                                             textAlign: "center",
@@ -120,6 +122,7 @@ function ProfileForm() {
                     </Grid>
                     <Stack alignItems="center" sx={{ margin: 2, textAlign: "center", width: "100%" }}>
                         <LoadingButton
+                            sx={{ fontSize: { xs: "0.6rem", md: "1rem" } }}
                             type="submit"
                             variant="contained"
                             loading={isSubmitting || isLoading}
