@@ -15,15 +15,6 @@ const PRIMARY = {
   contrastText: "#FFF",
 };
 
-// const SUCCESS = {
-//   lighter: "#FFFFFF",
-//   light: "#F9FAFB",
-//   main: "#F9FAFB",
-//   dark: "#F9FAFB",
-//   darker: "#F9FAFB",
-//   contrastText: "#FFF",
-// };
-
 const SECONDARY = {
   lighter: "#D6E4FF",
   light: "#84A9FF",

@@ -41,7 +41,6 @@ function AddProductByAdmin() {
     const {
         handleSubmit,
         setValue,
-        reset,
         formState: { isSubmitting }
     } = methods;
 

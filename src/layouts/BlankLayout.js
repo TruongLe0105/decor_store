@@ -2,7 +2,6 @@ import { Container, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Logo from '../components/Logo';
-import MainFooter from './MainFooter';
 
 function BlankLayout() {
     return (
@@ -22,7 +21,6 @@ function BlankLayout() {
                 </Container>
                 <Outlet />
             </Stack>
-            {/* <MainFooter /> */}
         </>
     );
 }

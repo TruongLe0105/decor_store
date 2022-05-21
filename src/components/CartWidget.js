@@ -1,26 +1,12 @@
 import { Badge } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import React, { useEffect } from "react";
 import ShopOutlinedIcon from '@mui/icons-material/ShopOutlined';
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../hooks/useAuth"
 import { getProductInCart } from "../features/cart/cartSlice";
 
-const WidgetStyle = styled(RouterLink)(({ theme }) => ({
-    zIndex: 999,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "fixed",
-    right: "15px",
-    height: { xs: "10px", md: "40px" },
-    width: { xs: "10px", md: "40px" },
-    padding: "4px",
-    backgroundColor: "#fff",
-    borderRadius: "50%",
-    cursor: "pointer",
-}));
+
 
 function CartWidget() {
     const dispatch = useDispatch();
@@ -32,7 +18,8 @@ function CartWidget() {
     useEffect(() => {
         if (user) {
             dispatch(getProductInCart())
-        }
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const totalProducts = products?.length > 0 ? products.length : 0;

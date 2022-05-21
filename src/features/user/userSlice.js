@@ -152,7 +152,7 @@ export const updateAddress = ({ receiver, address, numberOfPhone, addressId }) =
 export const deleteAddress = ({ addressId }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-        const response = await apiService.delete(`/users/address/${addressId}`)
+        await apiService.delete(`/users/address/${addressId}`)
         dispatch(slice.actions.deleteAddressSuccess({ addressId }));
         dispatch(getCurrentUserProfile());
     } catch (error) {

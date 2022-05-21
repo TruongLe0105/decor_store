@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { LoadingButton } from '@mui/lab';
-import { Box, Button, Container, Dialog, Typography } from '@mui/material';
+import { Box, Container, Dialog, Typography } from '@mui/material';
 import { FormProvider, FTextField, FUploadImage } from '../../form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useForm } from 'react-hook-form';
 import CreateIcon from '@mui/icons-material/Create';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts, resetProducts, updateProductByAdmin } from '../../../features/products/productSlice';
+import { updateProductByAdmin } from '../../../features/products/productSlice';
 
 const UpdateProductSchema = Yup.object().shape({
     name: Yup.string().required("Missing product name"),

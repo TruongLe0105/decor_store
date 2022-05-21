@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../features/products/ProductCard';
-import { PRODUCTS_PER_PAGE } from "../app/config"
 import { getProducts, resetProducts } from '../features/products/productSlice';
 import Collections from '../components/Collections';
 

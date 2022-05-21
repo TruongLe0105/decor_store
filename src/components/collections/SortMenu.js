@@ -37,6 +37,7 @@ function SortMenu() {
 
     React.useEffect(() => {
         if (showValueSort) dispatch(getProducts({ sortBy: showValueSort }))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [showValueSort]);
 
     return (

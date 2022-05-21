@@ -6,8 +6,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { checkout, resetCart } from "../features/cart/cartSlice";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { checkout } from "../features/cart/cartSlice";
+import { useNavigate } from 'react-router-dom';
 
 
 function ConfirmCheckout({ cartProducts, delivery, totalPrice, user }) {
