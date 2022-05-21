@@ -27,7 +27,7 @@ function ProductList() {
         <>
             <Container
                 sx={{
-                    mt: 1,
+                    mt: { xs: 12, md: 14 },
                     textAlign: "center",
                     fontSize: { xs: "0.4rem", md: "1.2rem" }
                 }}>
@@ -46,7 +46,6 @@ function ProductList() {
                     }
                 </Grid>
                 <Button
-                    // size="large"
                     sx={{
                         marginBottom: { xs: 1, md: 3 },
                         marginTop: 2,

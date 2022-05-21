@@ -54,21 +54,15 @@ function ProfilePage() {
                         <Typography sx={{ fontSize: { xs: "0.9rem", md: "1.1rem" } }}>Thông tin tài khoản</Typography>
                     </Box>
                 </Grid>
-                <Grid item xs={12} md={9}    >
+                <Grid item xs={12} md={9} >
                     {showProfile && (
-                        <Box sx={{
-                            mt: 3
-                        }}>
+                        <Box>
                             <Tabs
                                 value={currentTab}
-                                variant="scrollable"
                                 allowScrollButtonsMobile
                                 onChange={(e, value) => handleChangeTab(value)}
                                 sx={{
-
-                                    bgcolor: "#f5f5f5",
-                                    width: "100%",
-                                    orientation: { xs: "vertical", md: "vertical" }
+                                    bgcolor: "#f5f5f5"
                                 }}
                             >
                                 {PROFILE_TABS.map((tab) => (
@@ -77,7 +71,6 @@ function ProfilePage() {
                                             display: "flex",
                                             fontSize: { xs: "0.6rem", md: "0.8rem" }
                                         }}
-                                        disableRipple
                                         key={tab.value}
                                         value={tab.value}
                                         label={tab.value}

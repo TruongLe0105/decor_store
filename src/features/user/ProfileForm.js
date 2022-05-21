@@ -11,7 +11,7 @@ import { fData } from '../../utils/numberFormat';
 import { LoadingButton } from '@mui/lab';
 
 const UpdateUserSchema = yup.object().shape({
-    fullName: yup.string().required("Họ Tên is required"),
+    fullName: yup.string().required("Nhập họ và tên"),
 });
 
 function ProfileForm() {

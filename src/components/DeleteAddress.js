@@ -27,7 +27,12 @@ function DeleteAddress({ addressId }) {
 
     return (
         <div>
-            <Typography sx={{ textDecoration: "underline", marginLeft: 2 }} onClick={handleClickOpen}>
+            <Typography sx={{
+                textDecoration: "underline",
+                fontSize: { xs: "0.7rem", md: "1rem" },
+                marginLeft: 2
+            }}
+                onClick={handleClickOpen}>
                 Xóa
             </Typography>
             <Dialog
@@ -37,13 +42,13 @@ function DeleteAddress({ addressId }) {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
+                    <DialogContentText sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} id="alert-dialog-description">
                         Xác nhận xóa địa chỉ này?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleDeleteAddress} autoFocus>Xác nhận</Button>
-                    <Button onClick={handleClose}>
+                    <Button sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleDeleteAddress} autoFocus>Xác nhận</Button>
+                    <Button sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleClose}>
                         Hủy
                     </Button>
                 </DialogActions>

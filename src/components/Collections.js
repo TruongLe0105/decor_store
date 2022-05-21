@@ -4,8 +4,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
 import "../index.css";
 import CartWidget from './CartWidget';
+import SortMenu from './collections/SortMenu';
 
-function Collections() {
+function Collections({ collection }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const navigate = useNavigate();
     const categories = ["Mô hình trang trí", "Cây cảnh", "Khung tranh treo tường"]
@@ -40,7 +41,7 @@ function Collections() {
         >
             <Box >
                 {categories.length && categories.map((category, index) => (
-                    <MenuItem sx={{ fontSize: { xs: "0.6rem", md: "1.1rem" } }} key={index} onClick={() => handleNavigateCategory(category)}>
+                    <MenuItem key={index} sx={{ fontSize: { xs: "0.6rem", md: "1.1rem" } }} onClick={() => handleNavigateCategory(category)}>
                         {category}
                     </MenuItem>
                 ))}
@@ -49,36 +50,60 @@ function Collections() {
     )
 
     return (
-        <Stack sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: { xs: "50px", md: "60px" },
-            backgroundColor: "#fafafa",
-            height: "40px"
-        }}>
-            <Box sx={{
-                display: "flex",
+        <Stack
+            sx={{
+                position: "fixed",
+                zIndex: 1000,
                 alignItems: "center",
-                marginLeft: 2,
+                marginTop: { xs: "50px", md: "63px" },
+                mb: 1,
+                backgroundColor: "#fafafa",
+                width: "100%",
+                height: { xs: "30px", md: "40px" },
             }}>
-                <Link sx={{
-                    fontSize: { xs: "0.7rem", md: "1.3rem" },
-                    cursor: "pointer",
-                    color: "#424242"
-                }}
-                    underline="none"
-                    onClick={() => navigate("/")}>TRANG CHỦ</Link>
-                <span>/</span>
-                <Typography sx={{ fontSize: { xs: "0.6rem", md: "1.2rem" }, }} color="#424242">DANH MỤC</Typography>
-                <KeyboardArrowDownIcon sx={{ fontSize: { xs: "16px", md: "20px" } }}
-                    onClick={handleOpenMenuCategory}
-                />
-                <span>/</span>
-                {categoriesMenu}
+            <Box
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                    justifyContent: "space-between",
+                }}>
+                <Box sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginLeft: 2,
+                }}>
+                    <Link
+                        sx={{
+                            fontSize: { xs: "0.8rem", md: "1.5rem" },
+                            cursor: "pointer",
+                        }}
+                        underline="none"
+                        onClick={() => navigate("/")}>Trang Chủ</Link>
+                    <span>/</span>
+                    <Typography
+                        onClick={handleOpenMenuCategory}
+                        sx={{
+                            fontSize: { xs: "0.7rem", md: "1.3rem" },
+                            cursor: "pointer"
+                        }}
+                    >Danh Mục</Typography>
+                    <KeyboardArrowDownIcon
+                        sx={{
+                            fontSize: { xs: "16px", md: "20px" }
+                        }}
+                    />
+                    <span>/</span>
+                    {categoriesMenu}
+                    <Typography
+                        sx={{
+                            fontSize: { xs: "0.6rem", md: "1.2rem" },
+                        }}
+                    >{collection}</Typography>
+                </Box>
+                <CartWidget />
+                <SortMenu />
             </Box>
-            <CartWidget />
         </Stack >
     )
 }

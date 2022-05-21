@@ -51,7 +51,7 @@ function MainHeader() {
     return (
         <>
             <Stack sx={{
-                position: "fixed",
+                position: { md: "fixed", xs: "block" },
                 width: "100%",
                 zIndex: "900"
             }}>

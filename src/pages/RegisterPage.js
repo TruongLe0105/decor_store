@@ -139,7 +139,7 @@ function RegisterPage() {
                                     display: "flex",
                                     alignItems: "center",
                                     mb: 1,
-                                }} severity="error">{errors.responseError.message.slice(0, 20)}</Alert>
+                                }} severity="error">{errors.responseError.message.slice(0, 30)}</Alert>
                             )
                             }
                             < Alert sx={{

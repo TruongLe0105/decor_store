@@ -2,14 +2,14 @@ import { Stack, Typography, Button, Box, Card } from '@mui/material';
 import React, { useEffect } from 'react';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import DialogNewAddress from '../../components/DialogNewAddress';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { getCurrentUserProfile } from './userSlice';
 import DialogUpdateAddress from '../../components/DialogUpdateAddress';
 import DeleteAddress from '../../components/DeleteAddress';
 
 function AddressForm() {
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.user.currentUser);
+    const currentUser = useSelector(state => state.user.currentUser, shallowEqual);
     useEffect(() => {
         dispatch(getCurrentUserProfile())
     }, [dispatch]);

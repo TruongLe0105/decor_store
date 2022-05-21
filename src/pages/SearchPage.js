@@ -1,24 +1,19 @@
-import { Button, Container, Divider, Grid } from '@mui/material';
+import { Container, Divider, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { PRODUCTS_HOME_PAGE } from '../app/config';
 import DividerText from '../components/form/DividerText';
 import ProductCard from '../features/products/ProductCard';
-import { getProducts, resetProducts } from '../features/products/productSlice';
+import { getProducts } from '../features/products/productSlice';
 
 
 function SearchPage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
-    const location = useLocation();
     let [searchParams, setSearchParams] = useSearchParams();
     const name = searchParams.get("q")
-
-    // let name = location.search.substring(3);
-
-    console.log("name", name)
 
     const { productsById, currentPageProducts } = useSelector(state => state.product);
     const products = currentPageProducts.map((productId) => productsById[productId]);

@@ -77,7 +77,7 @@ function DetailPage() {
         <>
             <Collection />
             <Container sx={{
-                mt: 2,
+                mt: { xs: 12, md: 16 },
                 height: "100%",
                 display: "flex"
             }}>

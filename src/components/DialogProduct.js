@@ -49,8 +49,6 @@ function DialogProduct({ product }) {
             let quantity = Number(value);
             const productInCartCurrent = cart.products?.find(productCart => productCart._id === productId);
             let productInCart = productInCartCurrent ? (productInCartCurrent.quantity + quantity) : quantity;
-            console.log("quantity", quantity)
-            console.log(("productInCart"), productInCart)
             if (productInCart <= LIMIT_QUANTITY_PRODUCT && productInCart > 0) {
                 handleClose();
                 if (cartId) {
@@ -111,7 +109,7 @@ function DialogProduct({ product }) {
                             color: "white"
                         }}
                     >
-                        {product.name.toUpperCase()}
+                        {product?.name?.toUpperCase()}
                     </DialogTitle>
                     <Card sx={{ display: "flex" }}>
                         <CardMedia

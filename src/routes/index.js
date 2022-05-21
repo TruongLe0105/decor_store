@@ -30,6 +30,7 @@ function Router() {
                 <Route path="/products/categories/:category" element={<CategoryPage />} />
                 <Route path="/products/:id" element={<DetailPage />} />
                 <Route path="/search" element={<SearchPage />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Route>
 
             <Route element={
@@ -41,14 +42,13 @@ function Router() {
                 <Route path="/user/purchase" element={<PurchasePage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/checkout/completed" element={<CheckoutCompletedPage />} />
-                <Route path="*" element={<NotFoundPage />} />
             </Route>
 
             <Route element={<BlankLayout />} >
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
             </Route>
-        </Routes>
+        </Routes >
     );
 };
 

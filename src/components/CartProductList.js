@@ -26,8 +26,6 @@ function CartProductList({ cart, setActiveStep }) {
     if (cart.products)
         productsInCart = cart.products;
 
-    console.log(productsInCart.map(product => product.name))
-
     const handleDeleteProduct = ({ productId }) => {
         const quantity = -100;
         if (cartId) {
@@ -107,7 +105,6 @@ function CartProductList({ cart, setActiveStep }) {
                                                 alt="product"
                                                 width="100%"
                                                 height="100%"
-
                                             />
                                         </Box>
                                     </Box>

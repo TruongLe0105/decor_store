@@ -21,7 +21,7 @@ function DividerText({ text }) {
       <Divider textAlign="right">RIGHT</Divider> */}
       <Divider>
         {/* <Chip label="CHIP" /> */}
-        <Typography sx={{ mb: 2, color: "#00a6b1", fontSize: { xs: "1rem", md: "1.8rem" } }}>
+        <Typography sx={{ mb: { xs: 0, md: 2 }, color: "#00a6b1", fontSize: { xs: "1rem", md: "1.8rem" } }}>
           {text}
         </Typography>
       </Divider>

@@ -28,7 +28,6 @@ function CheckoutPage() {
 
     let { cart } = useSelector(state => state.cart);
     let cartProducts = Object.keys(cart) ? cart.products : [];
-    console.log("cartProdcuts", cartProducts)
     const [activeStep, setActiveStep] = useState(0);
 
     useEffect(() => {

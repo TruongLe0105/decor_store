@@ -10,9 +10,6 @@ import useAuth from '../../hooks/useAuth';
 function AddProductCart({ product, cartId }) {
     const [quantity, setQuantity] = useState(0)
     const dispatch = useDispatch();
-    const { cart } = useSelector(state => state.cart);
-    // const cartId = user.cartId
-
 
     const productId = product._id;
 

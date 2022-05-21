@@ -36,7 +36,6 @@ function DialogUpdateAddress({ receiver, address, numberOfPhone, addressId }) {
     } = methods;
 
     const onSubmit = (data) => {
-        console.log(typeof addressId)
         dispatch(updateAddress({ addressId, ...data })
         );
     }
@@ -51,7 +50,7 @@ function DialogUpdateAddress({ receiver, address, numberOfPhone, addressId }) {
 
     return (
         <div>
-            <Typography sx={{ textDecoration: "underline" }} onClick={handleClickOpen}>Sửa</Typography>
+            <Typography sx={{ textDecoration: "underline", fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleClickOpen}>Sửa</Typography>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -67,18 +66,27 @@ function DialogUpdateAddress({ receiver, address, numberOfPhone, addressId }) {
                         my: 4,
                         alignItems: "center",
                     }}>
-                        <Typography sx={{ fontSize: "1.5rem" }}>Cập nhật địa chỉ</Typography>
+                        <Typography sx={{ fontSize: { xs: "1.1rem", md: "1.4rem" } }}>Cập nhật địa chỉ</Typography>
                         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                             <Box sx={{
-                                width: 350,
+                                width: { xs: "230px", md: "350px" },
                                 textAlign: "center",
                             }} >
                                 <FTextField sx={{
-                                    marginTop: 3,
-                                }} name="receiver" label="Họ và tên" />
+                                    marginTop: { xs: 1, md: 3 },
+                                }}
+                                    name="receiver"
+                                    label="Họ và tên" />
                                 <FTextField sx={{ marginTop: 3 }} name="numberOfPhone" label="Số điện thoại" />
-                                <FTextField sx={{ marginTop: 3, marginBottom: 3 }} name="address" label="Địa chỉ cụ thể" multiline rows={4} />
+                                <FTextField sx={{
+                                    marginTop: 3,
+                                    marginBottom: { xs: 1, md: 3 }
+                                }}
+                                    name="address" label="Địa chỉ cụ thể" multiline rows={4} />
                                 <LoadingButton
+                                    sx={{
+                                        fontSize: { xs: "0.7rem", md: "1rem" }
+                                    }}
                                     type="submit"
                                     variant="contained"
                                     loading={isSubmitting || isLoading}

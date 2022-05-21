@@ -38,23 +38,28 @@ function CartWidget() {
     const totalProducts = products?.length > 0 ? products.length : 0;
 
     return (
-        <Badge
-            sx={{
-                position: "fixed",
-                zIndex: 999,
-                right: 8,
-                cursor: "pointer"
-            }}
-            badgeContent={totalProducts}
-            color="secondary"
-            onClick={() => navigate("/checkout")}
-        >
-            <ShopOutlinedIcon sx={{
-                color: "#0097a7",
-                width: { xs: "20px", md: "35px" },
-                height: { xs: "20px", md: "35px" }
-            }} />
-        </Badge>
+        <>
+            {/* {user && ( */}
+            <Badge
+                sx={{
+                    position: "fixed",
+                    mt: 1,
+                    zIndex: 999,
+                    right: { xs: "15%", md: "11%" },
+                    cursor: "pointer",
+                }}
+                badgeContent={user ? totalProducts : ""}
+                color="secondary"
+                onClick={() => navigate("/checkout")}
+            >
+                <ShopOutlinedIcon sx={{
+                    color: "#0097a7",
+                    width: { xs: "20px", md: "35px" },
+                    height: { xs: "20px", md: "35px" }
+                }} />
+            </Badge>
+            {/* )} */}
+        </>
     );
 }
 

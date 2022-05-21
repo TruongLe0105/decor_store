@@ -26,29 +26,25 @@ const slice = createSlice({
             state.isLoading = false;
             state.hasError = null;
 
-            const currentProfile = action.payload;
-            state.updatedProfile = currentProfile;
+            state.updatedProfile = action.payload;
         },
         updatePasswordSuccess(state, action) {
             state.isLoading = false;
             state.hasError = null;
 
-            const updatedProfile = action.payload;
-            state.updatePassword = updatedProfile;
+            state.updatePassword = action.payload;
         },
         getCurrentUserProfileSuccess(state, action) {
             state.isLoading = false;
             state.error = null;
 
-            const userAddress = action.payload;
-            state.currentUser = userAddress;
+            state.currentUser = action.payload;
         },
         addNewAddressUserSuccess(state, action) {
             state.isLoading = false;
             state.hasError = null;
 
-            const userAddress = action.payload;
-            state.userAddress = userAddress;
+            state.userAddress = action.payload;
         },
         updateAddressSuccess(state, action) {
             state.isLoading = false;
@@ -61,8 +57,8 @@ const slice = createSlice({
             state.isLoading = false;
             state.error = null;
 
-            const userAddress = action.payload;
-            state.currentUser = userAddress;
+            const addressId = action.payload;
+            state.currentUser.orderAddress = state.currentUser.orderAddress.filter(address => address._id !== addressId);
         },
     }
 });
@@ -141,8 +137,9 @@ export const addNewAddressUser = ({ receiver, address, numberOfPhone }) => async
 export const updateAddress = ({ receiver, address, numberOfPhone, addressId }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-        const response = await apiService.put(`/users/me/address/update`, {
-            receiver, address, numberOfPhone, addressId
+        console.log("add", addressId)
+        const response = await apiService.put(`/users/address/${addressId}`, {
+            receiver, address, numberOfPhone
         });
         dispatch(slice.actions.updateAddressSuccess(response.data));
         dispatch(getCurrentUserProfile());
@@ -155,9 +152,9 @@ export const updateAddress = ({ receiver, address, numberOfPhone, addressId }) =
 export const deleteAddress = ({ addressId }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-        const response = await apiService.delete(`/users/me/address/delete`, { addressId })
-        dispatch(slice.actions.deleteAddressSuccess(response.data));
-        // dispatch(getCurrentUserProfile());
+        const response = await apiService.delete(`/users/address/${addressId}`)
+        dispatch(slice.actions.deleteAddressSuccess({ addressId }));
+        dispatch(getCurrentUserProfile());
     } catch (error) {
         dispatch(slice.actions.hasError(error.message));
         toast.error(error.message);

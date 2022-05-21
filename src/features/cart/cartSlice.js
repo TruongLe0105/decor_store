@@ -46,7 +46,8 @@ const slice = createSlice({
 
             const { order } = action.payload;
             console.log("order", order)
-            state.orders = state.orders.push(order);
+
+            state.orders = state.orders.length > 0 ? state.orders.unshift(order) : order;
         },
         setDeliverySuccess(state, action) {
             const delivery = action.payload;

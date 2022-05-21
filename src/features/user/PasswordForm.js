@@ -63,21 +63,22 @@ function PasswordForm() {
                 <Box sx={{ width: { xs: "80%", md: "40%" }, margin: 3, textAlign: "center" }}>
                     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                         <FTextField sx={{
-                            mt: { xs: 2, md: 0 },
-                            margin: { xs: 0, md: 2 }
+                            margin: { xs: 0, md: 2 },
+                            paddingBottom: { xs: 2, md: 0 }
                         }}
                             name="password" label="Mật Khẩu Hiện Tại" type="password" />
                         <FTextField sx={{
-                            mt: { xs: 1, md: 0 },
-                            margin: { xs: 0, md: 2 }
+                            margin: { xs: 0, md: 2 },
+                            paddingBottom: { xs: 2, md: 0 }
                         }}
                             name="newPassword" label="Mật Khẩu Mới" type="password" />
                         <FTextField sx={{
-                            mt: { xs: 1, md: 0 },
-                            margin: { xs: 0, md: 2 }
+                            margin: { xs: 0, md: 2 },
+                            paddingBottom: { xs: 2, md: 0 }
                         }}
                             name="ConfirmNewPassword" label="Xác Nhận Mật Khẩu Mới" type="password" />
                         <LoadingButton
+                            sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }}
                             type="submit"
                             variant="contained"
                             loading={isSubmitting || isLoading}

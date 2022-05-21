@@ -11,7 +11,7 @@ const AlertMsg = () => {
       position="top-center"
       hideProgressBar={false}
       newestOnTop={false}
-      autoClose={300}
+      autoClose={10000}
       pauseOnHover
       limit={2}
     />

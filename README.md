@@ -52,3 +52,19 @@ sx={{ width: { md: "350px", xs: "200px" } }}
 -- Số trên icon Cart đang lỗi lúc render bị mất.
 -- Không delete được địa chỉ.
 -- 
+
+
+đã sửa lỗi logout hiển thị số sản phẩm trên icon cart;
+vào home render ra list sp theo 2 thể loại nổi bật là cây cảnh và mô hình trang trí;
+có 1 form collection chứa feature fitler và sortBy, filter lọc theo từng categories của sản phẩm,
+sorrt by price and date, đôngf thời chứa icon cart, k thể vào cart nếu chưa login, Click vào icon cart để navigate về login, sau khi login sẽ tự đông chuyển vào checkout page để kiểm tra giỏ hàng. Ở trên page render các sản phấm , bạn có thể click vào icon cart để add sản phẩm với số lượng 1 hoặc click vào icon menu.
+ở trong menu từng card có thong tin về giá, hình ảnh sản phẩm rõ ràng hơn, thêm 1 hoặc nhiều sản phẩm, có thể vào detailPage xem chi tiết từng sản phẩm.
+1 product list chứa nhiều card theo limit và pagination.
+
+Có các page:
+HomePage
+DetailPage
+CtegoriesPage
+CheckoutPage
+notFoundPage
+

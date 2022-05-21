@@ -18,8 +18,10 @@ import { addProductsToCart } from '../cart/cartSlice';
 import useAuth from '../../hooks/useAuth';
 import { LIMIT_QUANTITY_PRODUCT } from '../../app/config';
 import { toast } from 'react-toastify';
+import DeleteProduct from '../../components/admin/products/DeleteProduct';
+import UpdateProduct from '../../components/admin/products/UpdateProducts';
 
-function ProductCard({ product }) {
+function ProductCard({ product, admin }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useAuth();
@@ -45,80 +47,93 @@ function ProductCard({ product }) {
     }
 
     return (
-        <Card sx={{
-            maxWidth: { xs: "200px", md: "340px" },
-            minHeight: { xs: "210px", md: "380px" },
-        }}>
-            <CardMedia
-                component="img"
-                image={product.imageUrl}
-                alt={product.name}
-                sx={{
-                    height: { xs: "140px", md: "250px" },
-                    position: "absolute",
-                    top: 0,
-                    cursor: "pointer"
-                }}
-                onClick={() => navigate(`/products/${product._id}`)}
-            />
-            <CardContent sx={{
-                position: "absolute",
-                top: "75%",
-                width: "100%",
-                textAlign: "center"
-            }}>
-                <Link
-                    sx={{
-                        cursor: "pointer",
-                        color: "black",
-                        fontFamily: "Helvetica",
-                        blur: "5px"
-                    }}
-                    component={RouterLink}
-                    to={`/products/${product._id}`}
-                >
-                    {product.name}
-                </Link>
-                <Typography
-                    sx={{
-                        color: "red",
-                        fontFamily: "serif",
-                        fontSize: { xs: "0.6rem", md: "1.2rem" }
-                    }}
-                >
-                    {fCurrency(product.price)}đ
-
-                </Typography>
-            </CardContent>
-            <CardActions
-                sx={{
-                    position: "absolute",
-                    top: "70%",
-                    textAlign: "center",
-                    width: "100%",
-                    height: "10%"
+        <>
+            {admin && (
+                <Box sx={{
+                    textAlign: "right",
+                    display: "flex",
+                    flexDirection: "row"
                 }}>
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        width: "100%",
-                    }}>
-                    <Button
-                        sx={{
-                            marginRight: { xs: 0, md: 1 },
-                            border: {
-                                xs: "none", md: "1px solid #C4CDD5"
-                            }
-                        }}
-                        onClick={() => HandleAddToCart()}
-                    >
-                        <AddShoppingCartIcon sx={{ fontSize: { xs: "0.7rem", md: "1.1rem" } }} />
-                    </Button>
-                    <DialogProduct product={product} />
+                    <DeleteProduct productId={product._id} />
+                    <UpdateProduct product={product} />
                 </Box>
-            </CardActions>
-        </Card >
+            )}
+            <Card sx={{
+                maxWidth: { xs: "200px", md: "340px" },
+                minHeight: { xs: "210px", md: "380px" },
+            }}>
+                <CardMedia
+                    component="img"
+                    image={product.imageUrl}
+                    alt={product.name}
+                    sx={{
+                        height: { xs: "140px", md: "250px" },
+                        position: "absolute",
+                        top: 0,
+                        cursor: "pointer"
+                    }}
+                    onClick={() => navigate(`/products/${product._id}`)}
+                />
+                <CardContent sx={{
+                    position: "absolute",
+                    top: { xs: "70%", md: "75%" },
+                    width: "100%",
+                    textAlign: "center"
+                }}>
+                    <Link
+                        sx={{
+                            cursor: "pointer",
+                            color: "black",
+                            fontFamily: "Helvetica",
+                            blur: "5px",
+                            fontSize: { xs: "0.6rem", md: "1rem" }
+                        }}
+                        component={RouterLink}
+                        to={`/products/${product._id}`}
+                    >
+                        {product.name}
+                    </Link>
+                    <Typography
+                        sx={{
+                            color: "red",
+                            fontFamily: "serif",
+                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                        }}
+                    >
+                        {fCurrency(product.price)}đ
+
+                    </Typography>
+                </CardContent>
+                <CardActions
+                    sx={{
+                        position: "absolute",
+                        top: "70%",
+                        textAlign: "center",
+                        width: "100%",
+                        height: "10%"
+                    }}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "100%",
+                        }}>
+                        <Button
+                            sx={{
+                                marginRight: { xs: 0, md: 1 },
+                                border: {
+                                    xs: "none", md: "1px solid #C4CDD5"
+                                }
+                            }}
+                            onClick={() => HandleAddToCart()}
+                        >
+                            <AddShoppingCartIcon sx={{ fontSize: { xs: "0.7rem", md: "1.1rem" } }} />
+                        </Button>
+                        <DialogProduct product={product} />
+                    </Box>
+                </CardActions>
+            </Card >
+        </>
     );
 }
 
