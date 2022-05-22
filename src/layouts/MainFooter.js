@@ -11,6 +11,7 @@ function MainFooter() {
     return (
         <Stack sx={{
             mt: 2,
+            zIndex: 1000,
         }}>
             <Box
                 sx={{

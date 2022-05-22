@@ -100,7 +100,7 @@ function ProductCard({ product, admin }) {
                             fontFamily: "Helvetica",
                             blur: "5px",
                             fontSize: { xs: "0.6rem", md: "1.1rem" },
-                            mb: 1
+                            // mb: 1
                         }}
                         component={RouterLink}
                         to={`/products/${product._id}`}

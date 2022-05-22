@@ -1,16 +1,7 @@
-Responsive for all desktops, iPhone 12, and Ipad Mini
-Use all API routes
-Minimum 3 forms submission
-Minimum 1 theme change feature (eg dark mode)
-Persistent login
-Must have a protected layout for login-only users.
-Image upload
-Must have a User profile page
-Must have at least 4-page routing
-Must have NavBar with logo, Footer, Pagination, Search bar
-Must have at least 2 animations (For example Loading spinner, animated search, or animated button ...)
 
-## DECOR STORE
+# UI
+
+## USER
 
 ### Authentications
 
@@ -20,51 +11,59 @@ Must have at least 2 animations (For example Loading spinner, animated search, o
 
 ### User profile
 
-- User can see his/her profile on the left side of the page.
+- User can see his/her avatar, userName on the left side of the page.
+- User can see his/her profile in profile page.
+- User can update profile.
+- User can add, update, delete address delivery.
+- User can change password.
+- User can see list of order with status pending, shipping, completed and declined.
+
+### Home page & Categories page
+
+- User can see list of product.
+- User can navigate to detail page after click on the card.
+- User can add one or many products to cart if user logged in.
+- User can filter and sort by price, newest or oldest products. 
+- In detail page, user can see product details.
+
+### Checkout
+
+- User can click to icon cart to navigate checkout page, if not login, navigate user to login page.
+- User can see list products in cart.
+- User can create one or many orders.
+
+## ADMIN
+
+### Manage Products
+
+- Admin can add, update, delete product.
+- Admin can see list of product.
+- Admin can search name product.
+ 
+### Manage Customers
+
+- Admin can see information customers.
+- Admin can search users by userName.
+- Admin can refresh list customers.
+
+### Manage Orders
+
+- Admin can see list orders.
+- Each order will has info customer, order's customer, order date, status.
+- Admin can search order by name of receiver.
+- Admin can filter order status.
+
+## Install libraries:
+
+- reactjs, redux.
+- @reduxjs/toolkit.
+- toastify.
+- mui.
+- react-router-dom.
+- mui/lab.
+- react-hook-form
 
 
-### Pages
-- Main header chứa logo bên trái, number login sign up và cart bên phải
-
-# UI
-    - page login
-    - page register
-    - home page có các list products theo thể loại
-    - products category page
-    - detail page
-    - profile page
-    - cart page
-
-    - Search query để lại làm sau.
-
-    - Product list k call được dữ liệu khi dispatch action khác.
-    
-
-    B1: Trong cartShema tạo 1 customerId ref đến "Users"
-    gọi component trong productCard thì nó lại call api lại nhiều lần.
-
-    profile about: update profile, accountPage;
-
-    <!-- ## Đang lỗi avatar... -->
-
-sx={{ width: { md: "350px", xs: "200px" } }}
-
--- Số trên icon Cart đang lỗi lúc render bị mất.
--- Không delete được địa chỉ.
--- 
 
 
-đã sửa lỗi logout hiển thị số sản phẩm trên icon cart;
-vào home render ra list sp theo 2 thể loại nổi bật là cây cảnh và mô hình trang trí;
-có 1 form collection chứa feature fitler và sortBy, filter lọc theo từng categories của sản phẩm,
-sorrt by price and date, đôngf thời chứa icon cart, k thể vào cart nếu chưa login, Click vào icon cart để navigate về login, sau khi login sẽ tự đông chuyển vào checkout page để kiểm tra giỏ hàng. Ở trên page render các sản phấm , bạn có thể click vào icon cart để add sản phẩm với số lượng 1 hoặc click vào icon menu.
-ở trong menu từng card có thong tin về giá, hình ảnh sản phẩm rõ ràng hơn, thêm 1 hoặc nhiều sản phẩm, có thể vào detailPage xem chi tiết từng sản phẩm.
-1 product list chứa nhiều card theo limit và pagination.
-
-Có các page:
-HomePage
-DetailPage
-CtegoriesPage
-CheckoutPage
-notFoundPage
 
