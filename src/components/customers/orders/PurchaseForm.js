@@ -42,7 +42,7 @@ function PurchaseForm() {
                         sx={{
                             display: "flex",
                             fontSize: { xs: "0.5rem", md: "0.8rem" },
-                            marginLeft: { xs: 0, md: 12 }
+                            marginLeft: { xs: 0, md: 12 },
                         }}
                         key={tab.value}
                         value={tab.value}

@@ -13,7 +13,9 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getListOrder } from "../../../features/user/order/orderSlice";
+import { fDate } from "../../../utils/formatTime";
 import { fCurrency } from "../../../utils/numberFormat";
 
 function OrderForm({ status }) {
@@ -21,15 +23,16 @@ function OrderForm({ status }) {
     const [page, setPage] = useState(1)
     const { ordersById, currentPageOrders, totalPage } = useSelector(state => state.order);
     const orders = currentPageOrders.map((orderId) => ordersById[orderId]);
+    const limit = 5;
+
+    const navigate = useNavigate();
 
     const handleChangePage = (e, newPage) => {
         setPage(newPage)
     };
 
     useEffect(() => {
-        console.log("status", status)
-        console.log(page)
-        dispatch(getListOrder({ page, status, limit: 2 }))
+        dispatch(getListOrder({ page, status, limit }))
     }, [page, dispatch, status])
 
 
@@ -45,7 +48,7 @@ function OrderForm({ status }) {
             <Divider />
             {orders.length > 0 && orders.map(({
                 _id,
-                updatedAt,
+                createdAt,
                 address,
                 receiver,
                 totalPrice,
@@ -69,7 +72,7 @@ function OrderForm({ status }) {
                             <Typography
                                 sx={{
                                     fontSize: { xs: "0.4rem", md: "1rem" }
-                                }}>{updatedAt}</Typography>
+                                }}>{fDate(createdAt)}</Typography>
                         </Box>
                         <Box>
                             <Typography
@@ -170,7 +173,9 @@ function OrderForm({ status }) {
 
                                         }} >
                                             <Box
+                                                onClick={() => navigate(`/products/${_id}`)}
                                                 sx={{
+                                                    cursor: "pointer",
                                                     borderRadius: 2,
                                                     width: { xs: "40px", md: "70px" },
                                                     height: { xs: "30px", md: "70px" },
@@ -259,9 +264,12 @@ function OrderForm({ status }) {
                 </Box>
             ))
             }
-            {orders.length > 0 && (
+            {orders.length > limit && (
                 <Pagination
-                    sx={{ margin: 1 }}
+                    size="small"
+                    sx={{
+                        margin: 1,
+                    }}
                     component="div"
                     count={totalPage ? totalPage : 0}
                     page={page}

@@ -49,30 +49,40 @@ function CartProductList({ cart, setActiveStep }) {
                             display: "flex",
                             height: { xs: "35px", md: "45px" },
                         }}>
-                            <TableCell sx={{
-                                fontSize: { xs: "0.4rem", md: "1rem" },
-                                width: { xs: "20%", md: "15%" },
 
-                            }}>Sản phẩm</TableCell>
                             <TableCell
                                 align="center"
                                 sx={{
-                                    // backgroundColor: "black",
-                                    fontSize: { xs: "0.4rem", md: "1rem" },
-                                    width: { xs: "15%", md: "25%" }
+                                    fontSize: { xs: "0.3rem", md: "1rem" },
+                                    width: "100%",
+
+                                }}>Sản phẩm</TableCell>
+                            <TableCell
+                                align="center"
+                                sx={{
+                                    fontSize: { xs: "0.3rem", md: "1rem" },
+                                    width: "100%"
                                 }}>Tên</TableCell>
                             <TableCell
                                 align="center"
                                 sx={{
-                                    fontSize: { xs: "0.4rem", md: "1rem" }, width: { xs: "20%", md: "15%" }
+                                    fontSize: { xs: "0.3rem", md: "1rem" }, width: "100%"
                                 }}>Số lượng</TableCell>
                             <TableCell
-                                align="left"
-                                sx={{ fontSize: { xs: "0.4rem", md: "1rem" }, width: { xs: "18%", md: "15%" } }}>Đơn giá</TableCell>
+                                align="center"
+                                sx={{
+                                    fontSize: { xs: "0.3rem", md: "1rem" },
+                                    width: "100%"
+                                }}
+                            >Đơn giá</TableCell>
                             <TableCell
-                                align="left"
-                                sx={{ fontSize: { xs: "0.4rem", md: "1rem" }, width: "15%" }}>Tổng</TableCell>
-                            <TableCell />
+                                align="center"
+                                sx={{
+                                    fontSize: { xs: "0.3rem", md: "1rem" },
+                                    width: "100%"
+                                }}
+                            >Tổng</TableCell>
+                            <TableCell sx={{ width: { xs: "20%", md: "100%" } }} />
                         </TableRow>
                     </TableHead>
                     <TableBody sx={{
@@ -85,37 +95,30 @@ function CartProductList({ cart, setActiveStep }) {
                                     display: "flex",
                                 }}
                             >
-                                <TableCell sx={{ width: { xs: "20%", md: "15%" } }}>
-                                    <Box sx={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-
-                                    }} >
-                                        <Box
-                                            sx={{
-                                                borderRadius: 2,
-                                                width: { xs: "40px", md: "70px" },
-                                                height: { xs: "30px", md: "70px" },
-                                                overflow: { xs: "none", md: "hidden" },
-                                                // width: "15%",
-                                            }}
-                                        >
-                                            <img
-                                                src={imageUrl}
-                                                alt="product"
-                                                width="100%"
-                                                height="100%"
-                                            />
-                                        </Box>
+                                <TableCell sx={{ width: "100%" }}>
+                                    <Box
+                                        sx={{
+                                            borderRadius: 2,
+                                            width: "80%",
+                                            height: "80%",
+                                            overflow: { xs: "none", md: "hidden" },
+                                        }}
+                                    >
+                                        <img
+                                            src={imageUrl}
+                                            alt="product"
+                                            width="100%"
+                                            height="100%"
+                                        />
                                     </Box>
+                                    {/* </Box> */}
                                 </TableCell>
                                 <TableCell
                                     sx={{
                                         alignItems: "center",
                                         display: "flex",
                                         justifyContent: "center",
-                                        width: { xs: "20%", md: "25%" },
+                                        width: "100%",
                                     }}>
                                     <Typography sx={{ fontSize: { xs: "0.3rem", md: "1rem" } }}>{name}</Typography>
                                 </TableCell>
@@ -123,7 +126,7 @@ function CartProductList({ cart, setActiveStep }) {
                                     alignItems: "center",
                                     display: "flex",
                                     justifyContent: "center",
-                                    width: { xs: "20%", md: "15%" }
+                                    width: "100%"
                                 }} >
                                     <QuantityCounter
                                         dispatch={dispatch}
@@ -137,23 +140,26 @@ function CartProductList({ cart, setActiveStep }) {
                                     alignItems: "center",
                                     display: "flex",
                                     justifyContent: "center",
-                                    width: { xs: "20%", md: "15%" }
+                                    width: "100%"
                                 }}>{fCurrency(price)}đ</TableCell>
                                 <TableCell sx={{
                                     fontSize: { xs: "0.3rem", md: "1rem" },
                                     alignItems: "center",
                                     display: "flex",
                                     justifyContent: "center",
-                                    width: "15%"
+                                    width: "100%"
                                 }}>{fCurrency(price * quantity)}đ</TableCell>
                                 <TableCell sx={{
                                     fontSize: { xs: "0.3rem", md: "1rem" },
+                                    width: { xs: "20%", md: "100%" },
                                     alignItems: "center",
                                     display: "flex",
                                     justifyContent: "center",
-                                    width: "15%"
                                 }}>
-                                    <DeleteForeverIcon sx={{ color: "red", fontSize: { xs: "8px", md: "2rem" } }}
+                                    <DeleteForeverIcon sx={{
+                                        color: "red",
+                                        fontSize: { xs: "8px", md: "2rem" },
+                                    }}
                                         onClick={() => handleDeleteProduct({ productId })} />
                                 </TableCell>
                             </TableRow>
@@ -165,8 +171,8 @@ function CartProductList({ cart, setActiveStep }) {
                         }}>
                             <TableCell />
                             <TableCell />
-                            <TableCell sx={{ fontSize: { xs: "0.4rem", md: "1rem" }, width: { xs: "25%", md: "15%" } }} >Tổng cộng:</TableCell>
-                            <TableCell sx={{ fontSize: { xs: "0.4rem", md: "1rem" }, width: "15%" }}>{fCurrency(cart.totalPrice)}đ</TableCell>
+                            <TableCell sx={{ fontSize: { xs: "0.3rem", md: "1rem" }, width: { xs: "25%", md: "15%" } }} >Tổng cộng:</TableCell>
+                            <TableCell sx={{ fontSize: { xs: "0.3rem", md: "1rem" }, width: "15%" }}>{fCurrency(cart.totalPrice)}đ</TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
@@ -174,7 +180,7 @@ function CartProductList({ cart, setActiveStep }) {
             <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3, }}>
                 <Button
                     variant="contained"
-                    sx={{ fontSize: { xs: "0.4rem", md: "1rem" } }}
+                    sx={{ fontSize: { xs: "0.3rem", md: "1rem" } }}
                     onClick={() => handleActiveStep()}
                 >
                     Tiếp theo

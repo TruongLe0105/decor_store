@@ -6,6 +6,7 @@ import StatusHandle from './StatusHandle';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { fToNow } from '../../../utils/formatTime';
 
 function TableOrders({ orders }) {
   return (
@@ -64,7 +65,7 @@ function TableOrders({ orders }) {
                 {fCurrency(totalPrice)}đ
               </TableCell>
               <TableCell sx={{ fontSize: { xs: "0.6rem", md: "0.8rem" } }}>
-                {updatedAt}
+                {fToNow(updatedAt)}
               </TableCell >
               {status === "pending" && (
                 <StatusHandle orderId={_id} status={status} />

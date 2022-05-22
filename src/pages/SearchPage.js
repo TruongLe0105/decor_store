@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from 'react-router-dom';
 import { PRODUCTS_HOME_PAGE } from '../app/config';
+import Collections from '../components/customers/address/Collections';
 import DividerText from '../components/form/DividerText';
 import ProductCard from '../features/user/products/ProductCard';
 import { getProducts } from '../features/user/products/productSlice';
@@ -26,9 +27,10 @@ function SearchPage() {
 
     return (
         <>
+            <Collections />
             <Container
                 sx={{
-                    mt: 1,
+                    mt: { xs: 11, md: 14 },
                     textAlign: "center"
                 }}>
                 <DividerText text="SẢN PHẨM NỔI BẬT" />

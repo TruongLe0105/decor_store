@@ -113,7 +113,7 @@ function Orders() {
 
     React.useEffect(() => {
         dispatch(getListOfOrder({ receiver, status, page: page + 1, limit: rowsPerPage }));
-    }, [page, rowsPerPage, status, receiver, currentStatusOder, dispatch]);
+    }, [page, rowsPerPage, status, receiver, currentStatusOder, totalOrders, dispatch]);
 
     return (
         <Stack spacing={1} sx={{
