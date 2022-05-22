@@ -1,6 +1,5 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import React from 'react';
-import { fCurrency } from '../../../utils/numberFormat';
 import DialogOrder from './DialogOrder';
 import StatusHandle from './StatusHandle';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -25,9 +24,6 @@ function TableOrders({ orders }) {
             </TableCell>
             <TableCell sx={{ fontSize: { md: "1.3rem", xs: "0.8rem" }, fontFamily: "bold" }}>
               Order
-            </TableCell>
-            <TableCell sx={{ fontSize: { md: "1.3rem", xs: "0.8rem" }, fontFamily: "bold" }}>
-              TotalPrice
             </TableCell>
             <TableCell sx={{ fontSize: { md: "1.3rem", xs: "0.8rem" }, fontFamily: "bold" }}>
               Date
@@ -61,10 +57,10 @@ function TableOrders({ orders }) {
               <TableCell sx={{ fontSize: { xs: "0.6rem", md: "0.8rem" } }}>
                 <DialogOrder products={cartProducts} />
               </TableCell>
-              <TableCell sx={{ fontSize: { xs: "0.6rem", md: "0.8rem" } }}>
-                {fCurrency(totalPrice)}đ
-              </TableCell>
-              <TableCell sx={{ fontSize: { xs: "0.6rem", md: "0.8rem" } }}>
+              <TableCell
+                sx={{
+                  fontSize: { xs: "0.6rem", md: "0.8rem" },
+                }}>
                 {fToNow(updatedAt)}
               </TableCell >
               {status === "pending" && (
@@ -73,9 +69,6 @@ function TableOrders({ orders }) {
               {status === "shipping" && (
                 <TableCell sx={{
                   fontSize: { xs: "0.6rem", md: "0.9rem" },
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
                 }}>
                   {status} <LocalShippingIcon sx={{
                     color: "orange",
@@ -86,9 +79,6 @@ function TableOrders({ orders }) {
               {status === "completed" && (
                 <TableCell sx={{
                   fontSize: { xs: "0.6rem", md: "0.9rem" },
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center"
                 }}>
                   {status} <CheckCircleIcon sx={{
                     color: "green",
@@ -99,9 +89,6 @@ function TableOrders({ orders }) {
               {status === "declined" && (
                 <TableCell sx={{
                   fontSize: { xs: "0.6rem", md: "0.9rem" },
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center"
                 }}>
                   {status} <CancelIcon sx={{
                     color: "red",

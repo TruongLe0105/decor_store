@@ -1,17 +1,19 @@
 import { Box, Menu, MenuItem, Stack, Typography, Link } from '@mui/material';
 import React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useNavigate } from 'react-router-dom';
-import CartWidget from '../cart/CartWidget';
-import SortMenu from '../../collections/SortMenu';
-import "../../../index.css"
+import { useNavigate, useParams } from 'react-router-dom';
+import CartWidget from '../customers/cart/CartWidget';
+import SortMenu from './SortMenu';
+import "../../index.css";
 
 function Collections({ collection }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const navigate = useNavigate();
+    const params = useParams();
     const categories = ["Mô hình trang trí", "Cây cảnh", "Khung tranh treo tường"]
 
     const handleMenuOpen = Boolean(anchorEl);
+
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
@@ -20,8 +22,9 @@ function Collections({ collection }) {
     };
 
     function handleNavigateCategory(category) {
+        const categoryId = category.split(" ").join('-');
         handleMenuClose();
-        navigate(`/products/categories/${category.split(" ").join('-')}`);
+        navigate(`/products/categories/${categoryId}`);
     };
     const categoriesMenu = (
         <Menu
@@ -71,11 +74,11 @@ function Collections({ collection }) {
                 <Box sx={{
                     display: "flex",
                     alignItems: "center",
-                    marginLeft: 2,
+                    marginLeft: 1,
                 }}>
                     <Link
                         sx={{
-                            fontSize: { xs: "0.8rem", md: "1.5rem" },
+                            fontSize: { xs: "0.7rem", md: "1.5rem" },
                             cursor: "pointer",
                         }}
                         underline="none"
@@ -84,7 +87,7 @@ function Collections({ collection }) {
                     <Typography
                         onClick={handleOpenMenuCategory}
                         sx={{
-                            fontSize: { xs: "0.7rem", md: "1.3rem" },
+                            fontSize: { xs: "0.6rem", md: "1.3rem" },
                             cursor: "pointer"
                         }}
                     >Danh Mục</Typography>
@@ -97,7 +100,7 @@ function Collections({ collection }) {
                     {categoriesMenu}
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.6rem", md: "1.2rem" },
+                            fontSize: { xs: "0.5rem", md: "1.2rem" },
                         }}
                     >{collection}</Typography>
                 </Box>
@@ -105,7 +108,7 @@ function Collections({ collection }) {
                     display: "flex"
                 }}>
                     <CartWidget />
-                    <SortMenu />
+                    {!params.id && <SortMenu />}
                 </Box>
             </Box>
         </Stack >

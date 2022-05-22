@@ -56,32 +56,32 @@ function DialogOrder({ products }) {
                                 }}>
                                     <TableCell
                                         sx={{
-                                            fontSize: { xs: "0.4rem", md: "1rem" },
+                                            fontSize: { xs: "0.6rem", md: "1rem" },
                                             color: "white",
                                             width: "100%",
                                         }}>Sản phẩm</TableCell>
                                     <TableCell
                                         sx={{
-                                            fontSize: { xs: "0.4rem", md: "1rem" },
+                                            fontSize: { xs: "0.6rem", md: "1rem" },
                                             color: "white",
                                             width: "100%"
                                         }}>Tên</TableCell>
                                     <TableCell
                                         sx={{
-                                            fontSize: { xs: "0.4rem", md: "1rem" },
+                                            fontSize: { xs: "0.6rem", md: "1rem" },
                                             color: "white",
                                             width: "100%"
                                         }}>Số lượng</TableCell>
                                     <TableCell
                                         sx={{
-                                            fontSize: { xs: "0.4rem", md: "1rem" },
+                                            fontSize: { xs: "0.6rem", md: "1rem" },
                                             color: "white",
                                             width: "100%"
                                         }}
                                     >Đơn giá</TableCell>
                                     <TableCell
                                         sx={{
-                                            fontSize: { xs: "0.4rem", md: "1rem" },
+                                            fontSize: { xs: "0.6rem", md: "1rem" },
                                             color: "white"
                                         }}
                                     >Tổng</TableCell>
@@ -127,7 +127,7 @@ function DialogOrder({ products }) {
                                                 justifyContent: "center",
                                                 width: "100%"
                                             }}>
-                                            <Typography sx={{ fontSize: { xs: "0.3rem", md: "1rem" } }}>
+                                            <Typography sx={{ fontSize: { xs: "0.5rem", md: "1rem" } }}>
                                                 {name}
                                             </Typography>
                                         </TableCell>
@@ -138,14 +138,14 @@ function DialogOrder({ products }) {
                                             width: "100%"
                                         }} >
                                             <Typography sx={{
-                                                fontSize: { xs: "0.3rem", md: "1rem" },
+                                                fontSize: { xs: "0.5rem", md: "1rem" },
                                             }}>
                                                 {quantity}
                                             </Typography>
                                         </TableCell>
                                         <TableCell
                                             sx={{
-                                                fontSize: { xs: "0.3rem", md: "1rem" },
+                                                fontSize: { xs: "0.5rem", md: "1rem" },
                                                 alignItems: "center",
                                                 display: "flex",
                                                 justifyContent: "flex-start",
@@ -155,7 +155,7 @@ function DialogOrder({ products }) {
                                             {fCurrency(price)}đ
                                         </TableCell>
                                         <TableCell sx={{
-                                            fontSize: { xs: "0.3rem", md: "1rem" },
+                                            fontSize: { xs: "0.5rem", md: "1rem" },
                                             alignItems: "center",
                                             display: "flex",
                                             justifyContent: "center",
@@ -173,7 +173,7 @@ function DialogOrder({ products }) {
                             onClick={handleClose}
                             variant="contained"
                             sx={{
-                                fontSize: { xs: "0.4rem", md: "1rem" },
+                                fontSize: { xs: "0.6rem", md: "1rem" },
                                 mb: 1,
                                 mr: 1
                             }}

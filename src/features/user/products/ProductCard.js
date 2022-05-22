@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, Link } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { grey } from '@mui/material/colors';
 
 import { useNavigate } from 'react-router-dom';
 import { Link as RouterLink } from "react-router-dom";
@@ -19,6 +20,15 @@ import DeleteProduct from '../../../components/admin/products/DeleteProduct';
 import UpdateProduct from '../../../components/admin/products/UpdateProducts';
 import { fCurrency } from '../../../utils/numberFormat';
 import DialogProduct from '../../../components/DialogProduct';
+
+const cardStyle = {
+    '&:hover': {
+        bgcolor: grey[100],
+        bottom: 1,
+        boxShadow: `0 2px 6px 0`,
+
+    }
+};
 
 function ProductCard({ product, admin }) {
     const navigate = useNavigate();
@@ -43,7 +53,7 @@ function ProductCard({ product, admin }) {
         } else {
             navigate("/login")
         }
-    }
+    };
 
     return (
         <>
@@ -58,6 +68,8 @@ function ProductCard({ product, admin }) {
                 </Box>
             )}
             <Card sx={{
+                ...cardStyle,
+                position: "relative",
                 maxWidth: { xs: "200px", md: "340px" },
                 minHeight: { xs: "210px", md: "380px" },
             }}>
@@ -66,18 +78,20 @@ function ProductCard({ product, admin }) {
                     image={product.imageUrl}
                     alt={product.name}
                     sx={{
-                        height: { xs: "140px", md: "250px" },
+                        height: { xs: "150px", md: "250px" },
                         position: "absolute",
-                        top: 0,
-                        cursor: "pointer"
+                        cursor: "pointer",
+
                     }}
                     onClick={() => navigate(`/products/${product._id}`)}
                 />
                 <CardContent sx={{
                     position: "absolute",
-                    top: { xs: "70%", md: "75%" },
+                    top: { xs: "69%", md: "72%" },
                     width: "100%",
-                    textAlign: "center"
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center"
                 }}>
                     <Link
                         sx={{
@@ -85,7 +99,8 @@ function ProductCard({ product, admin }) {
                             color: "black",
                             fontFamily: "Helvetica",
                             blur: "5px",
-                            fontSize: { xs: "0.6rem", md: "1rem" }
+                            fontSize: { xs: "0.6rem", md: "1.1rem" },
+                            mb: 1
                         }}
                         component={RouterLink}
                         to={`/products/${product._id}`}
@@ -96,7 +111,7 @@ function ProductCard({ product, admin }) {
                         sx={{
                             color: "red",
                             fontFamily: "serif",
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            fontSize: { xs: "0.5rem", md: "1.2rem" }
                         }}
                     >
                         {fCurrency(product.price)}đ
@@ -106,7 +121,7 @@ function ProductCard({ product, admin }) {
                 <CardActions
                     sx={{
                         position: "absolute",
-                        top: "70%",
+                        top: { xs: "71%", md: "68%" },
                         textAlign: "center",
                         width: "100%",
                         height: "10%"

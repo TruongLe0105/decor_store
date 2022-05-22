@@ -38,8 +38,8 @@ function ProductList() {
                     flexItem
                 />
                 <Grid container spacing={1}>
-                    {arrCategoryTree.length !== 0 && arrCategoryTree.map(product => (
-                        <Grid key={product._id} item xs={6} md={4} lg={3}>
+                    {arrCategoryTree.length > 0 && arrCategoryTree.map(product => (
+                        <Grid key={product._id} item xs={4} md={4} lg={3}>
                             <ProductCard product={product} />
                         </Grid>
                     ))
@@ -58,7 +58,7 @@ function ProductList() {
                 <DividerText text="MÔ HÌNH TRANG TRÍ" />
                 <Grid container spacing={1}>
                     {arrCategoryModel.length !== 0 && arrCategoryModel.map(product => (
-                        <Grid key={product._id} item xs={6} md={4} lg={3}>
+                        <Grid key={product._id} item xs={4} md={4} lg={3}>
                             <ProductCard product={product} />
                         </Grid>
                     ))

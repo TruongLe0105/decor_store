@@ -33,6 +33,8 @@ function PurchaseForm() {
                 bgcolor: "white",
             }}>
             <Tabs
+                variant={'fullWidth'}
+                centered
                 value={currentTab}
                 allowScrollButtonsMobile
                 onChange={(e, value) => handleChangeTab(value)}

@@ -2,7 +2,7 @@ import { Container, Grid, Pagination, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Collections from '../components/customers/address/Collections';
+import Collections from '../components/collections/Collections';
 import ProductCard from '../features/user/products/ProductCard';
 import { getProducts, resetProducts } from '../features/user/products/productSlice';
 
@@ -15,8 +15,6 @@ function CategoryPage() {
 
     const categories = params.category.split("-").join(" ")
 
-    console.log("categories", categories)
-
     const {
         productsById,
         totalPage,
@@ -24,7 +22,6 @@ function CategoryPage() {
     } = useSelector(state => state.product)
 
     const products = currentPageProducts.map(productId => productsById[productId]);
-    console.log("products", products)
 
     useEffect(() => {
         if (categories) {
@@ -47,7 +44,7 @@ function CategoryPage() {
                 >{categories}</Typography>
                 <Grid container spacing={1}>
                     {products.length > 0 && products.map(product => (
-                        <Grid key={product._id} item xs={6} md={4} lg={3}>
+                        <Grid key={product._id} item xs={4} md={4} lg={3}>
                             <ProductCard product={product} />
                         </Grid>
                     ))}

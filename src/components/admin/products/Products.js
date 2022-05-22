@@ -8,10 +8,11 @@ import {
 } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+
 import { PRODUCTS_PER_PAGE } from '../../../app/config';
 import SearchInput from '../../SearchInput';
 import AddProductByAdmin from './AddProductByAdmin';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { getProducts } from '../../../features/user/products/productSlice';
 import ProductCard from '../../../features/user/products/ProductCard';
 
@@ -84,7 +85,7 @@ function Products({ admin }) {
                     {products.length !== 0 &&
                         products.map((product) =>
                         (
-                            <Grid key={product._id} item xs={6} md={4} lg={3}>
+                            <Grid key={product._id} item xs={4} md={4} lg={3}>
                                 <ProductCard admin={admin} product={product} />
                             </Grid>
                         ))

@@ -12,7 +12,7 @@ import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
 import { fCurrency } from '../utils/numberFormat';
 import { getProductDetail, resetProducts } from '../features/user/products/productSlice';
 import { addProductsToCart } from '../features/user/cart/cartSlice';
-import Collections from '../components/customers/address/Collections';
+import Collections from '../components/collections/Collections';
 
 
 function DetailPage() {

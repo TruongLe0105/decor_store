@@ -44,6 +44,7 @@ function AvatarMenu() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                cursor: "pointer"
             }}>
                 <Avatar
                     onClick={handleProfileMenuOpen}

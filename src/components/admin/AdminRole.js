@@ -45,6 +45,7 @@ function AdminRole({ admin }) {
                         sx={{
                             height: { md: "400px", xs: "10%" },
                             position: { md: "fixed", xs: "none" },
+                            mt: { xs: 1, md: 0 },
                             display: "flex",
                             flexDirection: { xs: "row", md: "column" },
                             justifyContent: { xs: "none", md: "flex-start" },
@@ -55,7 +56,7 @@ function AdminRole({ admin }) {
                         <Box
                             onClick={() => setSelectedTab('dashboard')}
                             className={classes.button}
-                            sx={{ padding: 1, width: { md: "100%", xs: "40px" } }}
+                            sx={{ padding: { xs: 0, md: 1 }, width: { md: "100%", xs: "40px" } }}
                         >
                             <DashboardCustomizeIcon
                                 sx={{
@@ -72,7 +73,7 @@ function AdminRole({ admin }) {
                             >Dashboard</Button>
                         </Box>
                         <Box
-                            sx={{ padding: 1, width: { md: "100%", xs: "40px" } }}
+                            sx={{ padding: { xs: 0, md: 1 }, width: { md: "100%", xs: "40px" } }}
                             onClick={() => setSelectedTab('customers')}
                             className={classes.button}
                         >
@@ -91,7 +92,7 @@ function AdminRole({ admin }) {
                             >Customers</Button>
                         </Box>
                         <Box
-                            sx={{ padding: 1, width: { md: "100%", xs: "40px" } }}
+                            sx={{ padding: { xs: 0, md: 1 }, width: { md: "100%", xs: "40px" } }}
                             className={classes.button}
                             onClick={() => setSelectedTab('products')}
                         >
@@ -112,7 +113,10 @@ function AdminRole({ admin }) {
                             >Products</Button>
                         </Box>
                         <Box
-                            sx={{ padding: 1, width: { md: "100%", xs: "40px" } }}
+                            sx={{
+                                padding: { xs: 0, md: 1 },
+                                width: { md: "100%", xs: "40px" }
+                            }}
                             className={classes.button}
                             onClick={() => setSelectedTab('orders')}>
                             <WidgetsIcon

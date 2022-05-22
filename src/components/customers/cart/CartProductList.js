@@ -18,10 +18,13 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import { addProductsToCart } from "../../../features/user/cart/cartSlice";
 import { LIMIT_QUANTITY_PRODUCT } from "../../../app/config";
 import { fCurrency } from "../../../utils/numberFormat";
+import { useNavigate } from "react-router-dom";
 
 
 function CartProductList({ cart, setActiveStep }) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const cartId = cart._id;
     let productsInCart = [];
     if (cart.products)
@@ -97,7 +100,9 @@ function CartProductList({ cart, setActiveStep }) {
                             >
                                 <TableCell sx={{ width: "100%" }}>
                                     <Box
+                                        onClick={() => navigate(`/products/${productId}`)}
                                         sx={{
+                                            cursor: "pointer",
                                             borderRadius: 2,
                                             width: "80%",
                                             height: "80%",

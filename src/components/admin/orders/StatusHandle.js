@@ -30,9 +30,6 @@ function StatusHandle({ status, orderId }) {
   return (
     <TableCell sx={{
       fontSize: { xs: "0.7rem", md: "0.9rem" },
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"
     }}>
       {status}
       <PendingIcon

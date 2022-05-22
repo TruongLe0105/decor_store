@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LoadingButton } from '@mui/lab';
-import { Box, Container, Dialog, Typography } from '@mui/material';
+import { Box, Button, Container, Dialog, Typography } from '@mui/material';
 import { FormProvider, FTextField } from '../../form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -57,15 +57,18 @@ function UpdateProduct({ product }) {
 
     return (
         <>
-            <CreateIcon
-                onClick={handleClickOpen}
-                sx={{
-                    color: "red",
-                    margin: 1,
-                    cursor: "pointer",
-                    fontSize: { xs: "0.8rem", md: "1.4rem" }
-                }}
-            />
+            <Button
+                variant="text">
+                <CreateIcon
+                    onClick={handleClickOpen}
+                    sx={{
+                        color: "green",
+                        margin: 1,
+                        cursor: "pointer",
+                        fontSize: { xs: "1rem", md: "1.6rem" }
+                    }}
+                />
+            </Button>
             <Dialog
                 open={open}
                 onClose={handleClose}

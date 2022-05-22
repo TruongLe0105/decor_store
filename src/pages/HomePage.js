@@ -3,7 +3,7 @@ import useAuth from '../hooks/useAuth';
 import AdminRole from '../components/admin/AdminRole';
 import { Stack } from '@mui/material';
 import ProductList from '../features/user/products/ProductList';
-import Collections from '../components/customers/address/Collections';
+import Collections from '../components/collections/Collections';
 
 function HomePage() {
 
