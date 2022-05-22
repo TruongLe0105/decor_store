@@ -2,10 +2,10 @@ import { Button, Container, Divider, Grid } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { PRODUCTS_HOME_PAGE } from '../../app/config';
-import DividerText from '../../components/form/DividerText';
+import { PRODUCTS_HOME_PAGE } from '../../../app/config';
+import DividerText from '../../../components/form/DividerText';
 import ProductCard from './ProductCard';
-import { getProducts } from "./productSlice";
+import { getProducts } from './productSlice';
 
 
 function ProductList() {

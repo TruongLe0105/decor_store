@@ -9,11 +9,11 @@ import {
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PRODUCTS_PER_PAGE } from '../../../app/config';
-import ProductCard from '../../../features/products/ProductCard';
-import { getProducts } from '../../../features/products/productSlice';
 import SearchInput from '../../SearchInput';
 import AddProductByAdmin from './AddProductByAdmin';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { getProducts } from '../../../features/user/products/productSlice';
+import ProductCard from '../../../features/user/products/ProductCard';
 
 function Products({ admin }) {
     const [name, setName] = React.useState("");
@@ -24,6 +24,7 @@ function Products({ admin }) {
         productsById,
         currentPageProducts,
         singleProductChanged,
+        quantityProducts,
         totalPage,
     }
         = useSelector(state => state.product);
@@ -39,7 +40,7 @@ function Products({ admin }) {
 
     useEffect(() => {
         dispatch(getProducts({ name, limit: PRODUCTS_PER_PAGE, page }));
-    }, [dispatch, page, name, singleProductChanged, products.length]);
+    }, [dispatch, page, name, singleProductChanged, quantityProducts]);
 
 
     return (

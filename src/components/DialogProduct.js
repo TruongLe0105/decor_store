@@ -11,16 +11,15 @@ import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductsToCart } from '../features/cart/cartSlice';
 import useAuth from '../hooks/useAuth';
 import { fCurrency } from '../utils/numberFormat';
 import { toast } from 'react-toastify';
 import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
+import { addProductsToCart } from '../features/user/cart/cartSlice';
 
 
 
 function DialogProduct({ product }) {
-    // function DialogProduct({ product, cartId }) {
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState(1);
     const navigate = useNavigate();

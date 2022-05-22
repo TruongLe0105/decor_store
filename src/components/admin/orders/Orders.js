@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TableOrders from './TableOrders';
-
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -113,7 +113,7 @@ function Orders() {
 
     React.useEffect(() => {
         dispatch(getListOfOrder({ receiver, status, page: page + 1, limit: rowsPerPage }));
-    }, [page, rowsPerPage, currentStatusOder, status, receiver, dispatch]);
+    }, [page, rowsPerPage, status, receiver, currentStatusOder, dispatch]);
 
     return (
         <Stack spacing={1} sx={{
@@ -146,6 +146,13 @@ function Orders() {
                             }}
                         >
                             <SearchInput handleSubmit={handleSubmit} />
+                            <RestartAltIcon
+                                onClick={() => setReceiver("")}
+                                sx={{
+                                    fontSize: { xs: "1.3rem", md: "2rem" },
+                                    color: "green",
+                                    mr: { xs: 0, md: 40 }
+                                }} />
                             <Button
                                 id="demo-customized-button"
                                 aria-controls={open ? 'demo-customized-menu' : undefined}

@@ -1,10 +1,12 @@
+import { Collections } from '@mui/icons-material';
 import { Container, Grid, Pagination, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import ProductCard from '../features/products/ProductCard';
-import { getProducts, resetProducts } from '../features/products/productSlice';
-import Collections from '../components/Collections';
+import ProductCard from '../features/user/products/ProductCard';
+import { getProducts, resetProducts } from '../features/user/products/productSlice';
+
+
 
 function CategoryPage() {
     const [page, setPage] = useState(1);

@@ -61,7 +61,6 @@ const slice = createSlice({
             state.isLoading = false;
             state.error = null;
 
-            console.log(action.payload)
             const { order } = action.payload;
             state.currentStatusOder = order.status;
         }
@@ -69,6 +68,7 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+export const { resetOrders } = slice.actions;
 
 export const getListOfUsers = ({ userName, page, limit }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
@@ -102,9 +102,9 @@ export const getListOfOrder = ({ receiver, limit, page, status }) => async (disp
 export const updateOrderByAdmin = ({ status, orderId }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-        console.log("adminSlice", status)
         const response = await apiService.put(`/auth/${orderId}`, { status });
         dispatch(slice.actions.updateOrderByAdminSuccess(response.data));
+        // dispatch(resetOrders());
     } catch (error) {
         dispatch(slice.actions.hasError(error.message));
         toast.error(error.message);

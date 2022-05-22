@@ -2,16 +2,17 @@ import { Box, Button, CardMedia, Container, Divider, Link, Stack, Typography } f
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getProductDetail, resetProducts } from '../features/products/productSlice';
-import Collection from "../components/Collections";
-import { fCurrency } from '../utils/numberFormat';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import useAuth from '../hooks/useAuth';
-import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
-import { addProductsToCart } from '../features/cart/cartSlice';
 import { toast } from 'react-toastify';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
+import useAuth from '../hooks/useAuth';
+import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
+import Collection from "../components/Collections";
+import { fCurrency } from '../utils/numberFormat';
+import { getProductDetail, resetProducts } from '../features/user/products/productSlice';
+import { addProductsToCart } from '../features/user/cart/cartSlice';
 
 
 function DetailPage() {

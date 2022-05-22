@@ -5,7 +5,6 @@ import DialogOrder from './DialogOrder';
 import StatusHandle from './StatusHandle';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-// import PendingIcon from '@mui/icons-material/Pending';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 function TableOrders({ orders }) {

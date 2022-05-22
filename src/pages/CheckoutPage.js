@@ -11,12 +11,14 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import CartProductList from "../components/CartProductList";
 import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../hooks/useAuth";
-import { getProductInCart } from "../features/cart/cartSlice";
+
+
 import CheckoutDelivery from "../components/CheckoutDelivery";
 import CheckoutSummary from "../components/CheckoutSummary";
+import { getProductInCart } from "../features/user/cart/cartSlice";
+import CartProductList from "../components/CartProductList";
 
 
 const STEPS = ["Giỏ hàng", "Địa chỉ", "Thanh toán"];

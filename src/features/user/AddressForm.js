@@ -15,7 +15,7 @@ function AddressForm() {
     }, [dispatch]);
 
     return (
-        <Stack sx={{ height: "100vh" }}>
+        <Stack>
             <Typography sx={{
                 fontSize: { xs: "0.9rem", md: "1.4rem" },
                 textAlign: "center",

@@ -1,30 +1,28 @@
 import { Container, Divider, Grid } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'react-router-dom';
 import { PRODUCTS_HOME_PAGE } from '../app/config';
 import DividerText from '../components/form/DividerText';
-import ProductCard from '../features/products/ProductCard';
-import { getProducts } from '../features/products/productSlice';
+import ProductCard from '../features/user/products/ProductCard';
+import { getProducts } from '../features/user/products/productSlice';
 
 
 function SearchPage() {
     const dispatch = useDispatch();
-    let [searchParams, setSearchParams] = useSearchParams();
-    const name = searchParams.get("q")
-    console.log(setSearchParams());
+    // let [searchParams, setSearchParams] = useSearchParams();
+    // const name = searchParams.get("q")
 
     const { productsById, currentPageProducts } = useSelector(state => state.product);
     const products = currentPageProducts.map((productId) => productsById[productId]);
     const limit = PRODUCTS_HOME_PAGE;
 
     useEffect(() => {
-        if (name) {
-            dispatch(getProducts({ limit, name }));
-            // dispatch(resetProducts());
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-        }
-    }, [dispatch, limit, name]);
+        // if (name) {
+        dispatch(getProducts({ limit }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // }
+    }, [dispatch, limit]);
 
     return (
         <>

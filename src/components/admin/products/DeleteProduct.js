@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import { Button, Dialog, DialogActions, DialogTitle } from '@mui/material';
-import { deleteProductByAdmin } from '../../../features/products/productSlice';
 import { useDispatch } from 'react-redux';
+import { deleteProductByAdmin } from '../../../features/user/products/productSlice';
 
 
 function DeleteProduct({ productId }) {

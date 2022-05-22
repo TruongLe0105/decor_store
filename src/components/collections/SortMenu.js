@@ -2,8 +2,8 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { getProducts } from '../../features/products/productSlice';
 import { useDispatch } from 'react-redux';
+import { getProducts } from '../../features/user/products/productSlice';
 
 function SortMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);

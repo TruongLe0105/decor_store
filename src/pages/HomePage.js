@@ -1,9 +1,9 @@
 import React from 'react';
-import ProductList from "../features/products/ProductList";
 import Collection from "../components/Collections";
 import useAuth from '../hooks/useAuth';
 import AdminRole from '../components/admin/AdminRole';
 import { Stack } from '@mui/material';
+import ProductList from '../features/user/products/ProductList';
 
 function HomePage() {
 

@@ -20,8 +20,8 @@ import ConfirmCheckout from "./ConfirmCheckout";
 function CheckoutSummary() {
   const { cart, delivery } = useSelector(state => state.cart);
   const { user } = useAuth();
-  let cartProducts = [];
-  cartProducts = cart.products ? cart.products : [];
+  // let cartProducts = [];
+  const products = cart.products ? cart.products : [];
   const totalPrice = cart.totalPrice;
 
   return (
@@ -100,7 +100,6 @@ function CheckoutSummary() {
               <TableCell
                 align="center"
                 sx={{
-                  // backgroundColor: "black",
                   fontSize: { xs: "0.4rem", md: "1rem" },
                   width: { xs: "25%", md: "25%" }
                 }}>Tên</TableCell>
@@ -121,7 +120,7 @@ function CheckoutSummary() {
             display: "flex",
             flexDirection: "column",
           }}>
-            {cartProducts.length > 0 && cartProducts.map(({ _id, name, price, quantity, imageUrl }) => (
+            {products.length > 0 && products.map(({ _id, name, price, quantity, imageUrl }) => (
               <TableRow key={_id} sx={{
                 display: "flex",
               }}>
@@ -209,7 +208,7 @@ function CheckoutSummary() {
       </TableContainer>
       <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
         <ConfirmCheckout
-          cartProducts={cartProducts}
+          cartProducts={products}
           delivery={delivery}
           totalPrice={totalPrice}
           user={user}

@@ -11,15 +11,14 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useNavigate } from 'react-router-dom';
 import { Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-
-import { fCurrency } from '../../utils/numberFormat';
-import DialogProduct from '../../components/DialogProduct'
-import { addProductsToCart } from '../cart/cartSlice';
-import useAuth from '../../hooks/useAuth';
-import { LIMIT_QUANTITY_PRODUCT } from '../../app/config';
 import { toast } from 'react-toastify';
-import DeleteProduct from '../../components/admin/products/DeleteProduct';
-import UpdateProduct from '../../components/admin/products/UpdateProducts';
+import useAuth from '../../../hooks/useAuth';
+import { LIMIT_QUANTITY_PRODUCT } from '../../../app/config';
+import { addProductsToCart } from '../cart/cartSlice';
+import DeleteProduct from '../../../components/admin/products/DeleteProduct';
+import UpdateProduct from '../../../components/admin/products/UpdateProducts';
+import { fCurrency } from '../../../utils/numberFormat';
+import DialogProduct from '../../../components/DialogProduct';
 
 function ProductCard({ product, admin }) {
     const navigate = useNavigate();

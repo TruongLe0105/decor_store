@@ -12,7 +12,6 @@ import RegisterPage from '../pages/RegisterPage';
 import AuthRequire from './AuthRequire';
 import InitRequire from './InitRequire';
 import CheckoutPage from '../pages/CheckoutPage';
-import PurchasePage from '../pages/account/PurchasePage';
 import CheckoutCompletedPage from '../pages/CheckoutCompletedPage';
 import SearchPage from '../pages/SearchPage';
 
@@ -39,7 +38,6 @@ function Router() {
                 </AuthRequire>
             } >
                 <Route path="/user/account/profile" element={<ProfilePage />} />
-                <Route path="/user/purchase" element={<PurchasePage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/checkout/completed" element={<CheckoutCompletedPage />} />
             </Route>

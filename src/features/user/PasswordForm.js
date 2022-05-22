@@ -3,14 +3,13 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Card, Box, Typography, Divider } from '@mui/material'
+import { Card, Box, Typography } from '@mui/material'
 import React from 'react'
 import { FTextField, FormProvider } from '../../components/form'
 import { useDispatch, useSelector } from "react-redux";
 import { LoadingButton } from "@mui/lab";
 import useAuth from "../../hooks/useAuth";
 import { updatePassword } from "./userSlice";
-import { toast } from "react-toastify";
 
 const UpdateUserSchema = Yup.object().shape({
     password: Yup.string().required("Nhập mật khẩu cũ"),

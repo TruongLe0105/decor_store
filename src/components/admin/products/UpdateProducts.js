@@ -1,13 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { LoadingButton } from '@mui/lab';
 import { Box, Container, Dialog, Typography } from '@mui/material';
-import { FormProvider, FTextField, FUploadImage } from '../../form';
+import { FormProvider, FTextField } from '../../form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useForm } from 'react-hook-form';
 import CreateIcon from '@mui/icons-material/Create';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProductByAdmin } from '../../../features/products/productSlice';
+import { updateProductByAdmin } from '../../../features/user/products/productSlice';
 
 const UpdateProductSchema = Yup.object().shape({
     name: Yup.string().required("Missing product name"),
@@ -39,24 +39,9 @@ function UpdateProduct({ product }) {
 
     const {
         handleSubmit,
-        setValue,
         formState: { isSubmitting }
     } = methods;
 
-    const handleDrop = useCallback(
-        (acceptedFiles) => {
-            const file = acceptedFiles[0];
-            if (file) {
-                setValue(
-                    "imageUrl",
-                    Object.assign(file, {
-                        preview: URL.createObjectURL(file),
-                    })
-                );
-            }
-        },
-        [setValue]
-    );
 
     const onSubmit = (data) => {
         dispatch(updateProductByAdmin({ productId: product._id, ...data }))
@@ -98,41 +83,33 @@ function UpdateProduct({ product }) {
                     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                         <Box sx={{
                             display: "flex",
+                            justifyContent: "center",
                             mt: 2
                         }}>
-                            <Box sx={{
-                                mr: 4,
-                                width: "80%"
-                            }}>
+                            <Box >
+                                <Box sx={{ display: "flex" }}>
+                                    <FTextField
+                                        name="name" label="Product name" sx={{ mr: 1 }}
+                                    />
+                                    <FTextField name="categories" label="Categories"
+                                    />
+                                </Box>
+                                <Box sx={{ display: "flex" }}>
+                                    <FTextField
+                                        name="price" label="Price" sx={{ mr: 1 }}
+                                    />
+                                    <FTextField
+                                        name="quantity" label="Quantity"
+                                    />
+                                </Box>
                                 <FTextField
-                                    name="name" label="Product name" autoFocus
-                                />
-                                <FTextField name="categories" label="Categories"
-                                />
-                                <FTextField
-                                    name="price" label="Price"
-                                />
-                                <FTextField
-                                    name="quantity" label="Quantity"
+                                    name="imageUrl" label="Image"
                                 />
                                 <FTextField
                                     multiline rows={2} name="description" label="Description"
                                 />
-                            </Box>
-                            <Box sx={{
-                                width: "100%",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "space-between",
-                                ml: 2
-                            }}>
-                                <FUploadImage
-                                    name="imageUrl"
-                                    accept="image/*"
-                                    maxSize={3145728}
-                                    onDrop={handleDrop}
-                                />
                                 <LoadingButton
+                                    sx={{ mt: 2 }}
                                     variant="contained"
                                     type="submit"
                                     loading={isSubmitting || isLoading}

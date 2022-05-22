@@ -64,7 +64,10 @@ function ProfileForm() {
 
     return (
         <Box >
-            <Typography sx={{ fontSize: { xs: "1rem", md: "1.5rem" }, textAlign: "center" }}>Hồ sơ của tôi</Typography>
+            <Typography sx={{
+                fontSize: { xs: "1rem", md: "1.5rem" },
+                textAlign: "center"
+            }}>Hồ sơ của tôi</Typography>
             <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
                 <Grid container sx={{ marginTop: 1 }}>
                     <Grid item xs={12} md={8}>
@@ -120,7 +123,7 @@ function ProfileForm() {
                             />
                         </Card>
                     </Grid>
-                    <Stack alignItems="center" sx={{ margin: 2, textAlign: "center", width: "100%" }}>
+                    <Stack alignItems="center" sx={{ margin: 1, textAlign: "center", width: "100%" }}>
                         <LoadingButton
                             sx={{ fontSize: { xs: "0.6rem", md: "1rem" } }}
                             type="submit"

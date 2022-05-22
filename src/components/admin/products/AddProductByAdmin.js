@@ -1,13 +1,12 @@
 import { LoadingButton } from '@mui/lab';
 import { Box, Button, Container, Dialog, Typography } from '@mui/material';
-import React, { useCallback } from 'react'
+import React from 'react';
 import { useDispatch, useSelector, } from 'react-redux'
-// import { addProductByAdmin } from '../../../features/products/productSlice'
-import { FormProvider, FTextField, FUploadImage } from '../../form';
+import { FormProvider, FTextField } from '../../form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useForm } from 'react-hook-form';
-import { addProductByAdmin } from '../../../features/products/productSlice';
+import { addProductByAdmin } from '../../../features/user/products/productSlice';
 
 const AddNewProducts = Yup.object().shape({
     name: Yup.string().required("Missing product name"),
@@ -19,8 +18,8 @@ const AddNewProducts = Yup.object().shape({
 
 const defaultValues = {
     name: "",
-    price: 0,
-    quantity: 0,
+    price: "",
+    quantity: "",
     categories: "",
     imageUrl: "",
     description: "",
@@ -40,27 +39,13 @@ function AddProductByAdmin() {
 
     const {
         handleSubmit,
-        setValue,
+        reset,
         formState: { isSubmitting }
     } = methods;
 
-    const handleDrop = useCallback(
-        (acceptedFiles) => {
-            const file = acceptedFiles[0];
-            if (file) {
-                setValue(
-                    "imageUrl",
-                    Object.assign(file, {
-                        preview: URL.createObjectURL(file),
-                    })
-                );
-            }
-        },
-        [setValue]
-    );
-
     const onSubmit = (data) => {
         dispatch(addProductByAdmin({ ...data }));
+        reset()
     }
 
     const handleClickOpen = () => {
@@ -89,7 +74,7 @@ function AddProductByAdmin() {
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
-                maxWidth="md"
+                fullWidth
             >
                 <Container sx={{
                     height: "350px"
@@ -101,41 +86,33 @@ function AddProductByAdmin() {
                     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                         <Box sx={{
                             display: "flex",
+                            justifyContent: "center",
                             mt: 2
                         }}>
-                            <Box sx={{
-                                mr: 4,
-                                width: "80%"
-                            }}>
+                            <Box >
+                                <Box sx={{ display: "flex" }}>
+                                    <FTextField
+                                        name="name" label="Product name" sx={{ mr: 1 }}
+                                    />
+                                    <FTextField name="categories" label="Categories"
+                                    />
+                                </Box>
+                                <Box sx={{ display: "flex" }}>
+                                    <FTextField
+                                        name="price" label="Price" sx={{ mr: 1 }}
+                                    />
+                                    <FTextField
+                                        name="quantity" label="Quantity"
+                                    />
+                                </Box>
                                 <FTextField
-                                    name="name" label="Product name" autoFocus
-                                />
-                                <FTextField name="categories" label="Categories"
-                                />
-                                <FTextField
-                                    name="price" label="Price"
-                                />
-                                <FTextField
-                                    name="quantity" label="Quantity"
+                                    name="imageUrl" label="Image"
                                 />
                                 <FTextField
                                     multiline rows={2} name="description" label="Description"
                                 />
-                            </Box>
-                            <Box sx={{
-                                width: "100%",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "space-between",
-                                ml: 2
-                            }}>
-                                <FUploadImage
-                                    name="imageUrl"
-                                    accept="image/*"
-                                    maxSize={3145728}
-                                    onDrop={handleDrop}
-                                />
                                 <LoadingButton
+                                    sx={{ mt: 2 }}
                                     variant="contained"
                                     type="submit"
                                     loading={isSubmitting || isLoading}

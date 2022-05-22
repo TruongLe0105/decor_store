@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import apiService from "../../app/apiService";
+import apiService from "../../../app/apiService";
 
 const initialState = {
     isLoading: false,
     error: null,
     productsById: {},
     currentPageProducts: [],
+    singleProductChanged: null,
+    quantityProducts: null,
 };
 
 const slice = createSlice({
@@ -57,19 +59,14 @@ const slice = createSlice({
             state.error = null;
 
             const { product } = action.payload;
-            state.singleProductChange = product;
+            state.singleProductChanged = product;
         },
         deleteProductByAdminSuccess(state, action) {
             state.isLoading = false;
             state.error = null;
 
             const { products } = action.payload;
-            console.log(products)
-            products.forEach((product) => {
-                state.productsById[product._id] = product;
-                if (!state.currentPageProducts.includes(product._id))
-                    state.currentPageProducts.push(product._id);
-            });
+            state.quantityProducts = products?.length
         },
     },
 }

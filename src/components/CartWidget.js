@@ -4,7 +4,7 @@ import ShopOutlinedIcon from '@mui/icons-material/ShopOutlined';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../hooks/useAuth"
-import { getProductInCart } from "../features/cart/cartSlice";
+import { getProductInCart } from "../features/user/cart/cartSlice";
 
 
 
@@ -26,7 +26,6 @@ function CartWidget() {
 
     return (
         <>
-            {/* {user && ( */}
             <Badge
                 sx={{
                     position: "fixed",
@@ -45,7 +44,6 @@ function CartWidget() {
                     height: { xs: "20px", md: "35px" }
                 }} />
             </Badge>
-            {/* )} */}
         </>
     );
 }
