@@ -36,7 +36,10 @@ function StatusHandle({ status, orderId }) {
     }}>
       {status}
       <PendingIcon
-        sx={{ color: "green" }}
+        sx={{
+          color: "green",
+          cursor: "pointer"
+        }}
         onClick={handleClickOpen}
       />
       <Dialog

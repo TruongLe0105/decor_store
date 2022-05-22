@@ -64,7 +64,7 @@ function Collections({ collection }) {
             <Box
                 sx={{
                     display: "flex",
-                    alignItems: "center",
+                    alignItems: "flex-end",
                     width: "100%",
                     justifyContent: "space-between",
                 }}>
