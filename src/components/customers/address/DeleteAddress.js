@@ -6,12 +6,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { checkout } from '../features/user/cart/cartSlice';
+import { deleteAddress } from '../../../features/user/userSlice';
 
-function ConfirmCheckout({ cartProducts, delivery, totalPrice, user }) {
+function DeleteAddress({ addressId }) {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -22,21 +20,20 @@ function ConfirmCheckout({ cartProducts, delivery, totalPrice, user }) {
         setOpen(false);
     };
 
-    const handleCheckout = () => {
+    const handleDeleteAddress = () => {
         handleClose();
-        const order = { cartProducts, delivery, totalPrice, user };
-        dispatch(checkout({ ...order }));
-        navigate("/checkout/completed");
-    };
-
+        dispatch(deleteAddress({ addressId }));
+    }
 
     return (
         <div>
-            <Typography onClick={handleClickOpen}>
-
-                <Button variant="outlined">
-                    Thanh Toán
-                </Button>
+            <Typography sx={{
+                textDecoration: "underline",
+                fontSize: { xs: "0.7rem", md: "1rem" },
+                marginLeft: 2
+            }}
+                onClick={handleClickOpen}>
+                Xóa
             </Typography>
             <Dialog
                 open={open}
@@ -45,13 +42,13 @@ function ConfirmCheckout({ cartProducts, delivery, totalPrice, user }) {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogContent>
-                    <DialogContentText id="alert-dialog-description" autoFocus>
-                        Xác nhận thanh toán?
+                    <DialogContentText sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} id="alert-dialog-description">
+                        Xác nhận xóa địa chỉ này?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleCheckout} autoFocus>Xác nhận</Button>
-                    <Button onClick={handleClose}>
+                    <Button sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleDeleteAddress} autoFocus>Xác nhận</Button>
+                    <Button sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleClose}>
                         Hủy
                     </Button>
                 </DialogActions>
@@ -60,4 +57,4 @@ function ConfirmCheckout({ cartProducts, delivery, totalPrice, user }) {
     );
 };
 
-export default ConfirmCheckout;
+export default DeleteAddress;

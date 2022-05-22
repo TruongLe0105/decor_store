@@ -11,7 +11,8 @@ import { getProducts } from '../features/user/products/productSlice';
 function SearchPage() {
     const dispatch = useDispatch();
     let [searchParams, setSearchParams] = useSearchParams();
-    const name = searchParams.get("q")
+    const name = searchParams.get("q");
+    if (!name) setSearchParams(searchParams)
 
     const { productsById, currentPageProducts } = useSelector(state => state.product);
     const products = currentPageProducts.map((productId) => productsById[productId]);
@@ -19,10 +20,9 @@ function SearchPage() {
 
     useEffect(() => {
         if (name) {
-            dispatch(getProducts({ limit }));
+            dispatch(getProducts({ limit, name }));
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dispatch, limit]);
+    }, [dispatch, limit, name]);
 
     return (
         <>

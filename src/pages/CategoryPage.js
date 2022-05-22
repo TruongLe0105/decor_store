@@ -1,8 +1,8 @@
-import { Collections } from '@mui/icons-material';
 import { Container, Grid, Pagination, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Collections from '../components/customers/address/Collections';
 import ProductCard from '../features/user/products/ProductCard';
 import { getProducts, resetProducts } from '../features/user/products/productSlice';
 
@@ -27,9 +27,8 @@ function CategoryPage() {
     console.log("products", products)
 
     useEffect(() => {
-        const limit = 5;
         if (categories) {
-            dispatch(getProducts({ categories, page, limit }));
+            dispatch(getProducts({ categories, page }));
             dispatch(resetProducts());
         }
     }, [dispatch, categories, page]);
@@ -42,7 +41,7 @@ function CategoryPage() {
             }}>
                 <Typography
                     sx={{
-                        fontSize: { xs: "1rem", md: "1.5rem" },
+                        fontSize: { xs: "1rem", md: "1.8rem" },
                         mb: 1
                     }}
                 >{categories}</Typography>
@@ -53,12 +52,15 @@ function CategoryPage() {
                         </Grid>
                     ))}
                 </Grid>
-                <Pagination
-                    size="small"
-                    count={totalPage}
-                    page={page}
-                    onChange={(e, page) => setPage(page)}
-                />
+                {totalPage > 1 && (
+                    <Pagination
+                        size="small"
+                        count={totalPage}
+                        page={page}
+                        onChange={(e, page) => setPage(page)}
+                        sx={{ mt: 1 }}
+                    />
+                )}
             </Container>
         </>
     );

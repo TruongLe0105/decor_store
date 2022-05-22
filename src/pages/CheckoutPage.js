@@ -13,12 +13,11 @@ import { Link as RouterLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../hooks/useAuth";
-
-
-import CheckoutDelivery from "../components/CheckoutDelivery";
-import CheckoutSummary from "../components/CheckoutSummary";
 import { getProductInCart } from "../features/user/cart/cartSlice";
-import CartProductList from "../components/CartProductList";
+import CartProductList from "../components/customers/cart/CartProductList";
+import CheckoutDelivery from "../components/customers/checkout/CheckoutDelivery";
+import CheckoutSummary from "../components/customers/checkout/CheckoutSummary";
+
 
 
 const STEPS = ["Giỏ hàng", "Địa chỉ", "Thanh toán"];

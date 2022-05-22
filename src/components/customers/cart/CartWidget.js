@@ -3,8 +3,11 @@ import React, { useEffect } from "react";
 import ShopOutlinedIcon from '@mui/icons-material/ShopOutlined';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import useAuth from "../hooks/useAuth"
-import { getProductInCart } from "../features/user/cart/cartSlice";
+
+import useAuth from "../../../hooks/useAuth";
+import { getProductInCart } from "../../../features/user/cart/cartSlice";
+
+
 
 
 
@@ -28,10 +31,10 @@ function CartWidget() {
         <>
             <Badge
                 sx={{
-                    position: "fixed",
+                    // position: "fixed",
+                    // zIndex: 999,
                     mt: 1,
-                    zIndex: 999,
-                    right: { xs: "15%", md: "11%" },
+                    // right: { xs: "15%", md: "11%" },
                     cursor: "pointer",
                 }}
                 badgeContent={user ? totalProducts : ""}

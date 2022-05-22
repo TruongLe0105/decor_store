@@ -2,11 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { FormProvider, FTextField } from "./form";
 import { Container, Stack, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { LoadingButton } from "@mui/lab";
-import { setDelivery } from "../features/user/cart/cartSlice";
+import { FormProvider, FTextField } from "../../form";
+import { setDelivery } from "../../../features/user/cart/cartSlice";
+
 
 const DeliverySchema = yup.object().shape({
   address: yup.string().required("Nhập địa chỉ nhận hàng "),

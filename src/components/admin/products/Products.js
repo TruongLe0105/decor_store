@@ -63,7 +63,7 @@ function Products({ admin }) {
             }}>
                 <SearchInput handleSubmit={handleSubmit} />
                 <RestartAltIcon
-                    onClick={() => dispatch(getProducts())}
+                    onClick={() => setName("")}
                     sx={{
                         fontSize: { xs: "1.3rem", md: "2rem" },
                         color: "green",

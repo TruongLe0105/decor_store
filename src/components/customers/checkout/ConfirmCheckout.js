@@ -6,10 +6,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { deleteAddress } from '../features/user/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { checkout } from '../../../features/user/cart/cartSlice';
 
-function DeleteAddress({ addressId }) {
+function ConfirmCheckout({ cartProducts, delivery, totalPrice, user }) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -20,20 +22,21 @@ function DeleteAddress({ addressId }) {
         setOpen(false);
     };
 
-    const handleDeleteAddress = () => {
+    const handleCheckout = () => {
         handleClose();
-        dispatch(deleteAddress({ addressId }));
-    }
+        const order = { cartProducts, delivery, totalPrice, user };
+        dispatch(checkout({ ...order }));
+        navigate("/checkout/completed");
+    };
+
 
     return (
         <div>
-            <Typography sx={{
-                textDecoration: "underline",
-                fontSize: { xs: "0.7rem", md: "1rem" },
-                marginLeft: 2
-            }}
-                onClick={handleClickOpen}>
-                Xóa
+            <Typography onClick={handleClickOpen}>
+
+                <Button variant="outlined">
+                    Thanh Toán
+                </Button>
             </Typography>
             <Dialog
                 open={open}
@@ -42,13 +45,13 @@ function DeleteAddress({ addressId }) {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogContent>
-                    <DialogContentText sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} id="alert-dialog-description">
-                        Xác nhận xóa địa chỉ này?
+                    <DialogContentText id="alert-dialog-description" autoFocus>
+                        Xác nhận thanh toán?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleDeleteAddress} autoFocus>Xác nhận</Button>
-                    <Button sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleClose}>
+                    <Button onClick={handleCheckout} autoFocus>Xác nhận</Button>
+                    <Button onClick={handleClose}>
                         Hủy
                     </Button>
                 </DialogActions>
@@ -57,4 +60,4 @@ function DeleteAddress({ addressId }) {
     );
 };
 
-export default DeleteAddress;
+export default ConfirmCheckout;

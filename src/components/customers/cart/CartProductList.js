@@ -12,12 +12,13 @@ import {
 import React from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useDispatch } from "react-redux";
-import { LIMIT_QUANTITY_PRODUCT } from "../app/config";
-
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import { fCurrency } from "../utils/numberFormat";
-import { addProductsToCart } from "../features/user/cart/cartSlice";
+
+import { addProductsToCart } from "../../../features/user/cart/cartSlice";
+import { LIMIT_QUANTITY_PRODUCT } from "../../../app/config";
+import { fCurrency } from "../../../utils/numberFormat";
+
 
 function CartProductList({ cart, setActiveStep }) {
     const dispatch = useDispatch();

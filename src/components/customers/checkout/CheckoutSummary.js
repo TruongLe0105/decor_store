@@ -13,9 +13,11 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import useAuth from "../hooks/useAuth";
-import { fCurrency } from "../utils/numberFormat";
+
+import useAuth from "../../../hooks/useAuth";
+import { fCurrency } from "../../../utils/numberFormat";
 import ConfirmCheckout from "./ConfirmCheckout";
+
 
 function CheckoutSummary() {
   const { cart, delivery } = useSelector(state => state.cart);

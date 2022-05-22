@@ -50,7 +50,9 @@ function SortMenu() {
                 onClick={handleClick}
                 variant="outlined"
                 sx={{
-                    mr: { xs: 12, md: 30 },
+                    mt: 1,
+                    ml: 1,
+                    mr: { xs: 2, md: 5 },
                     width: { md: "180px", xs: "100px" },
                     height: { xs: "20px", md: "30px" },
                     fontSize: { xs: "0.5rem", md: "1rem" }

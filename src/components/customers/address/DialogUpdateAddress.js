@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Card, Typography, Dialog, Container, Box } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
-import { FormProvider, FTextField } from './form';
 import { useForm } from 'react-hook-form';
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { updateAddress } from '../features/user/userSlice';
 import { LoadingButton } from '@mui/lab';
+
+import { updateAddress } from '../../../features/user/userSlice';
+import { FormProvider, FTextField } from '../../form';
 
 const AddNewAddress = Yup.object().shape({
     receiver: Yup.string().required("Nhập họ và tên"),

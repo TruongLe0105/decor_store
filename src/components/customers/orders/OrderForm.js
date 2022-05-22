@@ -13,8 +13,8 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getListOrder } from "../../features/user/order/orderSlice";
-import { fCurrency } from "../../utils/numberFormat";
+import { getListOrder } from "../../../features/user/order/orderSlice";
+import { fCurrency } from "../../../utils/numberFormat";
 
 function OrderForm({ status }) {
     const dispatch = useDispatch();

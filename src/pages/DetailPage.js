@@ -9,10 +9,10 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import useAuth from '../hooks/useAuth';
 import { LIMIT_QUANTITY_PRODUCT } from '../app/config';
-import Collection from "../components/Collections";
 import { fCurrency } from '../utils/numberFormat';
 import { getProductDetail, resetProducts } from '../features/user/products/productSlice';
 import { addProductsToCart } from '../features/user/cart/cartSlice';
+import Collections from '../components/customers/address/Collections';
 
 
 function DetailPage() {
@@ -76,7 +76,7 @@ function DetailPage() {
 
     return (
         <>
-            <Collection />
+            <Collections />
             <Container sx={{
                 mt: { xs: 12, md: 16 },
                 height: "100%",

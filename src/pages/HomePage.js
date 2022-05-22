@@ -1,9 +1,9 @@
 import React from 'react';
-import Collection from "../components/Collections";
 import useAuth from '../hooks/useAuth';
 import AdminRole from '../components/admin/AdminRole';
 import { Stack } from '@mui/material';
 import ProductList from '../features/user/products/ProductList';
+import Collections from '../components/customers/address/Collections';
 
 function HomePage() {
 
@@ -19,7 +19,7 @@ function HomePage() {
             {role === "admin" && <AdminRole admin={role} />}
             {role !== "admin" && (
                 <div>
-                    <Collection />
+                    <Collections />
                     <ProductList />
                 </div>
             )}

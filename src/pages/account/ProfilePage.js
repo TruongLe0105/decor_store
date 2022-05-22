@@ -8,7 +8,7 @@ import Profile from "../../features/user/ProfileForm";
 import AddressForm from "../../features/user/AddressForm";
 import UpdatePassword from "../../features/user/PasswordForm";
 import SummarizeIcon from '@mui/icons-material/Summarize';
-import PurchaseForm from "../../components/customers/PurchaseForm";
+import PurchaseForm from "../../components/customers/orders/PurchaseForm";
 
 function ProfilePage() {
     const { user } = useAuth();

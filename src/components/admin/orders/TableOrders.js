@@ -67,8 +67,7 @@ function TableOrders({ orders }) {
                 {updatedAt}
               </TableCell >
               {status === "pending" && (
-                <StatusHandle
-                  orderId={_id} status={status} />
+                <StatusHandle orderId={_id} status={status} />
               )}
               {status === "shipping" && (
                 <TableCell sx={{

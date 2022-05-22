@@ -2,9 +2,9 @@ import { Box, Menu, MenuItem, Stack, Typography, Link } from '@mui/material';
 import React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
-import "../index.css";
-import CartWidget from './CartWidget';
-import SortMenu from './collections/SortMenu';
+import CartWidget from '../cart/CartWidget';
+import SortMenu from '../../collections/SortMenu';
+import "../../../index.css"
 
 function Collections({ collection }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -64,7 +64,7 @@ function Collections({ collection }) {
             <Box
                 sx={{
                     display: "flex",
-                    alignItems: "flex-end",
+                    alignItems: "center",
                     width: "100%",
                     justifyContent: "space-between",
                 }}>
@@ -101,8 +101,12 @@ function Collections({ collection }) {
                         }}
                     >{collection}</Typography>
                 </Box>
-                <CartWidget />
-                <SortMenu />
+                <Box sx={{
+                    display: "flex"
+                }}>
+                    <CartWidget />
+                    <SortMenu />
+                </Box>
             </Box>
         </Stack >
     )

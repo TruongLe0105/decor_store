@@ -151,7 +151,7 @@ function Orders() {
                                 sx={{
                                     fontSize: { xs: "1.3rem", md: "2rem" },
                                     color: "green",
-                                    mr: { xs: 0, md: 40 },
+                                    mr: 14,
                                     cursor: "pointer"
                                 }} />
                             <Button
