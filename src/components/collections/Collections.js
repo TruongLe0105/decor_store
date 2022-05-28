@@ -1,15 +1,13 @@
 import { Box, Menu, MenuItem, Stack, Typography, Link, Breadcrumbs } from '@mui/material';
 import React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CartWidget from '../customers/cart/CartWidget';
 import SortMenu from './SortMenu';
 
 function Collections({ collection, status }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const navigate = useNavigate();
-    const params = useParams();
-    console.log(params.id)
     const categories = ["Mô hình trang trí", "Cây cảnh", "Khung tranh treo tường"]
 
     const handleMenuOpen = Boolean(anchorEl);
@@ -83,7 +81,7 @@ function Collections({ collection, status }) {
                 >
                     <Link
                         sx={{
-                            fontSize: { xs: "0.8rem", sm: "1.3rem", md: "1.5rem" },
+                            fontSize: { xs: "0.9rem", sm: "1.3rem", md: "1.5rem" },
                             cursor: "pointer",
                         }}
                         underline="none"
@@ -92,7 +90,7 @@ function Collections({ collection, status }) {
                         <Typography
                             onClick={handleOpenMenuCategory}
                             sx={{
-                                fontSize: { xs: "0.7rem", sm: "1.1rem", md: "1.3rem" },
+                                fontSize: { xs: "0.8rem", sm: "1.1rem", md: "1.3rem" },
                                 cursor: "pointer"
                             }}
                         >Danh Mục</Typography>
@@ -105,14 +103,16 @@ function Collections({ collection, status }) {
                     {collection && (
                         <Typography
                             sx={{
-                                fontSize: { xs: "0.5rem", sm: "1.1rem", md: "1.2rem" },
+                                display: { xs: "none", sm: "block" },
+                                fontSize: { xs: "0.6rem", sm: "1.1rem", md: "1.2rem" },
                             }}
                         >{collection}</Typography>
                     )}
                 </Breadcrumbs>
                 {categoriesMenu}
                 <Box sx={{
-                    display: "flex"
+                    display: "flex",
+                    alignItems: "center"
                 }}>
                     <CartWidget />
                     {status !== "prevent" && <SortMenu />}

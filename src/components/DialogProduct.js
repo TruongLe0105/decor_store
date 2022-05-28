@@ -86,7 +86,7 @@ function DialogProduct({ product }) {
                 }
             }}>
                 <PreviewIcon sx={{
-                    fontSize: { xs: "0.7rem", sm: "1.1rem" }
+                    fontSize: { xs: "0.8rem", sm: "1.1rem" }
                 }} />
             </Button>
             <Dialog

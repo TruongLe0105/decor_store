@@ -58,7 +58,7 @@ function ProductList() {
                 <DividerText text="MÔ HÌNH TRANG TRÍ" />
                 <Grid container spacing={1}>
                     {arrCategoryModel.length !== 0 && arrCategoryModel.map(product => (
-                        <Grid key={product._id} item xs={4} sm={4} md={3}>
+                        <Grid key={product._id} item xs={6} sm={4} md={3}>
                             <ProductCard product={product} />
                         </Grid>
                     ))

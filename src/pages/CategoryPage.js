@@ -24,7 +24,6 @@ function CategoryPage() {
     } = useSelector(state => state.product)
 
     const products = currentPageProducts.map(productId => productsById[productId]);
-    console.log("products", products)
 
     useEffect(() => {
         if (categories) {

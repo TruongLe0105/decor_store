@@ -68,16 +68,15 @@ function ProductCard({ product, admin }) {
             <Card sx={{
                 ...cardStyle,
                 position: "relative",
-                maxWidth: { xs: "200px", sm: "340px" },
-                minHeight: { xs: "210px", sm: "380px" },
-                mx: { xs: 1, md: 0 },
+                maxWidth: { xs: "200px", sm: "340px", },
+                minHeight: { xs: "180px", sm: "340px", md: "420px" },
+                // mx: { xs: 1, md: 0 }
             }}>
                 <CardMedia
                     component="img"
                     image={product.imageUrl}
                     alt={product.name}
                     sx={{
-                        height: { xs: "150px", sm: "250px" },
                         position: "absolute",
                         cursor: "pointer",
                     }}
@@ -85,9 +84,11 @@ function ProductCard({ product, admin }) {
                 />
                 <CardContent sx={{
                     position: "absolute",
-                    top: { xs: "69%", sm: "72%" },
+                    top: { xs: "60%", sm: "72%" },
                     width: "100%",
                     display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                     flexDirection: "column",
                 }}>
                     <Link
@@ -118,10 +119,8 @@ function ProductCard({ product, admin }) {
                 <CardActions
                     sx={{
                         position: "absolute",
-                        top: { xs: "71%", sm: "68%" },
-                        textAlign: "center",
+                        top: { xs: "58%", sm: "68%" },
                         width: "100%",
-                        height: "10%"
                     }}>
                     <Box
                         sx={{
@@ -141,7 +140,7 @@ function ProductCard({ product, admin }) {
                                 onClick={() => HandleAddToCart()}
                             >
 
-                                <AddShoppingCartIcon sx={{ fontSize: { xs: "0.7rem", sm: "1.1rem" } }} />
+                                <AddShoppingCartIcon sx={{ fontSize: { xs: "0.8rem", sm: "1.1rem" } }} />
                             </Button>
                         )}
                         <DialogProduct product={product} />
