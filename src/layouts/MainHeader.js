@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { Link, Divider, Stack, CardMedia } from '@mui/material';
+import { Link, Stack, CardMedia } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import logoImg from "../logo.png";
 import useAuth from '../hooks/useAuth';
@@ -21,27 +21,27 @@ function MainHeader() {
     };
 
     const AccessHandle = () => (
-        <div style={{ display: "flex" }}>
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+        }}>
             <Link
                 color="white"
                 sx={{
-                    margin: 1,
-                    fontSize: { xs: "0.5rem", sm: "1rem" }
+                    ml: 1,
+                    fontSize: { xs: "0.7rem", sm: "1.1rem" }
                 }}
                 underline="none"
                 component={RouterLink}
                 to="/register ">
                 Đăng Ký
             </Link >
-            <Divider
-                orientation="vertical"
-                variant="middle"
-                flexItem />
+            <span>/</span>
             <Link
                 color="white"
                 sx={{
-                    margin: 1,
-                    fontSize: { xs: "0.5rem", sm: "1rem" }
+                    fontSize: { xs: "0.7rem", sm: "1.1rem" }
                 }}
                 underline="none"
                 component={RouterLink} to='/login'>Đăng Nhập</Link >

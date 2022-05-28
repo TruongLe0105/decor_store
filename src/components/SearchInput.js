@@ -13,7 +13,7 @@ function SearchInput({ handleSubmit }) {
     };
 
     return (
-        <form onSubmit={onSubmit} style={{ width: "45%" }}>
+        <form onSubmit={onSubmit} style={{ width: "43%" }}>
             <TextField
                 size="small"
                 placeholder="Tìm kiếm"

@@ -80,13 +80,12 @@ function DialogProduct({ product }) {
 
     return (
         <div>
-            <Button onClick={handleClickOpen} sx={{
-                border: {
-                    xs: "none", sm: "1px solid #C4CDD5"
-                }
-            }}>
+            <Button
+                variant="outlined"
+                onClick={handleClickOpen}
+            >
                 <PreviewIcon sx={{
-                    fontSize: { xs: "0.8rem", sm: "1.1rem" }
+                    fontSize: { xs: "1rem", sm: "1.2rem" }
                 }} />
             </Button>
             <Dialog

@@ -50,11 +50,10 @@ function SortMenu() {
                 variant="outlined"
                 sx={{
                     mt: 1,
-                    ml: 1,
-                    mr: { xs: 1, sm: 5 },
-                    width: { xs: "100px", sm: "140px", md: "180px" },
-                    height: { xs: "20px", sm: "25px", md: "30px" },
-                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                    mr: { xs: 1, sm: 4 },
+                    width: { xs: "120px", sm: "140px", md: "180px" },
+                    height: { xs: "25px", sm: "25px", md: "30px" },
+                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" }
                 }}
             >
                 Sắp xếp theo:

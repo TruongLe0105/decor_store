@@ -42,7 +42,7 @@ function Collections({ collection, status }) {
         >
             <Box >
                 {categories.length && categories.map((category, index) => (
-                    <MenuItem key={index} sx={{ fontSize: { xs: "0.6rem", sm: "1.1rem" } }} onClick={() => handleNavigateCategory(category)}>
+                    <MenuItem key={index} sx={{ fontSize: { xs: "0.8rem", sm: "1.1rem" } }} onClick={() => handleNavigateCategory(category)}>
                         {category}
                     </MenuItem>
                 ))}
@@ -81,7 +81,7 @@ function Collections({ collection, status }) {
                 >
                     <Link
                         sx={{
-                            fontSize: { xs: "0.9rem", sm: "1.3rem", md: "1.5rem" },
+                            fontSize: { xs: "1rem", sm: "1.3rem", md: "1.5rem" },
                             cursor: "pointer",
                         }}
                         underline="none"
@@ -90,7 +90,7 @@ function Collections({ collection, status }) {
                         <Typography
                             onClick={handleOpenMenuCategory}
                             sx={{
-                                fontSize: { xs: "0.8rem", sm: "1.1rem", md: "1.3rem" },
+                                fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.3rem" },
                                 cursor: "pointer"
                             }}
                         >Danh Mục</Typography>
@@ -100,15 +100,15 @@ function Collections({ collection, status }) {
                             }}
                         />
                     </Box>
-                    {collection && (
-                        <Typography
-                            sx={{
-                                display: { xs: "none", sm: "block" },
-                                fontSize: { xs: "0.6rem", sm: "1.1rem", md: "1.2rem" },
-                            }}
-                        >{collection}</Typography>
-                    )}
                 </Breadcrumbs>
+                {collection && (
+                    <Typography
+                        sx={{
+                            display: { xs: "none", sm: "block" },
+                            fontSize: { xs: "0.6rem", sm: "1.1rem", md: "1.2rem" },
+                        }}
+                    >{collection}</Typography>
+                )}
                 {categoriesMenu}
                 <Box sx={{
                     display: "flex",

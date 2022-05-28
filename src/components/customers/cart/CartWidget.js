@@ -41,8 +41,8 @@ function CartWidget() {
             >
                 <ShopOutlinedIcon sx={{
                     color: "#0097a7",
-                    width: { xs: "20px", sm: "30px", md: "35px" },
-                    height: { xs: "20px", sm: "30px", md: "35px" }
+                    width: { xs: "25px", sm: "30px", md: "35px" },
+                    height: { xs: "25px", sm: "30px", md: "35px" }
                 }} />
             </Badge>
         </>

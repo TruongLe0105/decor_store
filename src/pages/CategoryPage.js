@@ -36,17 +36,20 @@ function CategoryPage() {
         <>
             <Collections collection={categories} />
             <Container sx={{
-                mt: { xs: 12, sm: 16 }
+                mt: { xs: 10, sm: 16 }
             }}>
                 <Typography
                     sx={{
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.8rem" },
+                        display: { xs: "block", sm: "none" },
+                        fontSize: { xs: "0.9rem", sm: "1.4rem", md: "1.7rem" },
                         mb: 1,
+                        mt: 1,
+                        fontFamily: "cursive"
                     }}
                 >{categories}</Typography>
                 <Grid container spacing={1}>
                     {products.length > 0 && products.map(product => (
-                        <Grid key={product._id} item xs={4} sm={4} lg={3}>
+                        <Grid key={product._id} item xs={6} sm={4} lg={3}>
                             <ProductCard product={product} />
                         </Grid>
                     ))}

@@ -69,8 +69,7 @@ function ProductCard({ product, admin }) {
                 ...cardStyle,
                 position: "relative",
                 maxWidth: { xs: "200px", sm: "340px", },
-                minHeight: { xs: "180px", sm: "340px", md: "420px" },
-                // mx: { xs: 1, md: 0 }
+                minHeight: { xs: "250px", sm: "340px", md: "420px" },
             }}>
                 <CardMedia
                     component="img"
@@ -84,7 +83,7 @@ function ProductCard({ product, admin }) {
                 />
                 <CardContent sx={{
                     position: "absolute",
-                    top: { xs: "60%", sm: "72%" },
+                    top: { xs: "75%", sm: "74%", md: "72%" },
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
@@ -97,7 +96,7 @@ function ProductCard({ product, admin }) {
                             color: "black",
                             fontFamily: "Helvetica",
                             blur: "5px",
-                            fontSize: { md: "1.3rem", sm: "0.9rem", xs: "0.6rem" },
+                            fontSize: { md: "1.3rem", sm: "1rem", xs: "0.7rem" },
                             mb: { xs: 0, sm: 1 }
                         }}
                         component={RouterLink}
@@ -109,7 +108,7 @@ function ProductCard({ product, admin }) {
                         sx={{
                             color: "red",
                             fontFamily: "serif",
-                            fontSize: { md: "1.3rem", sm: "0.9rem", xs: "0.6rem" },
+                            fontSize: { md: "1.3rem", sm: "1rem", xs: "0.7rem" },
                         }}
                     >
                         {fCurrency(product.price)}đ
@@ -119,7 +118,7 @@ function ProductCard({ product, admin }) {
                 <CardActions
                     sx={{
                         position: "absolute",
-                        top: { xs: "58%", sm: "68%" },
+                        top: { xs: "70%", sm: "68%" },
                         width: "100%",
                     }}>
                     <Box
@@ -130,17 +129,14 @@ function ProductCard({ product, admin }) {
                         }}>
                         {!admin && (
                             <Button
+                                variant="outlined"
                                 sx={{
                                     ...cardStyle,
-                                    marginRight: { xs: 0, sm: 1 },
-                                    border: {
-                                        xs: "none", sm: "1px solid #C4CDD5"
-                                    }
+                                    mr: 1,
                                 }}
                                 onClick={() => HandleAddToCart()}
                             >
-
-                                <AddShoppingCartIcon sx={{ fontSize: { xs: "0.8rem", sm: "1.1rem" } }} />
+                                <AddShoppingCartIcon sx={{ fontSize: { xs: "1rem", sm: "1.2rem" } }} />
                             </Button>
                         )}
                         <DialogProduct product={product} />
