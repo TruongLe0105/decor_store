@@ -131,7 +131,7 @@ function CartProductList({ cart, setActiveStep }) {
                                     </Box>
                                     <Typography
                                         sx={{
-                                            fontSize: { xs: "0.4rem", sm: "0.7rem", md: "1rem" },
+                                            fontSize: { xs: "0.5rem", sm: "0.7rem", md: "1rem" },
                                             ml: { xs: 0, md: 1 },
                                             fontFamily: "monospace",
                                         }}
@@ -141,6 +141,7 @@ function CartProductList({ cart, setActiveStep }) {
                                     sx={{
                                         display: "flex",
                                         width: "100%",
+                                        ml: 1
                                     }} >
                                     <QuantityCounter
                                         dispatch={dispatch}
@@ -151,14 +152,14 @@ function CartProductList({ cart, setActiveStep }) {
                                 </TableCell>
                                 <TableCell
                                     sx={{
-                                        fontSize: { xs: "0.4rem", sm: "0.6rem", md: "1rem" },
+                                        fontSize: { xs: "0.5rem", sm: "0.6rem", md: "1rem" },
                                         alignItems: "center",
                                         display: "flex",
                                         width: "100%"
                                     }}>{fCurrency(price)}đ</TableCell>
                                 <TableCell
                                     sx={{
-                                        fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
+                                        fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
                                         alignItems: "center",
                                         display: "flex",
                                         width: "100%",
@@ -242,18 +243,18 @@ function QuantityCounter({ dispatch, quantity, productId, cartId }) {
             alignItems: "center",
         }}>
             <IndeterminateCheckBoxIcon sx={{
-                fontSize: { xs: "0.6rem", sm: "1rem", md: "1.5rem" },
+                fontSize: { xs: "0.8rem", sm: "1rem", md: "1.5rem" },
                 color: "red",
                 display: "flex",
             }} onClick={() => handleDescQuantity()} />
             <Typography
                 sx={{
-                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" }
                 }}
             >{quantity}</Typography>
             <AddBoxIcon onClick={() => handleIncQuantity()}
                 sx={{
-                    fontSize: { xs: "0.6rem", sm: "1rem", md: "1.5rem" },
+                    fontSize: { xs: "0.8rem", sm: "1rem", md: "1.5rem" },
                     color: "green"
                 }}
             />

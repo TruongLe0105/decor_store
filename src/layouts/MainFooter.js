@@ -115,7 +115,8 @@ function MainFooter() {
                     >Hãy nhập email của bạn vào đây để nhận tin!</Typography>
                 </Box>
                 <Box sx={{
-                    color: "#9e9e9e"
+                    color: "#9e9e9e",
+                    display: { xs: "none", sm: "block" }
                 }}>
                     <Typography
                         sx={{

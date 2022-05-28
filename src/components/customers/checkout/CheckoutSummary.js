@@ -193,11 +193,10 @@ function CheckoutSummary({ setActiveStep }) {
                   {quantity}
                 </TableCell>
                 <TableCell
-                  align="center"
+                  align="right"
                   sx={{
-                    fontSize: { xs: "0.4rem", sm: "0.6rem", md: "0.8rem" },
+                    fontSize: { xs: "0.5rem", sm: "0.6rem", md: "0.8rem" },
                     alignItems: "center",
-                    justifyContent: "center",
                     display: "flex",
                     width: { xs: "100%", md: "20%" }
                   }}
@@ -205,7 +204,7 @@ function CheckoutSummary({ setActiveStep }) {
                 <TableCell
                   align="center"
                   sx={{
-                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
+                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
                     alignItems: "center",
                     display: "flex",
                     justifyContent: "center",
@@ -220,21 +219,22 @@ function CheckoutSummary({ setActiveStep }) {
           sx={{
             display: "flex",
             justifyContent: "flex-end",
-            mr: { xs: 3, sm: 0 },
+            mr: { xs: 2, sm: 0 },
             margin: 1
           }}
         >
           <Typography
             sx={{
               fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+              ml: 1
             }}
           >Tổng cộng:</Typography>
           <Typography
             sx={{
               color: "#008e97",
               fontSize: { xs: "0.7rem", sm: "1rem", md: "1.2rem" },
-              mr: { xs: 1, sm: 6, md: 3 },
-              ml: { xs: 2, sm: 1, md: 6 }
+              mr: { xs: 0, sm: 6, md: 3 },
+              ml: { xs: 3, sm: 1, md: 6 }
             }}
           >{fCurrency(cart.totalPrice)}đ
           </Typography>
