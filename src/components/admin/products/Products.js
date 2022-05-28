@@ -1,7 +1,6 @@
 import {
     Container,
     Grid,
-    Stack,
     Typography,
     Box,
     Pagination,

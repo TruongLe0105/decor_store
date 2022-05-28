@@ -17,8 +17,6 @@ import { getProductInCart } from "../features/user/cart/cartSlice";
 import CartProductList from "../components/customers/cart/CartProductList";
 import CheckoutDelivery from "../components/customers/checkout/CheckoutDelivery";
 import CheckoutSummary from "../components/customers/checkout/CheckoutSummary";
-import Collections from "../components/collections/Collections";
-
 
 
 const STEPS = ["Giỏ hàng", "Địa chỉ", "Thanh toán"];
