@@ -38,7 +38,7 @@ function SearchPage() {
                 />
                 <Grid container spacing={1}>
                     {products.length !== 0 && products.map(product => (
-                        <Grid key={product._id} item xs={6} md={4} lg={3}>
+                        <Grid key={product._id} item xs={6} sm={4} md={3}>
                             <ProductCard product={product} />
                         </Grid>
                     ))
