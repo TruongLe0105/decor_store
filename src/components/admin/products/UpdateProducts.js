@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LoadingButton } from '@mui/lab';
-import { Box, Button, Container, Dialog, Typography } from '@mui/material';
+import { Box, Container, Dialog, Typography } from '@mui/material';
 import { FormProvider, FTextField } from '../../form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -57,24 +57,20 @@ function UpdateProduct({ product }) {
 
     return (
         <>
-            <Button
-                variant="text">
-                <CreateIcon
-                    onClick={handleClickOpen}
-                    sx={{
-                        color: "green",
-                        margin: 1,
-                        cursor: "pointer",
-                        fontSize: { xs: "1rem", md: "1.6rem" }
-                    }}
-                />
-            </Button>
+            <CreateIcon
+                onClick={handleClickOpen}
+                sx={{
+                    color: "green",
+                    margin: 1,
+                    cursor: "pointer",
+                    fontSize: { xs: "1rem", sm: "1.4rem" }
+                }}
+            />
             <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
-                maxWidth="md"
             >
                 <Container sx={{
                     height: "350px"

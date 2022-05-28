@@ -63,79 +63,73 @@ function ProfileForm() {
     };
 
     return (
-        <Box >
-            <Typography sx={{
-                fontSize: { xs: "1rem", md: "1.5rem" },
-                textAlign: "center"
-            }}>Hồ sơ của tôi</Typography>
-            <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
-                <Grid container sx={{ marginTop: 1 }}>
-                    <Grid item xs={12} md={8}>
-                        <Card
-                            sx={{
-                                height: "280px",
-                                py: { xs: 2, md: 4 },
-                                px: { xs: 4, md: 2 },
-                                textAlign: "center",
-                                display: "grid",
-                                rowGap: { xs: 0, md: 2 },
-                                columnGap: 2,
-                                gridTemplateColumns: {
-                                    xs: "repeat(1, 1fr)",
-                                    sm: "repeat(2, 1fr)",
-                                },
-                            }}
-                        >
-                            <FTextField name="userName" label="Tên Đăng Nhập" disabled />
-                            <FTextField name="email" label="Email" disabled />
-                            <FTextField name="fullName" label="Họ Tên" />
-                            <FTextField name="country" label="Quốc Gia" />
-                            <FTextField name="city" label="Thành Phố" />
-                            <FTextField name="numberOfPhone" label="Số Điện Thoại" />
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <Card sx={{
-                            py: { xs: 1, md: 7 },
+        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
+            <Grid container sx={{ marginTop: 2 }}>
+                <Grid item xs={12} md={8}>
+                    <Card
+                        sx={{
+                            height: "280px",
+                            py: { xs: 2, md: 4 },
+                            px: { xs: 4, md: 2 },
                             textAlign: "center",
-                            height: { xs: "200px", md: "280px" },
-                        }}>
-                            <FUploadAvatar
-                                name="avatarUrl"
-                                accept="image/*"
-                                maxSize={3145728}
-                                onDrop={handleDrop}
-                                helperText={
-                                    <Typography
-                                        variant="caption"
-                                        sx={{
-                                            mt: { xs: 0, md: 2 },
-                                            mx: "auto",
-                                            display: "block",
-                                            textAlign: "center",
-                                            color: "text.secondary",
-                                        }}
-                                    >
-                                        Allowed *.jpeg, *.jpg, *.png, *.gif
-                                        <br /> max size of {fData(3145728)}
-                                    </Typography>
-                                }
-                            />
-                        </Card>
-                    </Grid>
-                    <Stack alignItems="center" sx={{ margin: 1, textAlign: "center", width: "100%" }}>
-                        <LoadingButton
-                            sx={{ fontSize: { xs: "0.6rem", md: "1rem" } }}
-                            type="submit"
-                            variant="contained"
-                            loading={isSubmitting || isLoading}
-                        >
-                            Lưu
-                        </LoadingButton>
-                    </Stack>
+                            display: "grid",
+                            rowGap: { xs: 0, md: 2 },
+                            columnGap: 2,
+                            gridTemplateColumns: {
+                                xs: "repeat(1, 1fr)",
+                                sm: "repeat(2, 1fr)",
+                            },
+                        }}
+                    >
+                        <FTextField name="userName" label="Tên Đăng Nhập" disabled />
+                        <FTextField name="email" label="Email" disabled />
+                        <FTextField name="fullName" label="Họ Tên" />
+                        <FTextField name="country" label="Quốc Gia" />
+                        <FTextField name="city" label="Thành Phố" />
+                        <FTextField name="numberOfPhone" label="Số Điện Thoại" />
+                    </Card>
                 </Grid>
-            </FormProvider>
-        </Box>
+                <Grid item xs={12} md={4}>
+                    <Card sx={{
+                        py: { xs: 1, md: 7 },
+                        textAlign: "center",
+                        height: { xs: "200px", md: "280px" },
+                    }}>
+                        <FUploadAvatar
+                            name="avatarUrl"
+                            accept="image/*"
+                            maxSize={3145728}
+                            onDrop={handleDrop}
+                            helperText={
+                                <Typography
+                                    variant="caption"
+                                    sx={{
+                                        mt: { xs: 0, md: 2 },
+                                        mx: "auto",
+                                        display: "block",
+                                        textAlign: "center",
+                                        color: "text.secondary",
+                                    }}
+                                >
+                                    Allowed *.jpeg, *.jpg, *.png, *.gif
+                                    <br /> max size of {fData(3145728)}
+                                </Typography>
+                            }
+                        />
+                    </Card>
+                </Grid>
+                <Stack alignItems="center" sx={{ margin: 1, textAlign: "center", width: "100%" }}>
+                    <LoadingButton
+                        sx={{ fontSize: { xs: "0.8rem", md: "1rem" } }}
+                        type="submit"
+                        variant="contained"
+                        loading={isSubmitting || isLoading}
+                    >
+                        Lưu
+                    </LoadingButton>
+                </Stack>
+            </Grid>
+        </FormProvider>
     )
 }
 

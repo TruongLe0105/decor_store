@@ -52,7 +52,7 @@ function DialogNewAddress() {
 
     return (
         <div>
-            <Typography sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} onClick={handleClickOpen}>Thêm Địa Chỉ Mới</Typography>
+            <Typography sx={{ fontSize: { xs: "0.7rem", sm: "1rem" } }} onClick={handleClickOpen}>Thêm Địa Chỉ Mới</Typography>
             <Dialog
                 open={open}
                 onClose={handleClose}

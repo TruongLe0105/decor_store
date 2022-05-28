@@ -59,11 +59,11 @@ function AddProductByAdmin() {
     return (
         <>
             <Box sx={{
-                mr: 2
+                mr: 2,
             }}>
                 <Button
                     sx={{
-                        fontSize: { xs: "0.5rem", md: "1.2rem" }
+                        fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1.1rem" },
                     }}
                     variant='outlined'
                     onClick={handleClickOpen}
@@ -77,10 +77,10 @@ function AddProductByAdmin() {
                 fullWidth
             >
                 <Container sx={{
-                    height: "350px"
+                    height: "350px",
                 }} >
                     <Typography sx={{
-                        fontSize: { xs: "1rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.2rem", md: "1.4rem" },
                         textAlign: "center"
                     }}>ADD PRODUCTS</Typography>
                     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

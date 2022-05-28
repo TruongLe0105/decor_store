@@ -16,7 +16,7 @@ function DividerText({ text }) {
   return (
     <Root>
       <Divider>
-        <Typography sx={{ mb: { xs: 0, md: 2 }, color: "#00a6b1", fontSize: { xs: "1rem", md: "1.8rem" } }}>
+        <Typography sx={{ mb: { xs: 0, sm: 2 }, color: "#00a6b1", fontSize: { xs: "1rem", sm: "1.8rem" } }}>
           {text}
         </Typography>
       </Divider>

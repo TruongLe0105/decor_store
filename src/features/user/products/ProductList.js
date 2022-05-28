@@ -27,9 +27,9 @@ function ProductList() {
         <>
             <Container
                 sx={{
-                    mt: { xs: 12, md: 14 },
+                    mt: { xs: 12, sm: 14 },
                     textAlign: "center",
-                    fontSize: { xs: "0.4rem", md: "1.2rem" }
+                    fontSize: { xs: "0.4rem", sm: "1.2rem" }
                 }}>
                 <DividerText text="SẢN PHẨM NỔI BẬT" />
                 <Divider
@@ -47,9 +47,9 @@ function ProductList() {
                 </Grid>
                 <Button
                     sx={{
-                        marginBottom: { xs: 1, md: 3 },
+                        marginBottom: { xs: 1, sm: 3 },
                         marginTop: 2,
-                        fontSize: { xs: "0.6rem", md: "1.2rem" },
+                        fontSize: { xs: "0.6rem", sm: "1.2rem" },
                         border: "1px solid #C4CDD5"
                     }}
                     onClick={() => navigate("/products/categories/Cây-cảnh")}>
@@ -58,17 +58,16 @@ function ProductList() {
                 <DividerText text="MÔ HÌNH TRANG TRÍ" />
                 <Grid container spacing={1}>
                     {arrCategoryModel.length !== 0 && arrCategoryModel.map(product => (
-                        <Grid key={product._id} item xs={4} md={4} lg={3}>
+                        <Grid key={product._id} item xs={4} sm={4} md={3}>
                             <ProductCard product={product} />
                         </Grid>
                     ))
                     }
                 </Grid>
                 <Button
-                    // size="large"
                     sx={{
                         margin: 2,
-                        fontSize: { xs: "0.6rem", md: "1.2rem" },
+                        fontSize: { xs: "0.6rem", sm: "1.2rem" },
                         border: "1px solid #C4CDD5"
                     }}
                     onClick={() => navigate("/products/categories/Mô-hình-trang-trí")}>

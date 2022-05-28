@@ -35,7 +35,7 @@ function Tabs(theme) {
         },
         textColorInherit: {
           opacity: 1,
-          color: theme.palette.text.secondary,
+          color: theme.palette.text.primary,
         },
       },
     },

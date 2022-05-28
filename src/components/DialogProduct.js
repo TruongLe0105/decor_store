@@ -82,11 +82,11 @@ function DialogProduct({ product }) {
         <div>
             <Button onClick={handleClickOpen} sx={{
                 border: {
-                    xs: "none", md: "1px solid #C4CDD5"
+                    xs: "none", sm: "1px solid #C4CDD5"
                 }
             }}>
                 <PreviewIcon sx={{
-                    fontSize: { xs: "0.7rem", md: "1.1rem" }
+                    fontSize: { xs: "0.7rem", sm: "1.1rem" }
                 }} />
             </Button>
             <Dialog
@@ -103,7 +103,7 @@ function DialogProduct({ product }) {
 
                     <DialogTitle id="alert-dialog-title"
                         sx={{
-                            fontSize: { xs: "0.7rem", md: "1.2rem" },
+                            fontSize: { xs: "0.7rem", sm: "1.2rem" },
                             backgroundColor: "#212121",
                             color: "white"
                         }}
@@ -124,18 +124,18 @@ function DialogProduct({ product }) {
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                             <DialogContentText sx={{
                                 color: "red",
-                                fontSize: { xs: "1rem", md: "2rem" }
+                                fontSize: { xs: "1rem", sm: "2rem" }
                             }}
                             >{fCurrency(product.price)}đ
                             </DialogContentText>
-                            <Typography sx={{ fontWeight: "bold", fontSize: { xs: "0.6rem", md: "1rem" } }}>Số lượng:</Typography>
+                            <Typography sx={{ fontWeight: "bold", fontSize: { xs: "0.6rem", sm: "1rem" } }}>Số lượng:</Typography>
                             <Box sx={{
                                 width: "50%",
                                 display: "flex",
                                 justifyContent: "space-around"
                             }}>
                                 <Button variant="link" onClick={handleRemoveAmount}>
-                                    <RemoveIcon sx={{ fontSize: { xs: "0.7rem", md: "1.2rem" } }} />
+                                    <RemoveIcon sx={{ fontSize: { xs: "0.7rem", sm: "1.2rem" } }} />
                                 </Button>
                                 <input
                                     style={{
@@ -149,26 +149,26 @@ function DialogProduct({ product }) {
                                     onChange={(event) => setValue(event.target.value)}
                                 />
                                 <Button variant="link" onClick={handleAddAmount} >
-                                    <AddIcon sx={{ fontSize: { xs: "0.7rem", md: "1.2rem" } }} />
+                                    <AddIcon sx={{ fontSize: { xs: "0.7rem", sm: "1.2rem" } }} />
                                 </Button>
                             </Box>
                             <DialogActions>
                                 <Button sx={{
                                     border: {
-                                        xs: "none", md: "1px solid #C4CDD5"
+                                        xs: "none", sm: "1px solid #C4CDD5"
                                     }
                                 }}
                                     onClick={handleAddToCart}
                                     color="secondary"
                                 >
                                     <AddShoppingCartIcon sx={{ margin: 1 }} />
-                                    <Typography sx={{ display: { xs: "none", md: "block" } }}>THÊM VÀO GIỎ</Typography>
+                                    <Typography sx={{ display: { xs: "none", sm: "block" } }}>THÊM VÀO GIỎ</Typography>
                                 </Button>
-                                <Typography sx={{ margin: { xs: 0, md: 1 }, fontSize: { xs: "0.5rem", md: "1rem" } }}>Hoặc</Typography>
+                                <Typography sx={{ margin: { xs: 0, sm: 1 }, fontSize: { xs: "0.5rem", sm: "1rem" } }}>Hoặc</Typography>
                                 <Link
                                     onClick={handleOpenDetail}
                                     underline="none"
-                                    sx={{ cursor: "pointer", marginLeft: 1, fontSize: { xs: "0.6rem", md: "1.1rem" } }}
+                                    sx={{ cursor: "pointer", marginLeft: 1, fontSize: { xs: "0.6rem", sm: "1.1rem" } }}
                                 >
                                     Xem chi tiết
                                 </Link>

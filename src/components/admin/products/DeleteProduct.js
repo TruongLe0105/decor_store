@@ -24,17 +24,15 @@ function DeleteProduct({ productId }) {
 
     return (
         <div>
-            <Button variant="text">
-                <DeleteSweepIcon
-                    onClick={handleClickOpen}
-                    sx={{
-                        color: "red",
-                        margin: 1,
-                        cursor: "pointer",
-                        fontSize: { xs: "1rem", md: "1.6rem" }
-                    }}
-                />
-            </Button>
+            <DeleteSweepIcon
+                onClick={handleClickOpen}
+                sx={{
+                    color: "red",
+                    margin: 1,
+                    cursor: "pointer",
+                    fontSize: { xs: "1rem", sm: "1.4rem" }
+                }}
+            />
             <Dialog
                 open={open}
                 onClose={handleClose}

@@ -9,7 +9,7 @@ function HomePage() {
 
     const { user } = useAuth();
 
-    const role = user ? user.role : false;
+    const role = user ? user.role : null;
     return (
         <Stack sx={{
             backgroundColor: "#fafafa",

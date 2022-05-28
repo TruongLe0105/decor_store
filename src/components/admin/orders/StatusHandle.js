@@ -29,11 +29,14 @@ function StatusHandle({ status, orderId }) {
 
   return (
     <TableCell sx={{
-      fontSize: { xs: "0.7rem", md: "0.9rem" },
+      fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1.1rem" },
     }}>
       {status}
       <PendingIcon
-        sx={{ color: "green" }}
+        sx={{
+          color: "green",
+          fontSize: { xs: "1rem", sm: "1.4rem", md: "1.8rem" },
+        }}
         onClick={handleClickOpen}
       />
       <Dialog

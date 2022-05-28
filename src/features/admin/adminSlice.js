@@ -31,7 +31,7 @@ const slice = createSlice({
             state.productsById = {};
             state.currentPageProducts = [];
         },
-        resetOrders(state) {
+        resetOrdersByAdmin(state) {
             state.ordersById = {};
             state.currentPageOrders = [];
         },
@@ -46,7 +46,7 @@ const slice = createSlice({
             state.currentPageUsers = users.map(user => user._id);
             state.totalUsers = count;
         },
-        getListOfOrderSuccess(state, action) {
+        getListOrderByAdminSuccess(state, action) {
             state.isLoading = false;
             state.error = null;
 
@@ -68,7 +68,7 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
-export const { resetOrders } = slice.actions;
+export const { resetOrdersByAdmin } = slice.actions;
 
 export const getListOfUsers = ({ userName, page, limit }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
@@ -83,7 +83,7 @@ export const getListOfUsers = ({ userName, page, limit }) => async (dispatch) =>
     }
 };
 
-export const getListOfOrder = ({ receiver, limit, page, status }) => async (dispatch) => {
+export const getListOrderByAdmin = ({ receiver, limit, page, status }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
         const params = { limit, page };
@@ -92,7 +92,7 @@ export const getListOfOrder = ({ receiver, limit, page, status }) => async (disp
         const response = await apiService.get(`/auth/orders`, {
             params
         });
-        dispatch(slice.actions.getListOfOrderSuccess(response.data));
+        dispatch(slice.actions.getListOrderByAdminSuccess(response.data));
     } catch (error) {
         dispatch(slice.actions.hasError(error.message));
         toast.error(error.message);
@@ -104,7 +104,7 @@ export const updateOrderByAdmin = ({ status, orderId }) => async (dispatch) => {
     try {
         const response = await apiService.put(`/auth/${orderId}`, { status });
         dispatch(slice.actions.updateOrderByAdminSuccess(response.data));
-        // dispatch(resetOrders());
+        // dispatch(resetOrdersByAdmin());
     } catch (error) {
         dispatch(slice.actions.hasError(error.message));
         toast.error(error.message);

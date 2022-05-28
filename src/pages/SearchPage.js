@@ -1,13 +1,11 @@
 import { Container, Divider, Grid } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from 'react-router-dom';
 import { PRODUCTS_HOME_PAGE } from '../app/config';
-import Collections from '../components/collections/Collections';
 import DividerText from '../components/form/DividerText';
 import ProductCard from '../features/user/products/ProductCard';
 import { getProducts } from '../features/user/products/productSlice';
-
+import { useSearchParams } from 'react-router-dom';
 
 function SearchPage() {
     const dispatch = useDispatch();
@@ -27,10 +25,9 @@ function SearchPage() {
 
     return (
         <>
-            <Collections />
             <Container
                 sx={{
-                    mt: { xs: 11, md: 14 },
+                    mt: 1,
                     textAlign: "center"
                 }}>
                 <DividerText text="SẢN PHẨM NỔI BẬT" />

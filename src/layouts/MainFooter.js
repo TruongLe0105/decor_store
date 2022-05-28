@@ -9,15 +9,13 @@ import tiki from "./image/tiki.jpg";
 
 function MainFooter() {
     return (
-        <Stack sx={{
-            mt: 2,
-            zIndex: 1000,
-        }}>
+        <Stack>
             <Box
                 sx={{
+                    mt: { xs: 1, sm: 3 },
                     display: "flex",
                     bgcolor: "#212121",
-                    flexDirection: { md: "row", xs: "column" },
+                    flexDirection: { sm: "row", xs: "column" },
                     justifyContent: "space-between",
                     padding: { md: 2, xs: 1 },
                     color: "#9e9e9e",
@@ -28,7 +26,7 @@ function MainFooter() {
                         sx={{
                             color: "white",
                             mb: { xs: 1, md: 2 },
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            fontSize: { xs: "0.5rem", sm: "0.9rem", md: "1.1rem" }
                         }}
                     >GIỚI THIỆU</Typography>
                     <Box
@@ -36,10 +34,10 @@ function MainFooter() {
                             display: "flex",
                         }}
                     >
-                        <HomeOutlinedIcon sx={{ fontSize: { xs: "0.8rem", md: "1.6rem" } }} />
+                        <HomeOutlinedIcon sx={{ fontSize: { xs: "0.5rem", sm: "1.1rem", md: "1.4rem" } }} />
                         <Typography
                             sx={{
-                                fontSize: { xs: "0.6rem", md: "1.2rem" }
+                                fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                             }}
                         >44 Lê Lợi, Q.Thủ Đức, TPHCM</Typography>
                     </Box>
@@ -48,20 +46,20 @@ function MainFooter() {
                             display: "flex",
                         }}
                     >
-                        <EmailOutlinedIcon sx={{ fontSize: { xs: "0.8rem", md: "1.6rem" } }} />
+                        <EmailOutlinedIcon sx={{ fontSize: { xs: "0.8rem", sm: "1.1rem", md: "1.4rem" } }} />
                         <Typography
                             sx={{
-                                fontSize: { xs: "0.6rem", md: "1.2rem" }
+                                fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                             }}
                         >hello@titus.com</Typography>
                     </Box>
                     <Box
                         sx={{ display: "flex" }}
                     >
-                        <LocalPhoneOutlinedIcon sx={{ fontSize: { xs: "0.8rem", md: "1.6rem" } }} />
+                        <LocalPhoneOutlinedIcon sx={{ fontSize: { xs: "0.8rem", sm: "1.4rem" } }} />
                         <Typography
                             sx={{
-                                fontSize: { xs: "0.6rem", md: "1.2rem" }
+                                fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                             }}
                         >0522729563</Typography>
                     </Box>
@@ -70,48 +68,49 @@ function MainFooter() {
                     <Typography
                         sx={{
                             color: "white",
-                            mb: { xs: 1, md: 2 },
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            mb: { xs: 1, sm: 2 },
+                            fontSize: { xs: "0.5rem", sm: "0.9rem", md: "1.1rem" }
                         }}
                     >LIÊN KẾT</Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Giới thiệu</Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Hướng dẫn mua hàng</Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Chính sách bảo hành</Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Chính sách bảo mật</Typography>
                 </Box>
                 <Box sx={{
-                    color: "#9e9e9e"
+                    color: "#9e9e9e",
+                    ml: { xs: 1, md: 0 }
                 }}>
                     <Typography
                         sx={{
                             color: "white",
-                            mb: { xs: 1, md: 2 },
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            mb: { xs: 1, sm: 2 },
+                            fontSize: { xs: "0.5rem", sm: "0.9rem", md: "1.1rem" }
                         }}
                     >ĐĂNG KÍ NHẬN TIN</Typography>
                     <TextField
                         sx={{
-                            height: { xs: "1.5rem", md: "3rem" }
+                            height: { xs: "1.5rem", sm: "2rem" }
                         }} />
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Hãy nhập email của bạn vào đây để nhận tin!</Typography>
                 </Box>
@@ -122,13 +121,14 @@ function MainFooter() {
                         sx={{
                             color: "white",
                             mb: 2,
-                            fontSize: { xs: "0.6rem", md: "1.2rem" }
+                            fontSize: { xs: "0.5rem", sm: "0.9rem", md: "1.1rem" }
                         }}
                     >ĐỐI TÁC BÁN HÀNG:</Typography>
                     <Box
                         sx={{
                             display: "flex",
-                            justifyContent: "space-between"
+                            justifyContent: "space-between",
+                            width: { xs: "50%", md: "100%" }
                         }}
                     >
                         <img
@@ -137,7 +137,7 @@ function MainFooter() {
                             width="60px"
                             height="60px"
                             sx={{
-                                display: { xs: "none", md: "block" }
+                                display: { xs: "none", sm: "block" }
                             }}
                         />
                         <img
@@ -146,7 +146,7 @@ function MainFooter() {
                             width="60px"
                             height="60px"
                             sx={{
-                                display: { xs: "none", md: "block" }
+                                display: { xs: "none", sm: "block" }
                             }}
                         />
                         <img
@@ -155,13 +155,13 @@ function MainFooter() {
                             width="60px"
                             height="60px"
                             sx={{
-                                display: { xs: "none", md: "block" }
+                                display: { xs: "none", sm: "block" }
                             }}
                         />
                     </Box>
                 </Box>
             </Box>
-        </Stack>
+        </Stack >
     );
 };
 

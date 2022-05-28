@@ -4,15 +4,15 @@ import {
     Stack,
     Typography,
     Box,
-    Pagination
+    Pagination,
+    Card
 } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
-
 import { PRODUCTS_PER_PAGE } from '../../../app/config';
 import SearchInput from '../../SearchInput';
 import AddProductByAdmin from './AddProductByAdmin';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { getProducts } from '../../../features/user/products/productSlice';
 import ProductCard from '../../../features/user/products/ProductCard';
 
@@ -45,10 +45,11 @@ function Products({ admin }) {
 
 
     return (
-        <Stack
+        <Card
             sx={{
                 display: "flex",
                 flexDirection: "column",
+                mt: { xs: 6, sm: 0 },
             }}
         >
             <Typography sx={{
@@ -58,9 +59,10 @@ function Products({ admin }) {
                 mb: { xs: 1, md: 2 }
             }}>PRODUCTS</Typography>
             <Box sx={{
-                ml: 2,
+                ml: 1,
                 display: "flex",
-                alignItems: "center"
+                alignItems: "center",
+                width: "600px"
             }}>
                 <SearchInput handleSubmit={handleSubmit} />
                 <RestartAltIcon
@@ -68,35 +70,41 @@ function Products({ admin }) {
                     sx={{
                         fontSize: { xs: "1.3rem", md: "2rem" },
                         color: "green",
-                        mr: 14,
                         cursor: "pointer"
                     }} />
-                <AddProductByAdmin products={products} />
             </Box>
-            <Container>
-                <Pagination
-                    sx={{ margin: 1 }}
-                    component="div"
-                    count={totalPage ? totalPage : 0}
-                    page={page}
-                    onChange={handleChangePage}
-                />
+            <Container sx={{ mb: 2 }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <Pagination
+                        sx={{
+                            margin: 1,
+                        }}
+                        size="small"
+                        count={totalPage ? totalPage : 0}
+                        page={page}
+                        onChange={handleChangePage}
+                    />
+                    <AddProductByAdmin products={products} />
+                </Box>
                 <Grid container spacing={1}>
                     {products.length !== 0 &&
                         products.map((product) =>
                         (
-                            <Grid key={product._id} item xs={4} md={4} lg={3}>
+                            <Grid key={product._id} item xs={6} md={4} lg={3}>
                                 <ProductCard admin={admin} product={product} />
                             </Grid>
                         ))
                     }
                 </Grid>
             </Container>
-        </Stack>
+        </Card>
     )
 };
-
-
-
 
 export default Products;

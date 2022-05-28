@@ -14,7 +14,7 @@ const useStyle = makeStyles({
     root: {
         backgroundColor: "#fafafa",
         color: '#008e97',
-        fontSize: { xs: "0.8rem", md: "1.1rem" },
+        fontSize: { xs: "0.8rem", sm: "1.1rem" },
     },
     button: {
         marginBottom: 2,
@@ -32,67 +32,73 @@ function AdminRole({ admin }) {
 
     return (
         <Stack sx={{
-            mt: { md: "100px", xs: "60px" },
+            mt: { sm: "100px", xs: "55px" },
         }}>
             {admin && (
                 <Box sx={{
                     display: "flex",
-                    flexDirection: { xs: "column", md: "row" },
-                    width: "100%",
                 }} >
                     <Box
                         className={classes.root}
                         sx={{
-                            height: { md: "400px", xs: "10%" },
-                            position: { md: "fixed", xs: "none" },
-                            mt: { xs: 1, md: 0 },
+                            position: "fixed",
+                            zIndex: "800",
                             display: "flex",
-                            flexDirection: { xs: "row", md: "column" },
-                            justifyContent: { xs: "none", md: "flex-start" },
-                            alignItems: { xs: "none", md: "flex-start" },
-                            width: { xs: "70%", md: "20%" },
-                            padding: { md: 1, xs: 0 },
+                            flexDirection: { xs: "row", sm: "column" },
+                            height: { sm: "200px", xs: "40px" },
+                            width: { xs: "100%", sm: "25%", md: "20%" },
+                            padding: { sm: 1, xs: 0 },
                         }}>
                         <Box
                             onClick={() => setSelectedTab('dashboard')}
                             className={classes.button}
-                            sx={{ padding: { xs: 0, md: 1 }, width: { md: "100%", xs: "40px" } }}
+                            sx={{
+                                padding: 1,
+                                // pl: { xs: 2, sm: 0 },
+                                width: { sm: "100%", xs: "40px" }
+                            }}
                         >
                             <DashboardCustomizeIcon
                                 sx={{
-                                    display: { xs: "none", md: "block" },
+                                    display: { xs: "none", sm: "block" },
                                 }}
                             />
                             <Button
                                 sx={{
-                                    fontSize: { xs: "0.5rem", md: "0.9rem" },
-                                    width: { md: "100%", xs: "45px" },
-                                    marginLeft: { xs: 0, md: 1 },
+                                    fontSize: { xs: "0.5rem", sm: "0.7rem", md: "0.9rem" },
+                                    width: "100%",
+                                    marginLeft: { xs: 0, sm: 1 },
                                 }}
                                 variant="contained"
                             >Dashboard</Button>
                         </Box>
                         <Box
-                            sx={{ padding: { xs: 0, md: 1 }, width: { md: "100%", xs: "40px" } }}
+                            sx={{
+                                padding: 1,
+                                width: { sm: "100%", xs: "40px" }
+                            }}
                             onClick={() => setSelectedTab('customers')}
                             className={classes.button}
                         >
                             <SupervisedUserCircleIcon
                                 sx={{
-                                    display: { xs: "none", md: "block" }
+                                    display: { xs: "none", sm: "block" }
                                 }}
                             />
                             <Button
                                 sx={{
-                                    marginLeft: { xs: "0", md: 1 },
-                                    fontSize: { xs: "0.5rem", md: "0.9rem" },
-                                    width: { md: "100%", xs: "45px" },
+                                    marginLeft: { xs: "0", sm: 1 },
+                                    fontSize: { xs: "0.5rem", sm: "0.7rem", md: "0.9rem" },
+                                    width: "100%",
                                 }}
                                 variant='contained'
                             >Customers</Button>
                         </Box>
                         <Box
-                            sx={{ padding: { xs: 0, md: 1 }, width: { md: "100%", xs: "40px" } }}
+                            sx={{
+                                padding: 1,
+                                width: { sm: "100%", xs: "40px" }
+                            }}
                             className={classes.button}
                             onClick={() => setSelectedTab('products')}
                         >
@@ -100,41 +106,45 @@ function AdminRole({ admin }) {
 
                                 sx={{
 
-                                    display: { xs: "none", md: "block" }
+                                    display: { xs: "none", sm: "block" }
                                 }}
                             />
                             <Button
                                 sx={{
-                                    marginLeft: { xs: "0", md: 1 },
-                                    fontSize: { xs: "0.5rem", md: "0.9rem" },
-                                    width: { md: "100%", xs: "45px" },
+                                    marginLeft: { xs: "0", sm: 1 },
+                                    fontSize: { xs: "0.5rem", sm: "0.7rem", md: "0.9rem" },
+                                    width: { sm: "100%", xs: "100%" },
                                 }}
                                 variant='contained'
                             >Products</Button>
                         </Box>
                         <Box
                             sx={{
-                                padding: { xs: 0, md: 1 },
-                                width: { md: "100%", xs: "40px" }
+                                padding: 1,
+                                width: { sm: "100%", xs: "40px" }
                             }}
                             className={classes.button}
                             onClick={() => setSelectedTab('orders')}>
                             <WidgetsIcon
                                 sx={{
-                                    display: { xs: "none", md: "block" }
+                                    display: { xs: "none", sm: "block" }
                                 }}
                             />
                             <Button
                                 sx={{
-                                    marginLeft: { xs: "0", md: 1 },
-                                    width: { md: "100%", xs: "45px" },
-                                    fontSize: { xs: "0.5rem", md: "0.9rem" },
+                                    marginLeft: { xs: "0", sm: 1 },
+                                    width: { sm: "100%", xs: "100%" },
+                                    fontSize: { xs: "0.5rem", sm: "0.7rem", md: "0.9rem" },
                                 }}
                                 variant='contained'
                             >Orders</Button>
                         </Box>
                     </Box>
-                    <Box sx={{ ml: { md: "20%", xs: "0" }, width: { xs: "100%", md: "80%" } }} >
+                    <Box sx={{
+                        ml: { xs: "0", sm: "25%", md: "20%" },
+                        width: { xs: "100%", sm: "75%", md: "80%" }
+                    }}
+                    >
                         {selectedTab === "dashboard" && <Dashboard />}
                         {selectedTab === "customers" && <Customers />}
                         {selectedTab === "products" && <Products admin={admin} />}

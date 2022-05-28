@@ -205,7 +205,7 @@ function RegisterPage() {
 
                             <LoadingButton
                                 fullWidth
-                                size="small"
+                                size="mdall"
                                 type="submit"
                                 variant="contained"
                                 loading={isSubmitting}

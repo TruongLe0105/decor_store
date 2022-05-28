@@ -1,15 +1,15 @@
-import { Box, Menu, MenuItem, Stack, Typography, Link } from '@mui/material';
+import { Box, Menu, MenuItem, Stack, Typography, Link, Breadcrumbs } from '@mui/material';
 import React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate, useParams } from 'react-router-dom';
 import CartWidget from '../customers/cart/CartWidget';
 import SortMenu from './SortMenu';
-import "../../index.css";
 
-function Collections({ collection }) {
+function Collections({ collection, status }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const navigate = useNavigate();
     const params = useParams();
+    console.log(params.id)
     const categories = ["Mô hình trang trí", "Cây cảnh", "Khung tranh treo tường"]
 
     const handleMenuOpen = Boolean(anchorEl);
@@ -44,7 +44,7 @@ function Collections({ collection }) {
         >
             <Box >
                 {categories.length && categories.map((category, index) => (
-                    <MenuItem key={index} sx={{ fontSize: { xs: "0.6rem", md: "1.1rem" } }} onClick={() => handleNavigateCategory(category)}>
+                    <MenuItem key={index} sx={{ fontSize: { xs: "0.6rem", sm: "1.1rem" } }} onClick={() => handleNavigateCategory(category)}>
                         {category}
                     </MenuItem>
                 ))}
@@ -53,17 +53,18 @@ function Collections({ collection }) {
     )
 
     return (
-        <Stack
+        < Stack
             sx={{
                 position: "fixed",
                 zIndex: 1000,
                 alignItems: "center",
-                marginTop: { xs: "50px", md: "63px" },
+                marginTop: { xs: "50px", sm: "63px" },
                 mb: 1,
                 backgroundColor: "#fafafa",
                 width: "100%",
-                height: { xs: "30px", md: "40px" },
-            }}>
+                height: { xs: "35px", sm: "45px" },
+            }
+            }>
             <Box
                 sx={{
                     display: "flex",
@@ -71,44 +72,50 @@ function Collections({ collection }) {
                     width: "100%",
                     justifyContent: "space-between",
                 }}>
-                <Box sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: 1,
-                }}>
+                <Breadcrumbs
+                    separator="|"
+                    sx={{
+                        pl: { sm: 6, xs: 3 },
+                        pt: { xs: "5px", sm: 0 },
+                        display: "flex",
+                        alignItems: "center",
+                    }}
+                >
                     <Link
                         sx={{
-                            fontSize: { xs: "0.7rem", md: "1.5rem" },
+                            fontSize: { xs: "0.8rem", sm: "1.3rem", md: "1.5rem" },
                             cursor: "pointer",
                         }}
                         underline="none"
                         onClick={() => navigate("/")}>Trang Chủ</Link>
-                    <span>/</span>
-                    <Typography
-                        onClick={handleOpenMenuCategory}
-                        sx={{
-                            fontSize: { xs: "0.6rem", md: "1.3rem" },
-                            cursor: "pointer"
-                        }}
-                    >Danh Mục</Typography>
-                    <KeyboardArrowDownIcon
-                        sx={{
-                            fontSize: { xs: "16px", md: "20px" }
-                        }}
-                    />
-                    <span>/</span>
-                    {categoriesMenu}
-                    <Typography
-                        sx={{
-                            fontSize: { xs: "0.5rem", md: "1.2rem" },
-                        }}
-                    >{collection}</Typography>
-                </Box>
+                    <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+                        <Typography
+                            onClick={handleOpenMenuCategory}
+                            sx={{
+                                fontSize: { xs: "0.7rem", sm: "1.1rem", md: "1.3rem" },
+                                cursor: "pointer"
+                            }}
+                        >Danh Mục</Typography>
+                        <KeyboardArrowDownIcon
+                            sx={{
+                                fontSize: { xs: "16px", sm: "20px" }
+                            }}
+                        />
+                    </Box>
+                    {collection && (
+                        <Typography
+                            sx={{
+                                fontSize: { xs: "0.5rem", sm: "1.1rem", md: "1.2rem" },
+                            }}
+                        >{collection}</Typography>
+                    )}
+                </Breadcrumbs>
+                {categoriesMenu}
                 <Box sx={{
                     display: "flex"
                 }}>
                     <CartWidget />
-                    {!params.id && <SortMenu />}
+                    {status !== "prevent" && <SortMenu />}
                 </Box>
             </Box>
         </Stack >

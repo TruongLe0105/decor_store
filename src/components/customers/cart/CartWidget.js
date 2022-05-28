@@ -7,6 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../../../hooks/useAuth";
 import { getProductInCart } from "../../../features/user/cart/cartSlice";
 
+
+
+
+
 function CartWidget() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -27,9 +31,9 @@ function CartWidget() {
         <>
             <Badge
                 sx={{
-                    mt: 1,
-                    mr: 2,
+                    mt: { md: 1, sm: 0, xs: 1 },
                     cursor: "pointer",
+                    mr: 2
                 }}
                 badgeContent={user ? totalProducts : ""}
                 color="secondary"
@@ -37,8 +41,8 @@ function CartWidget() {
             >
                 <ShopOutlinedIcon sx={{
                     color: "#0097a7",
-                    width: { xs: "20px", md: "35px" },
-                    height: { xs: "20px", md: "35px" }
+                    width: { xs: "20px", sm: "30px", md: "35px" },
+                    height: { xs: "20px", sm: "30px", md: "35px" }
                 }} />
             </Badge>
         </>

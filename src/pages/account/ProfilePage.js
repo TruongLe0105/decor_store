@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Box, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Card, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 import useAuth from "../../hooks/useAuth";
@@ -9,6 +9,7 @@ import AddressForm from "../../features/user/AddressForm";
 import UpdatePassword from "../../features/user/PasswordForm";
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import PurchaseForm from "../../components/customers/orders/PurchaseForm";
+import Collections from "../../components/collections/Collections";
 
 function ProfilePage() {
     const { user } = useAuth();
@@ -35,87 +36,109 @@ function ProfilePage() {
     ];
 
     return (
-        <Stack sx={{
-            backgroundColor: "#f5f5f5",
-            height: "100%"
-        }}>
-            <Grid container
-                sx={{
-                    marginTop: 12,
-                    display: "flex",
-                    alignItems: "flex-start",
-                    mb: 2
-                }}
-            >
-
-                <Grid item xs={12} md={2}>
-                    <Box sx={{
+        <>
+            <Collections status="prevent" />
+            <Stack sx={{
+                height: "100%"
+            }}>
+                <Grid container
+                    sx={{
+                        marginTop: { xs: 11, sm: 15 },
                         display: "flex",
-                        flexDirection: { xs: "row", md: "column" },
-                        justifyContent: "space-between"
+                        alignItems: "flex-start",
+                        mb: 2,
                     }}
+                >
 
-                    >
-                        <Box
-                            onClick={() => setSelectedProfile("Thông tin tài khoản")}
-                            sx={{
-                                cursor: "pointer",
-                                display: "flex",
-                                flexDirection: "row",
-                                mt: 3
-                            }}>
-                            <AccountBoxIcon sx={{ fontSize: { xs: 18, md: 24 }, color: "#008e97" }} />
-                            <Typography sx={{ fontSize: { xs: "0.9rem", md: "1.1rem" } }}>Thông tin tài khoản</Typography>
+                    <Grid item xs={12} sm={3} md={2}>
+                        <Box sx={{
+                            display: "flex",
+                            flexDirection: { xs: "row", sm: "column" },
+                            justifyContent: "space-between"
+                        }}
+
+                        >
+                            <Box
+                                onClick={() => setSelectedProfile("Thông tin tài khoản")}
+                                sx={{
+                                    cursor: "pointer",
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    my: { xs: 0, sm: 1 },
+                                    px: { xs: 3, sm: 0, md: 1 },
+                                }}>
+                                <AccountBoxIcon
+                                    sx={{
+                                        fontSize: { xs: 18, sm: 22 },
+                                        color: "#008e97"
+                                    }}
+                                />
+                                <Typography
+                                    sx={{
+                                        fontSize: { xs: "0.9rem", sm: "1rem" }
+                                    }}
+                                >Thông tin tài khoản</Typography>
+                            </Box>
+                            <Box
+                                onClick={() => setSelectedProfile("Đơn hàng của tôi")}
+                                sx={{
+                                    cursor: "pointer",
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    px: { xs: 3, sm: 0, md: 1 },
+                                    my: { xs: 0, sm: 1 }
+                                }}>
+                                <SummarizeIcon
+                                    sx={{
+                                        fontSize: { xs: 18, sm: 22 },
+                                        color: "#008e97"
+                                    }}
+                                />
+                                <Typography
+                                    sx={{
+                                        fontSize: { xs: "0.9rem", sm: "1rem" }
+                                    }}
+                                >Đơn hàng của tôi</Typography>
+                            </Box>
                         </Box>
-                        <Box
-                            onClick={() => setSelectedProfile("Đơn hàng của tôi")}
-                            sx={{
-                                cursor: "pointer",
+                    </Grid>
+                    <Grid item xs={12} md={9} sm={8}>
+                        {selectedProfile === "Thông tin tài khoản" && (
+                            <Card sx={{
                                 display: "flex",
-                                flexDirection: "row",
-                                mt: 3
+                                justifyContent: "space-around",
                             }}>
-                            <SummarizeIcon sx={{ fontSize: { xs: 18, md: 24 }, color: "#008e97" }} />
-                            <Typography sx={{ fontSize: { xs: "0.9rem", md: "1.1rem" } }}>Đơn hàng của tôi</Typography>
-                        </Box>
-                    </Box>
+                                <Tabs
+                                    value={currentTab}
+                                    allowScrollButtonsMobile
+                                    onChange={(e, value) => handleChangeTab(value)}
+                                >
+                                    {PROFILE_TABS.map((tab) => (
+                                        <Tab
+                                            sx={{
+                                                fontSize: { xs: "0.8rem", sm: "0.8rem", md: "1rem" },
+                                            }}
+                                            key={tab.value}
+                                            value={tab.value}
+                                            label={tab.value}
+                                        />
+                                    ))}
+                                </Tabs>
+                            </Card >
+                        )}
+                        {selectedProfile === "Thông tin tài khoản" &&
+                            PROFILE_TABS.map((tab) => {
+                                const isMatched = tab.value === currentTab;
+                                return isMatched && <Box sx={{
+                                    margin: 1,
+                                }} key={tab.value}>{tab.component}</Box>;
+                            })
+                        }
+                        {selectedProfile === "Đơn hàng của tôi" && <PurchaseForm />}
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={9} sx={{
-                    backgroundColor: "white",
-                }} >
-                    {selectedProfile === "Thông tin tài khoản" && (
-                        <Box>
-                            <Tabs
-                                value={currentTab}
-                                allowScrollButtonsMobile
-                                onChange={(e, value) => handleChangeTab(value)}
-                            >
-                                {PROFILE_TABS.map((tab) => (
-                                    <Tab
-                                        sx={{
-                                            display: "flex",
-                                            fontSize: { xs: "0.6rem", md: "0.8rem" },
-                                        }}
-                                        key={tab.value}
-                                        value={tab.value}
-                                        label={tab.value}
-                                    />
-                                ))}
-                            </Tabs>
-                        </Box >
-                    )}
-                    {selectedProfile === "Thông tin tài khoản" &&
-                        PROFILE_TABS.map((tab) => {
-                            const isMatched = tab.value === currentTab;
-                            return isMatched && <Box sx={{
-                                margin: 1,
-                            }} key={tab.value}>{tab.component}</Box>;
-                        })
-                    }
-                    {selectedProfile === "Đơn hàng của tôi" && <PurchaseForm />}
-                </Grid>
-            </Grid>
-        </Stack >
+            </Stack >
+        </>
     );
 }
 

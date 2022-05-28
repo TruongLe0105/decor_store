@@ -3,11 +3,13 @@ import Stack from '@mui/material/Stack';
 import { Box, Button, Card, Container, TablePagination, Typography } from '@mui/material';
 import SearchInput from '../../SearchInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { getListOfOrder } from '../../../features/admin/adminSlice';
+import { getListOrderByAdmin } from '../../../features/admin/adminSlice';
+
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PendingIcon from '@mui/icons-material/Pending';
 import CancelIcon from '@mui/icons-material/Cancel';
+
 import { styled, alpha } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,6 +17,7 @@ import Divider from '@mui/material/Divider';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TableOrders from './TableOrders';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import AllInboxOutlinedIcon from '@mui/icons-material/AllInboxOutlined';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -112,17 +115,16 @@ function Orders() {
 
 
     React.useEffect(() => {
-        dispatch(getListOfOrder({ receiver, status, page: page + 1, limit: rowsPerPage }));
-    }, [page, rowsPerPage, status, receiver, currentStatusOder, totalOrders, dispatch]);
+        dispatch(getListOrderByAdmin({ receiver, status, page: page + 1, limit: rowsPerPage }));
+    }, [page, rowsPerPage, status, receiver, currentStatusOder, dispatch]);
 
     return (
         <Stack spacing={1} sx={{
-            width: "100%",
+            mt: { xs: 5, sm: 0 },
         }}>
             <Box
                 sx={{
                     backgroundColor: "white",
-                    width: { xs: "100%", md: "100%" }
                 }}>
                 <Container>
                     <Box sx={{
@@ -132,17 +134,70 @@ function Orders() {
                         alignItems: "center"
                     }}>
                         <Typography sx={{
-                            fontSize: { xs: "1rem", md: "1.6rem" },
+                            fontSize: { xs: "0.8rem", sm: "1.3rem", md: "1.6rem" },
                             marginLeft: "20px",
                             fontFamily: "cursive"
                         }}
                         >ORDERS</Typography>
+
+                        <Button
+                            id="demo-customized-button"
+                            aria-controls={open ? 'demo-customized-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            variant="outlined"
+                            disableElevation
+                            onClick={handleClick}
+                            endIcon={<KeyboardArrowDownIcon />}
+                            sx={{
+                                fontSize: { xs: "0.6rem", sm: "1rem" },
+                            }}
+                        >
+                            filter
+                        </Button>
+                        <StyledMenu
+                            id="demo-customized-menu"
+                            MenuListProps={{
+                                'aria-labelledby': 'demo-customized-button',
+                            }}
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={handleGetAll}
+                                disableRipple
+                            >
+                                <AllInboxOutlinedIcon />
+                                ALL
+                            </MenuItem>
+                            <MenuItem onClick={handlePending}
+                                disableRipple
+                            >
+                                <PendingIcon />
+                                Pending
+                            </MenuItem>
+                            <MenuItem onClick={handleShipping} disableRipple>
+                                <LocalShippingIcon />
+                                Shipping
+                            </MenuItem>
+                            <Divider sx={{ my: 0.5 }} />
+                            <MenuItem onClick={handleCompleted} disableRipple>
+                                <CheckCircleIcon />
+                                Completed
+                            </MenuItem>
+                            <MenuItem onClick={handleDeclined} disableRipple>
+                                <CancelIcon />
+                                declined
+                            </MenuItem>
+                        </StyledMenu>
                     </Box>
                     <Card sx={{ padding: { xs: 0, md: 1 } }}>
                         <Box
                             sx={{
                                 display: 'flex',
-                                justifyContent: "space-between"
+                                alignItems: "center",
+                                margin: 1,
+                                width: "600px"
                             }}
                         >
                             <SearchInput handleSubmit={handleSubmit} />
@@ -154,53 +209,6 @@ function Orders() {
                                     mr: 14,
                                     cursor: "pointer"
                                 }} />
-                            <Button
-                                id="demo-customized-button"
-                                aria-controls={open ? 'demo-customized-menu' : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
-                                variant="outlined"
-                                disableElevation
-                                onClick={handleClick}
-                                endIcon={<KeyboardArrowDownIcon />}
-                            >
-                                filter
-                            </Button>
-                            <StyledMenu
-                                id="demo-customized-menu"
-                                MenuListProps={{
-                                    'aria-labelledby': 'demo-customized-button',
-                                }}
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}
-                            >
-                                <MenuItem onClick={handleGetAll}
-                                    disableRipple
-                                >
-                                    <PendingIcon />
-                                    ALL
-                                </MenuItem>
-                                <MenuItem onClick={handlePending}
-                                    disableRipple
-                                >
-                                    <PendingIcon />
-                                    Pending
-                                </MenuItem>
-                                <MenuItem onClick={handleShipping} disableRipple>
-                                    <LocalShippingIcon />
-                                    Shipping
-                                </MenuItem>
-                                <Divider sx={{ my: 0.5 }} />
-                                <MenuItem onClick={handleCompleted} disableRipple>
-                                    <CheckCircleIcon />
-                                    Completed
-                                </MenuItem>
-                                <MenuItem onClick={handleDeclined} disableRipple>
-                                    <CancelIcon />
-                                    declined
-                                </MenuItem>
-                            </StyledMenu>
                         </Box>
                         <TableOrders orders={orders} />
                         <TablePagination
@@ -210,6 +218,7 @@ function Orders() {
                                     display: { xs: "none", md: "block" },
                                 },
                             }}
+                            size="small"
                             component="div"
                             count={totalOrders ? totalOrders : 0}
                             page={page}

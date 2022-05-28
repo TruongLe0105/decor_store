@@ -76,9 +76,9 @@ function DetailPage() {
 
     return (
         <>
-            <Collections />
+            <Collections status="prevent" />
             <Container sx={{
-                mt: { xs: 12, md: 16 },
+                mt: { xs: 12, sm: 16 },
                 height: "100%",
                 display: "flex"
             }}>
@@ -90,7 +90,7 @@ function DetailPage() {
                         height: "100%",
                         maxWidth: "40%",
                         borderRadius: "5px",
-                        marginRight: { xs: "15px", md: "25px" },
+                        marginRight: { xs: "15px", sm: "25px" },
                     }}
                 />
                 <Stack sx={{
@@ -100,10 +100,10 @@ function DetailPage() {
                 }}>
                     <Typography sx={{
                         marginBottom: 2,
-                        fontSize: { xs: "1rem", md: "1.4rem" }
+                        fontSize: { xs: "1rem", sm: "1.4rem" }
                     }}>{name}</Typography>
                     <Typography sx={{
-                        fontSize: { xs: "1rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.4rem" },
                         color: "red",
                         fontWeight: "800",
                         marginBottom: 2,
@@ -113,11 +113,11 @@ function DetailPage() {
                     <Typography sx={{
                         fontWeight: "bold",
                         mt: 2,
-                        fontSize: { xs: "0.8rem", md: "1.3rem" }
+                        fontSize: { xs: "0.8rem", sm: "1.3rem" }
                     }}>Số lượng:</Typography>
                     <Box sx={{ display: "flex", my: 2 }}>
                         <Button variant="link" onClick={handleRemoveAmount}>
-                            <RemoveIcon sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} />
+                            <RemoveIcon sx={{ fontSize: { xs: "0.7rem", sm: "1rem" } }} />
                         </Button>
                         <input
                             style={{
@@ -132,7 +132,7 @@ function DetailPage() {
                             onChange={(event) => setValue(event.target.value)}
                         />
                         <Button variant="link" onClick={handleAddAmount}>
-                            <AddIcon sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }} />
+                            <AddIcon sx={{ fontSize: { xs: "0.7rem", sm: "1rem" } }} />
                         </Button>
                     </Box>
                     <Box sx={{ display: "flex", flexDirection: "row" }}>
@@ -143,16 +143,16 @@ function DetailPage() {
                             sx={{ marginRight: 2 }}
                         >
                             <AddShoppingCartIcon />
-                            <Typography sx={{ display: { xs: "none", md: "block" } }}>THÊM VÀO GIỎ</Typography>
+                            <Typography sx={{ display: { xs: "none", sm: "block" } }}>THÊM VÀO GIỎ</Typography>
                         </Button>
-                        <Typography sx={{ marginTop: 1, fontSize: { xs: "0.7rem", md: "1rem", marginRight: 10 } }}>Hoặc</Typography>
+                        <Typography sx={{ marginTop: 1, fontSize: { xs: "0.7rem", sm: "1rem", marginRight: 10 } }}>Hoặc</Typography>
                         <Link
                             onClick={() => handleAddToCart(1)}
                             underline="none"
                             sx={{
                                 cursor: "pointer",
                                 marginTop: 1,
-                                fontSize: { xs: "0.7rem", md: "1rem" },
+                                fontSize: { xs: "0.7rem", sm: "1rem" },
                             }}
                         >
                             Mua ngay

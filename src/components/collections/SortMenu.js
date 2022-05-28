@@ -37,8 +37,7 @@ function SortMenu() {
 
     React.useEffect(() => {
         if (showValueSort) dispatch(getProducts({ sortBy: showValueSort }))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [showValueSort]);
+    }, [showValueSort, dispatch]);
 
     return (
         <div>
@@ -52,10 +51,10 @@ function SortMenu() {
                 sx={{
                     mt: 1,
                     ml: 1,
-                    mr: { xs: 2, md: 5 },
-                    width: { md: "180px", xs: "100px" },
-                    height: { xs: "20px", md: "30px" },
-                    fontSize: { xs: "0.5rem", md: "1rem" }
+                    mr: { xs: 1, sm: 5 },
+                    width: { xs: "100px", sm: "140px", md: "180px" },
+                    height: { xs: "20px", sm: "25px", md: "30px" },
+                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
                 }}
             >
                 Sắp xếp theo:

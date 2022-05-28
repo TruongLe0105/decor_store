@@ -22,6 +22,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import logoImg from "../logo.png";
+import Login from "../components/auth/Login";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -66,146 +67,158 @@ function LoginPage() {
     };
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                flexDirection: {
-                    xs: "column", md: "row"
-                },
-                justifyContent: {
-                    xs: "flex-start", md: "center"
-                },
-                alignItems: "center",
-                backgroundColor: "#008e97",
-                width: "100%",
-                height: "85vh"
-            }}
-        >
-            <Box sx={{
-                mt: "30px",
-                display: "flex",
-                width: { xs: "100%", md: "50%" },
-                flexDirection: { xs: "column", md: "row" },
-                justifyContent: "center",
-            }}>
-                <Box sx={{
-                    justifyContent: "flex-start",
+        <>
+            {/* <Login /> */}
+            {/* <button className="g-signin2" data-onsuccess={onSignIn}>Login</button> */}
+            <Box
+                sx={{
                     display: "flex",
+                    flexDirection: {
+                        xs: "column", md: "row"
+                    },
+                    justifyContent: {
+                        xs: "flex-start", md: "center"
+                    },
                     alignItems: "center",
-                    flexDirection: { xs: "row", md: "column" },
-                    margin: { xs: "10px", md: "0" },
-                    marginLeft: { xs: "40px", md: "0" }
+                    backgroundColor: "#008e97",
+                    width: "100%",
+                    height: "85vh"
+                }}
+            >
+                <Box sx={{
+                    mt: "30px",
+                    display: "flex",
+                    width: { xs: "100%", md: "50%" },
+                    flexDirection: { xs: "column", md: "row" },
+                    justifyContent: "center",
                 }}>
-                    <CardMedia
-                        component="img"
-                        src={logoImg}
-                        alt="Logo"
+                    <Box sx={{
+                        justifyContent: "flex-start",
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: { xs: "row", md: "column" },
+                        margin: { xs: "10px", md: "0" },
+                        marginLeft: { xs: "40px", sm: "30%", md: "0" }
+                    }}>
+                        <CardMedia
+                            component="img"
+                            src={logoImg}
+                            alt="Logo"
+                            sx={{
+                                width: { xs: "40px", md: "120px" },
+                                height: { xs: "40px", md: "110px" },
+                                borderRadius: "5px"
+                            }} />
+                        <Typography
+                            sx={{
+                                color: "white",
+                                fontSize: { xs: "1.1rem", md: "2.7rem" },
+                            }}
+                        >
+                            Titus
+                        </Typography>
+                    </Box>
+
+                    <Container maxWidth="xs"
                         sx={{
-                            width: { xs: "40px", md: "120px" },
-                            height: { xs: "40px", md: "110px" },
-                            borderRadius: "5px"
-                        }} />
-                    <Typography
-                        sx={{
-                            color: "white",
-                            fontSize: { xs: "1.1rem", md: "2.7rem" },
+                            backgroundColor: "white",
+                            borderRadius: "5px",
+                            width: { xs: "300px", md: "350px" },
                         }}
                     >
-                        Titus
-                    </Typography>
-                </Box>
-
-                <Container maxWidth="xs"
-                    sx={{
-                        backgroundColor: "white",
-                        borderRadius: "5px",
-                        width: { xs: "300px", md: "350px" },
-                    }}
-                >
-                    <Typography sx={{
-                        marginBottom: 1,
-                        fontSize: {
-                            xs: "1.1rem", md: "1.5rem"
-                        }
-                    }}>Đăng nhập</Typography>
-                    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-                        <Stack spacing={1}>
-                            {!!errors.responseError && (
+                        <Typography sx={{
+                            marginBottom: 1,
+                            fontSize: {
+                                xs: "1.1rem", md: "1.5rem"
+                            }
+                        }}>Đăng nhập</Typography>
+                        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+                            <Stack spacing={1}>
+                                {!!errors.responseError && (
+                                    <Alert sx={{
+                                        fontSize: { xs: "0.6rem", md: "0.9rem" },
+                                        height: "35px",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        mb: 1,
+                                    }} severity="error">{errors.responseError.message}</Alert>
+                                )}
                                 <Alert sx={{
-                                    fontSize: { xs: "0.6rem", md: "0.9rem" },
-                                    height: "35px",
+                                    fontSize: { xs: "0.6rem", md: "0.9rem" }, height: "35px",
                                     display: "flex",
                                     alignItems: "center",
-                                    mb: 1,
-                                }} severity="error">{errors.responseError.message}</Alert>
-                            )}
-                            <Alert sx={{
-                                fontSize: { xs: "0.6rem", md: "0.9rem" }, height: "35px",
-                                display: "flex",
-                                alignItems: "center",
-                                mb: 1
-                            }} severity="info">
-                                Bạn chưa có tài khoản?{" "}
-                                <Link sx={{ fontSize: { xs: "0.7rem", md: "0.9rem" } }}
-                                    color="primary"
-                                    variant="subtitle2"
+                                    mb: 1
+                                }} severity="info">
+                                    Bạn chưa có tài khoản?{" "}
+                                    <Link sx={{ fontSize: { xs: "0.7rem", md: "0.9rem" } }}
+                                        color="primary"
+                                        variant="subtitle2"
+                                        component={RouterLink}
+                                        to="/register">
+                                        Đăng ký
+                                    </Link>
+                                </Alert>
+
+                                <FTextField name="email" label="Email address" />
+
+                                <FTextField
+                                    name="password"
+                                    label="Password"
+                                    type={showPassword ? "text" : "password"}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    onClick={() => setShowPassword(!showPassword)}
+                                                    edge="end"
+                                                >
+                                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                            </Stack>
+
+                            <Stack
+                                direction="row"
+                                alignItems="center"
+                                justifyContent="space-between"
+                            >
+                                <FCheckbox sx={{ fontSize: "0.6rem" }} name="remember" label="Remember me" />
+                                <Link
+                                    sx={{ fontSize: { xs: "0.6rem", md: "1rem" } }}
                                     component={RouterLink}
-                                    to="/register">
-                                    Đăng ký
+                                    variant="subtitle2"
+                                    to="/">
+                                    Quên mật khẩu?
                                 </Link>
-                            </Alert>
+                            </Stack>
 
-                            <FTextField name="email" label="Email address" />
-
-                            <FTextField
-                                name="password"
-                                label="Password"
-                                type={showPassword ? "text" : "password"}
-                                InputProps={{
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                onClick={() => setShowPassword(!showPassword)}
-                                                edge="end"
-                                            >
-                                                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                        </Stack>
-
-                        <Stack
-                            direction="row"
-                            alignItems="center"
-                            justifyContent="space-between"
-                        >
-                            <FCheckbox sx={{ fontSize: "0.6rem" }} name="remember" label="Remember me" />
-                            <Link
-                                sx={{ fontSize: { xs: "0.6rem", md: "1rem" } }}
-                                component={RouterLink}
-                                variant="subtitle2"
-                                to="/">
-                                Quên mật khẩu?
-                            </Link>
-                        </Stack>
-
-                        <LoadingButton
-                            fullWidth
-                            size="small"
-                            type="submit"
-                            variant="contained"
-                            loading={isSubmitting}
-                            sx={{ fontSize: { xs: "0.6rem", md: "1rem" }, mb: 2 }}
-                        >
-                            Login
-                        </LoadingButton>
-                    </FormProvider>
-                </Container>
+                            <LoadingButton
+                                fullWidth
+                                size="small"
+                                type="submit"
+                                variant="contained"
+                                loading={isSubmitting}
+                                sx={{ fontSize: { xs: "0.6rem", md: "1rem" }, mb: 2 }}
+                            >
+                                Login
+                            </LoadingButton>
+                        </FormProvider>
+                    </Container>
+                </Box>
             </Box>
-        </Box>
+        </>
     );
+};
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
 
 export default LoginPage;

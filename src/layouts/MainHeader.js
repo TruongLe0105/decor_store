@@ -26,7 +26,7 @@ function MainHeader() {
                 color="white"
                 sx={{
                     margin: 1,
-                    fontSize: { xs: "0.5rem", md: "1rem" }
+                    fontSize: { xs: "0.5rem", sm: "1rem" }
                 }}
                 underline="none"
                 component={RouterLink}
@@ -41,7 +41,7 @@ function MainHeader() {
                 color="white"
                 sx={{
                     margin: 1,
-                    fontSize: { xs: "0.5rem", md: "1rem" }
+                    fontSize: { xs: "0.5rem", sm: "1rem" }
                 }}
                 underline="none"
                 component={RouterLink} to='/login'>Đăng Nhập</Link >
@@ -51,16 +51,19 @@ function MainHeader() {
     return (
         <>
             <Stack sx={{
-                position: { md: "fixed", xs: "block" },
+                position: "fixed",
                 width: "100%",
                 zIndex: "900"
             }}>
                 <AppBar>
                     <Toolbar sx={{
                         display: 'flex',
-                        justifyContent: 'space-around'
+                        justifyContent: 'space-around',
+                        alignItems: "center"
                     }}>
-                        <Box sx={{ display: 'flex' }}>
+                        <Box sx={{
+                            display: 'flex',
+                        }}>
                             <IconButton
                                 size="small"
                                 edge="start"
@@ -73,15 +76,15 @@ function MainHeader() {
                                     src={logoImg}
                                     alt="logo"
                                     sx={{
-                                        width: { xs: "20px", md: "45px" },
-                                        height: { xs: "20px", md: "45px" },
+                                        width: { xs: "30px", sm: "45px" },
+                                        height: { xs: "30px", sm: "45px" },
                                         borderRadius: "5px"
                                     }}
                                 />
                             </IconButton>
                             <Typography component="div" sx={{
-                                margin: { xs: "5px", md: "0" },
-                                fontSize: { xs: "1rem", md: "2rem" }
+                                margin: { xs: "5px", sm: "0" },
+                                fontSize: { xs: "1.1rem", sm: "2rem" }
                             }}>
                                 Titus
                             </Typography>

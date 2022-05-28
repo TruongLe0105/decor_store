@@ -1,121 +1,143 @@
 import {
   Box,
+  Button,
+  Card,
   Container,
   Divider,
-  Stack,
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
   Typography,
 } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 
 import useAuth from "../../../hooks/useAuth";
 import { fCurrency } from "../../../utils/numberFormat";
 import ConfirmCheckout from "./ConfirmCheckout";
 
-
-function CheckoutSummary() {
+function CheckoutSummary({ setActiveStep }) {
   const { cart, delivery } = useSelector(state => state.cart);
   const { user } = useAuth();
-  // let cartProducts = [];
   const products = cart.products ? cart.products : [];
   const totalPrice = cart.totalPrice;
 
   return (
     <Container>
-      <Typography sx={{
-        textAlign: "center",
-        fontSize: { xs: "0.8rem", md: "1.6rem" },
-      }} >Đơn hàng của bạn</Typography>
+      <Typography
+        sx={{
+          textAlign: "center",
+          fontSize: { xs: "0.8rem", sm: "1.3rem", md: "1.6rem", },
+          fontWeight: "600",
+          color: "#008e97",
+          my: 1
+        }}
+      >Đơn hàng của bạn</Typography>
       <Divider />
-      <Stack direction="row"
+      <Card
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          flexDirection: "column",
+          padding: 1,
+          mb: 1
         }}
       >
-        <Box>
-          <Typography sx={{
-            opacity: "0.5",
-            fontSize: { xs: "0.4rem", md: "1rem" },
-          }}>Ngày đặt hàng</Typography>
-          <Typography sx={{
-            fontSize: { xs: "0.4rem", md: "1rem" }
-          }}>{new Date().toLocaleDateString("en-GB")}</Typography>
-        </Box>
-        <Box>
-          <Typography sx={{
-            opacity: "0.5",
-            fontSize: { xs: "0.4rem", md: "1rem" },
+        <Box
+          sx={{
+            display: "flex",
+            color: "#008e97",
           }}
-          >Địa chỉ</Typography>
+        >
+          <LocationOnOutlinedIcon
+            sx={{
+              fontSize: { xs: "0.7rem", sm: "1.3rem", md: "1.6rem", },
+            }}
+          />
           <Typography
             sx={{
-              fontSize: { xs: "0.4rem", md: "1rem" }
+              fontSize: { xs: "0.6rem", sm: "1.3rem", md: "1.6rem", },
             }}
-          >{delivery.address}</Typography>
+          >Địa chỉ nhận hàng</Typography>
         </Box>
-        <Box>
-          <Typography sx={{
-            opacity: "0.5",
-            fontSize: { xs: "0.4rem", md: "1rem" },
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            pl: 1
           }}
-          >Số điện thoại</Typography>
-          <Typography
+        >
+          <Box>
+            <Box
+              sx={{
+                display: "flex",
+              }}
+            >
+              <Typography
+                sx={{
+                  mr: 1,
+                  fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                  fontWeight: "600",
+                }}
+              >{(delivery.receiver || user.fullName).toUpperCase()}</Typography>
+              <Typography
+                sx={{
+                  fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                }}
+              >{delivery.numberOfPhone || user.numberOfPhone}</Typography>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                // ml: 1
+              }}
+            >{delivery.address}</Typography>
+          </Box>
+          <Button
             sx={{
-              fontSize: { xs: "0.4rem", md: "1rem" }
+              fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
             }}
-          >{delivery.numberOfPhone}</Typography>
+          >Thay đổi</Button>
         </Box>
-        <Box>
-          <Typography sx={{
-            opacity: "0.5",
-            fontSize: { xs: "0.4rem", md: "1rem" },
-          }}
-          >Người nhận</Typography>
-          <Typography
-            sx={{
-              fontSize: { xs: "0.4rem", md: "1rem" }
-            }}
-          >{delivery.receiver}</Typography>
-        </Box>
-      </Stack>
+      </Card>
       <Divider />
-      <TableContainer>
+      <Card>
         <Table>
           <TableHead>
             <TableRow sx={{
               display: "flex",
-              width: "100%",
-              height: { xs: "35px", md: "45px" },
+              height: { xs: "35px", sm: "45px" },
             }}>
-              <TableCell sx={{
-                fontSize: { xs: "0.4rem", md: "1rem" },
-                width: { xs: "25%", md: "15%" },
-
-              }}>Sản phẩm</TableCell>
+              <TableCell
+                sx={{
+                  fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                  width: { xs: "150%", sm: "100%", md: "60%" },
+                }}
+              >Sản phẩm</TableCell>
               <TableCell
                 align="center"
                 sx={{
-                  fontSize: { xs: "0.4rem", md: "1rem" },
-                  width: { xs: "25%", md: "25%" }
-                }}>Tên</TableCell>
+                  fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                  width: { xs: "100%", sm: { xs: "100%", md: "20%" } }
+                }}
+              >Số lượng</TableCell>
               <TableCell
                 align="center"
                 sx={{
-                  fontSize: { xs: "0.4rem", md: "1rem" }, width: { xs: "25%", md: "15%" }
-                }}>Số lượng</TableCell>
+                  fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                  width: { xs: "100%", md: "20%" }
+                }}
+              >Đơn giá</TableCell>
               <TableCell
                 align="center"
-                sx={{ fontSize: { xs: "0.4rem", md: "1rem" }, width: { xs: "25%", md: "15%" } }}>Đơn giá</TableCell>
-              <TableCell
-                align="center"
-                sx={{ fontSize: { xs: "0.4rem", md: "1rem" }, width: { xs: "25%", md: "15%" } }}>Tổng</TableCell>
+                sx={{
+                  fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                  width: { xs: "100%", md: "20%" }
+                }}
+              >Tổng</TableCell>
             </TableRow>
           </TableHead>
           <TableBody sx={{
@@ -123,92 +145,102 @@ function CheckoutSummary() {
             flexDirection: "column",
           }}>
             {products.length > 0 && products.map(({ _id, name, price, quantity, imageUrl }) => (
-              <TableRow key={_id} sx={{
-                display: "flex",
-              }}>
-                <TableCell sx={{ width: { xs: "25%", md: "15%" } }}>
-                  <Box sx={{
+              <TableRow
+                key={_id}
+                sx={{
+                  display: "flex",
+                }}>
+                <TableCell
+                  sx={{
+                    width: "100%",
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-
-                  }} >
-                    <Box
-                      sx={{
-                        borderRadius: 2,
-                        width: { xs: "40px", md: "70px" },
-                        height: { xs: "30px", md: "70px" },
-                        overflow: { xs: "none", md: "hidden" },
-                      }}
-                    >
-                      <img
-                        src={imageUrl}
-                        alt="product"
-                        width="100%"
-                        height="100%"
-
-                      />
-                    </Box>
+                    flexDirection: { xs: "column", md: "row" },
+                    alignItems: { xs: "flex-start", md: "center" },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      cursor: "pointer",
+                      borderRadius: { xs: 1, sm: 2 },
+                      width: { xs: "40px", sm: "70px", md: "100px" },
+                      height: { xs: "40px", sm: "70px", md: "100px" },
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src={imageUrl}
+                      alt="product"
+                      width="100%"
+                      height="100%"
+                    />
                   </Box>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "0.4rem", sm: "0.7rem", md: "1rem" },
+                      ml: { xs: 0, md: 1 },
+                      fontFamily: "monospace",
+                    }}
+                  >{name}</Typography>
                 </TableCell>
                 <TableCell
                   sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: { xs: "center", sm: "center", md: "center" },
+                    width: { xs: "100%", sm: { xs: "100%", md: "20%" } },
+                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
+                  }} >
+                  {quantity}
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    fontSize: { xs: "0.4rem", sm: "0.6rem", md: "0.8rem" },
+                    alignItems: "center",
+                    justifyContent: "center",
+                    display: "flex",
+                    width: { xs: "100%", md: "20%" }
+                  }}
+                >{fCurrency(price)}đ</TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
                     alignItems: "center",
                     display: "flex",
                     justifyContent: "center",
-                    width: { xs: "25%", md: "25%" },
-                  }}>
-                  <Typography sx={{ fontSize: { xs: "0.3rem", md: "1rem" } }}>{name}</Typography>
-                </TableCell>
-                <TableCell sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  justifyContent: "center",
-                  width: { xs: "25%", md: "15%" }
-                }} >
-                  <Typography sx={{
-                    alignItems: "center",
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: { xs: "6px", md: "1rem" }
-                  }}>
-                    {quantity}
-
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{
-                  fontSize: { xs: "0.3rem", md: "1rem" },
-                  alignItems: "center",
-                  display: "flex",
-                  justifyContent: "center",
-                  width: { xs: "25%", md: "15%" }
-                }}>{fCurrency(price)}đ</TableCell>
-                <TableCell sx={{
-                  fontSize: { xs: "0.3rem", md: "1rem" },
-                  alignItems: "center",
-                  display: "flex",
-                  justifyContent: "center",
-                  width: { xs: "25%", md: "15%" },
-                }}>{fCurrency(price * quantity)}đ</TableCell>
+                    width: { xs: "100%", md: "20%" },
+                  }}
+                >{fCurrency(price * quantity)}đ</TableCell>
               </TableRow>
             ))}
-            <TableRow sx={{
-              width: "85%",
-              display: "flex",
-              justifyContent: "flex-end"
-            }}>
-              <TableCell />
-              <TableCell />
-              <TableCell sx={{
-                fontSize: { xs: "0.4rem", md: "1rem" }, width: { xs: "25%", md: "15%" },
-              }}
-              >Tổng cộng:</TableCell>
-              <TableCell sx={{ fontSize: { xs: "0.4rem", md: "1rem" }, width: "15%" }}>{fCurrency(cart.totalPrice)}đ</TableCell>
-            </TableRow>
           </TableBody>
         </Table>
-      </TableContainer>
-      <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            mr: { xs: 3, sm: 0 },
+            margin: 1
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+            }}
+          >Tổng cộng:</Typography>
+          <Typography
+            sx={{
+              color: "#008e97",
+              fontSize: { xs: "0.7rem", sm: "1rem", md: "1.2rem" },
+              mr: { xs: 1, sm: 6, md: 3 },
+              ml: { xs: 2, sm: 1, md: 6 }
+            }}
+          >{fCurrency(cart.totalPrice)}đ
+          </Typography>
+        </Box>
+      </Card>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mt: { xs: 1, sm: 3 } }}>
         <ConfirmCheckout
           cartProducts={products}
           delivery={delivery}
@@ -216,7 +248,7 @@ function CheckoutSummary() {
           user={user}
         />
       </Box>
-    </Container>
+    </Container >
   );
 }
 

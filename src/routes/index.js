@@ -39,10 +39,10 @@ function Router() {
             } >
                 <Route path="/user/account/profile" element={<ProfilePage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
-                <Route path="/checkout/completed" element={<CheckoutCompletedPage />} />
             </Route>
 
             <Route element={<BlankLayout />} >
+                <Route path="/checkout/completed" element={<CheckoutCompletedPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
             </Route>

@@ -16,97 +16,90 @@ function AddressForm() {
     }, [dispatch]);
 
     return (
-        <Stack>
-            <Typography sx={{
-                fontSize: { xs: "0.9rem", md: "1.4rem" },
-                textAlign: "center",
-                margin: 1
-            }}>Địa Chỉ Của Tôi</Typography>
-            <Card
-                sx={{
+        <Card
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+            }}
+        >
+            <Button sx={{
+                textAlign: "right",
+            }}>
+                <AddRoundedIcon />
+                <DialogNewAddress />
+            </Button>
+            {currentUser?.orderAddress.map(({ _id, address, numberOfPhone, receiver }) => (
+                <Card key={_id} sx={{
                     display: "flex",
-                    flexDirection: "column",
-                }}
-            >
-                <Button sx={{
-                    textAlign: "right",
+                    flexDirection: "row",
+                    padding: 1,
+                    paddingLeft: "10%",
+                    paddingRight: "10%",
+                    mb: 1
                 }}>
-                    <AddRoundedIcon />
-                    <DialogNewAddress />
-                </Button>
-                {currentUser && currentUser.orderAddress.map(({ _id, address, numberOfPhone, receiver }) => (
-                    <Card key={_id} sx={{
+                    <Box sx={{
                         display: "flex",
-                        flexDirection: "row",
-                        padding: 1,
-                        paddingLeft: "10%",
-                        paddingRight: "10%",
-                        borderRadius: 0
+                        width: "100%",
+                        flexDirection: "column",
                     }}>
                         <Box sx={{
                             display: "flex",
-                            width: "100%",
-                            flexDirection: "column",
                         }}>
-                            <Box sx={{
-                                display: "flex",
-                            }}>
-                                <Typography sx={{
-                                    opacity: 0.8,
-                                    fontSize: { xs: "0.6rem", md: "0.8rem" },
-                                    marginRight: 8,
-                                    marginBottom: 2
-                                }}>Họ Và Tên</Typography>
-                                <Typography sx={{ fontSize: { xs: "0.6rem", md: "0.8rem" } }}>{receiver}</Typography>
-                            </Box>
-                            <Box sx={{
-                                display: "flex",
-                            }}>
-                                <Typography sx={{
-                                    opacity: 0.8,
-                                    fontSize: { xs: "0.6rem", md: "0.8rem" },
-                                    marginRight: 5,
-                                    marginBottom: 2
-                                }}>Số Điện Thoại</Typography>
-                                <Typography sx={{ fontSize: { xs: "0.7rem", md: "0.8rem" } }}>{numberOfPhone}</Typography>
-                            </Box>
-                            <Box sx={{
-                                display: "flex",
-                            }}>
-                                <Typography sx={{
-                                    opacity: 0.8,
-                                    fontSize: { xs: "0.6rem", md: "0.8rem" },
-                                    marginRight: 11,
-                                    marginBottom: 2
-                                }}>Địa Chỉ</Typography>
-                                <Typography sx={{ fontSize: { xs: "0.6rem", md: "0.8rem" } }}>{address}</Typography>
-                            </Box>
+                            <Typography sx={{
+                                opacity: 0.8,
+                                fontSize: { xs: "0.6rem", sm: "0.8rem" },
+                                marginRight: 8,
+                                marginBottom: 2
+                            }}>Họ Và Tên</Typography>
+                            <Typography sx={{ fontSize: { xs: "0.6rem", sm: "0.8rem" } }}>{receiver}</Typography>
                         </Box>
                         <Box sx={{
                             display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            flexDirection: "column"
                         }}>
-                            <Box sx={{
-                                display: "flex",
-                                flexDirection: "row",
-                                marginBottom: 2,
-                            }}>
-                                <DialogUpdateAddress
-                                    addressId={_id}
-                                    address={address}
-                                    numberOfPhone={numberOfPhone}
-                                    receiver={receiver}
-                                />
-                                <DeleteAddress addressId={_id} />
-                            </Box>
+                            <Typography sx={{
+                                opacity: 0.8,
+                                fontSize: { xs: "0.6rem", sm: "0.8rem" },
+                                marginRight: 5,
+                                marginBottom: 2
+                            }}>Số Điện Thoại</Typography>
+                            <Typography sx={{ fontSize: { xs: "0.7rem", sm: "0.8rem" } }}>{numberOfPhone}</Typography>
                         </Box>
+                        <Box sx={{
+                            display: "flex",
+                        }}>
+                            <Typography sx={{
+                                opacity: 0.8,
+                                fontSize: { xs: "0.6rem", sm: "0.8rem" },
+                                marginRight: 11,
+                                marginBottom: 2
+                            }}>Địa Chỉ</Typography>
+                            <Typography sx={{ fontSize: { xs: "0.6rem", sm: "0.8rem" } }}>{address}</Typography>
+                        </Box>
+                    </Box>
+                    <Box sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexDirection: "column"
+                    }}>
+                        <Box sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            marginBottom: 2,
+                        }}>
+                            <DialogUpdateAddress
+                                addressId={_id}
+                                address={address}
+                                numberOfPhone={numberOfPhone}
+                                receiver={receiver}
+                            />
+                            <DeleteAddress addressId={_id} />
+                        </Box>
+                    </Box>
 
-                    </Card>
-                ))}
-            </Card>
-        </Stack >
+                </Card>
+            ))}
+        </Card>
     )
 };
 

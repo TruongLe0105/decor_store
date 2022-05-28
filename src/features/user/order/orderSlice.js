@@ -6,9 +6,9 @@ import apiService from "../../../app/apiService";
 const initialState = {
     isLoading: false,
     error: null,
-    ordersById: {},
-    currentPageOrders: [],
-    currentStatusOder: null,
+    orders: [],
+    orderId: "",
+    currentStatus: "",
 };
 
 const slice = createSlice({
@@ -22,33 +22,34 @@ const slice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
-        resetOrders(state) {
-            state.ordersById = {};
-            state.currentPageOrders = [];
+        resetOrderId(state) {
+            state.orderId = "";
         },
         getListOrderSuccess(state, action) {
             state.isLoading = false;
             state.error = null;
 
-            const { orders, totalPage } = action.payload;
-            console.log(totalPage)
-            orders?.forEach(order => {
-                state.ordersById[order._id] = order;
-            })
-            state.currentPageOrders = orders.map(order => order._id);
-            state.totalPage = totalPage;
+            const { orders } = action.payload;
+            state.orders = orders;
+        },
+        updateOrderSuccess(state, action) {
+            state.isLoading = false;
+            state.error = null;
+
+            const { order } = action.payload;
+            state.orderId = order?._id;
+            console.log("orders", state.orders)
         }
     }
 });
 
 export default slice.reducer;
-export const { resetOrders } = slice.actions;
+export const { resetOrderId } = slice.actions;
 
-export const getListOrder = ({ page, limit, status }) => async (dispatch) => {
+export const getListOrder = ({ status }) => async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-        const params = { limit, page };
-        console.log(status)
+        const params = {};
         if (status) params.status = status;
         const response = await apiService.get("/orders/list", { params })
         dispatch(slice.actions.getListOrderSuccess(response.data));
@@ -57,3 +58,24 @@ export const getListOrder = ({ page, limit, status }) => async (dispatch) => {
         toast.error(error.message);
     }
 };
+
+export const updateOrder = ({ status, orderId }) => async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+        const response = await apiService.put(`/orders/${orderId}`, { status })
+        dispatch(slice.actions.updateOrderSuccess(response.data));
+    } catch (error) {
+        dispatch(slice.actions.hasError(error.message));
+        toast.error(error.message);
+    }
+};
+
+export const buyAgainOldOrder = ({ orderId }) => async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+        await apiService.post("/orders/cart", { orderId });
+    } catch (error) {
+        dispatch(slice.actions.hasError(error.message));
+        toast.error(error.message);
+    }
+}

@@ -32,17 +32,20 @@ function ConfirmCheckout({ cartProducts, delivery, totalPrice, user }) {
 
     return (
         <div>
-            <Typography onClick={handleClickOpen}>
-
-                <Button variant="outlined">
-                    Thanh Toán
-                </Button>
-            </Typography>
+            <Button
+                onClick={handleClickOpen}
+                variant="contained"
+                sx={{
+                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
+                }}
+            >
+                Thanh Toán
+            </Button>
             <Dialog
                 open={open}
                 onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
+            // aria-labelledby="alert-dialog-title"
+            // aria-describedby="alert-dialog-description"
             >
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description" autoFocus>

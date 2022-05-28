@@ -44,26 +44,25 @@ function AvatarMenu() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                cursor: "pointer"
             }}>
                 <Avatar
                     onClick={handleProfileMenuOpen}
                     src={user.avatarUrl}
                     alt={user.userName}
                     sx={{
-                        width: { xs: "20px", md: "42px" },
-                        height: { xs: "20px", md: "42px" }
+                        width: { xs: "30px", sm: "42px" },
+                        height: { xs: "30px", sm: "42px" }
                     }}
                 />
                 <Typography sx={{
                     margin: "5px",
                     marginRight: 0,
-                    fontSize: { xs: "0.6rem", md: "1rem" }
+                    fontSize: { xs: "0.7rem", sm: "1rem" }
                 }}>{user.userName}</Typography>
                 <Menu
                     id="menu-appbar"
                     sx={{
-                        width: { xs: "30%", md: "50%" },
+                        width: { xs: "30%", sm: "50%" },
                         // height: { xs: "250px" }
                     }}
                     anchorEl={anchorEl}
@@ -80,7 +79,7 @@ function AvatarMenu() {
                     onClose={handleMenuClose}
                 >
                     <Box sx={{ my: 1.5, px: 2.5 }}>
-                        <Typography sx={{ fontSize: { xs: "0.5rem", md: "1rem" } }}>
+                        <Typography sx={{ fontSize: { xs: "0.5rem", sm: "1rem" } }}>
                             {user.userName}
                         </Typography>
                     </Box>
@@ -90,7 +89,7 @@ function AvatarMenu() {
                         sx={{
                             mx: 0.5,
                             my: 0,
-                            fontSize: { xs: "0.5rem", md: "1rem" }
+                            fontSize: { xs: "0.5rem", sm: "1rem" }
                         }}
                     >
                         Tài Khoản
@@ -101,7 +100,7 @@ function AvatarMenu() {
                         sx={{
                             mx: 0.5,
                             px: 2,
-                            fontSize: { xs: "0.5rem", md: "1rem" }
+                            fontSize: { xs: "0.5rem", sm: "1rem" }
                         }}
                     >
                         Đăng xuất

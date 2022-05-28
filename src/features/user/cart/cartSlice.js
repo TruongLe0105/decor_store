@@ -7,11 +7,7 @@ const initialState = {
     error: null,
     cart: {},
     orders: [],
-    delivery: {
-        address: "",
-        receiver: "",
-        numberOfPhone: "",
-    },
+    delivery: {}
 };
 
 const slice = createSlice({
@@ -45,8 +41,6 @@ const slice = createSlice({
             state.hasError = null;
 
             const { order } = action.payload;
-            console.log("order", order)
-
             state.orders = state.orders.length > 0 ? state.orders.unshift(order) : order;
         },
         setDeliverySuccess(state, action) {
