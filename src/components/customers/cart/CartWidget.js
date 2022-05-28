@@ -35,7 +35,7 @@ function CartWidget() {
                     cursor: "pointer",
                     mr: 2
                 }}
-                badgeContent={user ? totalProducts : ""}
+                badgeContent={user ? totalProducts : 0}
                 color="secondary"
                 onClick={() => navigate("/checkout")}
             >

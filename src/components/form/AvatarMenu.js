@@ -50,8 +50,8 @@ function AvatarMenu() {
                     src={user.avatarUrl}
                     alt={user.userName}
                     sx={{
-                        width: { xs: "30px", sm: "42px" },
-                        height: { xs: "30px", sm: "42px" }
+                        width: { xs: "35px", sm: "42px" },
+                        height: { xs: "35px", sm: "42px" }
                     }}
                 />
                 <Typography sx={{
@@ -78,8 +78,8 @@ function AvatarMenu() {
                     open={handleMenuOpen}
                     onClose={handleMenuClose}
                 >
-                    <Box sx={{ my: 1.5, px: 2.5 }}>
-                        <Typography sx={{ fontSize: { xs: "0.5rem", sm: "1rem" } }}>
+                    <Box sx={{ px: 2, my: 1 }}>
+                        <Typography sx={{ fontSize: { xs: "0.8rem", sm: "1rem" } }}>
                             {user.userName}
                         </Typography>
                     </Box>
@@ -87,9 +87,7 @@ function AvatarMenu() {
                     <MenuItem
                         onClick={handleComeToProfile}
                         sx={{
-                            mx: 0.5,
-                            my: 0,
-                            fontSize: { xs: "0.5rem", sm: "1rem" }
+                            fontSize: { xs: "0.8rem", sm: "1rem" }
                         }}
                     >
                         Tài Khoản
@@ -98,9 +96,7 @@ function AvatarMenu() {
                     <MenuItem
                         onClick={handleLogout}
                         sx={{
-                            mx: 0.5,
-                            px: 2,
-                            fontSize: { xs: "0.5rem", sm: "1rem" }
+                            fontSize: { xs: "0.8rem", sm: "1rem" }
                         }}
                     >
                         Đăng xuất

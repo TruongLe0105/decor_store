@@ -26,7 +26,7 @@ function MainFooter() {
                         sx={{
                             color: "white",
                             mb: { xs: 1, md: 2 },
-                            fontSize: { xs: "0.5rem", sm: "0.9rem", md: "1.1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1.1rem" }
                         }}
                     >GIỚI THIỆU</Typography>
                     <Box
@@ -34,10 +34,10 @@ function MainFooter() {
                             display: "flex",
                         }}
                     >
-                        <HomeOutlinedIcon sx={{ fontSize: { xs: "0.5rem", sm: "1.1rem", md: "1.4rem" } }} />
+                        <HomeOutlinedIcon sx={{ fontSize: { xs: "0.7rem", sm: "1.1rem", md: "1.4rem" } }} />
                         <Typography
                             sx={{
-                                fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                                fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" }
                             }}
                         >44 Lê Lợi, Q.Thủ Đức, TPHCM</Typography>
                     </Box>
@@ -49,7 +49,7 @@ function MainFooter() {
                         <EmailOutlinedIcon sx={{ fontSize: { xs: "0.8rem", sm: "1.1rem", md: "1.4rem" } }} />
                         <Typography
                             sx={{
-                                fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                                fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" }
                             }}
                         >hello@titus.com</Typography>
                     </Box>
@@ -59,7 +59,7 @@ function MainFooter() {
                         <LocalPhoneOutlinedIcon sx={{ fontSize: { xs: "0.8rem", sm: "1.4rem" } }} />
                         <Typography
                             sx={{
-                                fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                                fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" }
                             }}
                         >0522729563</Typography>
                     </Box>
@@ -69,27 +69,27 @@ function MainFooter() {
                         sx={{
                             color: "white",
                             mb: { xs: 1, sm: 2 },
-                            fontSize: { xs: "0.5rem", sm: "0.9rem", md: "1.1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1.1rem" }
                         }}
                     >LIÊN KẾT</Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Giới thiệu</Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Hướng dẫn mua hàng</Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Chính sách bảo hành</Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Chính sách bảo mật</Typography>
                 </Box>
@@ -101,7 +101,7 @@ function MainFooter() {
                         sx={{
                             color: "white",
                             mb: { xs: 1, sm: 2 },
-                            fontSize: { xs: "0.5rem", sm: "0.9rem", md: "1.1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1.1rem" }
                         }}
                     >ĐĂNG KÍ NHẬN TIN</Typography>
                     <TextField
@@ -110,7 +110,7 @@ function MainFooter() {
                         }} />
                     <Typography
                         sx={{
-                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" }
                         }}
                     >Hãy nhập email của bạn vào đây để nhận tin!</Typography>
                 </Box>
@@ -122,7 +122,7 @@ function MainFooter() {
                         sx={{
                             color: "white",
                             mb: 2,
-                            fontSize: { xs: "0.5rem", sm: "0.9rem", md: "1.1rem" }
+                            fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1.1rem" }
                         }}
                     >ĐỐI TÁC BÁN HÀNG:</Typography>
                     <Box
