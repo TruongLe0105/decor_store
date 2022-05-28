@@ -39,7 +39,7 @@ function DialogUpdateStatus({ orderId, content, newStatus }) {
                         onClick={handleClickOpen}
                         variant="contained"
                         sx={{
-                            fontSize: { xs: "0.4rem", sm: "0.7rem" }
+                            fontSize: { xs: "0.6rem", sm: "0.8rem" }
                         }}
                     >{content}
                     </Button>
@@ -98,7 +98,7 @@ function DialogUpdateStatus({ orderId, content, newStatus }) {
                     onClick={handleBuyAgain}
                     variant="contained"
                     sx={{
-                        fontSize: { xs: "0.4rem", sm: "0.7rem" }
+                        fontSize: { xs: "0.6rem", sm: "0.8rem" }
                     }}
                 >{content}
                 </Button>

@@ -105,14 +105,14 @@ function LoginPage() {
                             src={logoImg}
                             alt="Logo"
                             sx={{
-                                width: { xs: "40px", md: "120px" },
-                                height: { xs: "40px", md: "110px" },
+                                width: { xs: "50px", md: "120px" },
+                                height: { xs: "50px", md: "110px" },
                                 borderRadius: "5px"
                             }} />
                         <Typography
                             sx={{
                                 color: "white",
-                                fontSize: { xs: "1.1rem", md: "2.7rem" },
+                                fontSize: { xs: "1.5rem", md: "2.7rem" },
                             }}
                         >
                             Titus
@@ -129,14 +129,14 @@ function LoginPage() {
                         <Typography sx={{
                             marginBottom: 1,
                             fontSize: {
-                                xs: "1.1rem", md: "1.5rem"
+                                xs: "1.2rem", sm: "1.5rem"
                             }
                         }}>Đăng nhập</Typography>
                         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                             <Stack spacing={1}>
                                 {!!errors.responseError && (
                                     <Alert sx={{
-                                        fontSize: { xs: "0.6rem", md: "0.9rem" },
+                                        fontSize: { xs: "0.7rem", md: "0.9rem" },
                                         height: "35px",
                                         display: "flex",
                                         alignItems: "center",
@@ -144,7 +144,7 @@ function LoginPage() {
                                     }} severity="error">{errors.responseError.message}</Alert>
                                 )}
                                 <Alert sx={{
-                                    fontSize: { xs: "0.6rem", md: "0.9rem" }, height: "35px",
+                                    fontSize: { xs: "0.8rem", md: "1.1rem" }, height: "35px",
                                     display: "flex",
                                     alignItems: "center",
                                     mb: 1
@@ -187,7 +187,7 @@ function LoginPage() {
                             >
                                 <FCheckbox sx={{ fontSize: "0.6rem" }} name="remember" label="Remember me" />
                                 <Link
-                                    sx={{ fontSize: { xs: "0.6rem", md: "1rem" } }}
+                                    sx={{ fontSize: { xs: "0.7rem", md: "1rem" } }}
                                     component={RouterLink}
                                     variant="subtitle2"
                                     to="/">
@@ -201,7 +201,7 @@ function LoginPage() {
                                 type="submit"
                                 variant="contained"
                                 loading={isSubmitting}
-                                sx={{ fontSize: { xs: "0.6rem", md: "1rem" }, mb: 2 }}
+                                sx={{ fontSize: { xs: "0.7rem", md: "1rem" }, mb: 2 }}
                             >
                                 Login
                             </LoadingButton>

@@ -65,17 +65,17 @@ function ProfilePage() {
                                     display: "flex",
                                     flexDirection: "row",
                                     my: { xs: 0, sm: 1 },
-                                    px: { xs: 3, sm: 0, md: 1 },
+                                    px: { xs: 1, sm: 0, md: 1 },
                                 }}>
                                 <AccountBoxIcon
                                     sx={{
-                                        fontSize: { xs: 18, sm: 22 },
+                                        fontSize: { xs: 20, sm: 22 },
                                         color: "#008e97"
                                     }}
                                 />
                                 <Typography
                                     sx={{
-                                        fontSize: { xs: "0.9rem", sm: "1rem" }
+                                        fontSize: { xs: "1rem", sm: "1.1rem" }
                                     }}
                                 >Thông tin tài khoản</Typography>
                             </Box>
@@ -85,18 +85,18 @@ function ProfilePage() {
                                     cursor: "pointer",
                                     display: "flex",
                                     flexDirection: "row",
-                                    px: { xs: 3, sm: 0, md: 1 },
+                                    px: { xs: 1, sm: 0, md: 1 },
                                     my: { xs: 0, sm: 1 }
                                 }}>
                                 <SummarizeIcon
                                     sx={{
-                                        fontSize: { xs: 18, sm: 22 },
+                                        fontSize: { xs: 20, sm: 22 },
                                         color: "#008e97"
                                     }}
                                 />
                                 <Typography
                                     sx={{
-                                        fontSize: { xs: "0.9rem", sm: "1rem" }
+                                        fontSize: { xs: "1rem", sm: "1.1rem" }
                                     }}
                                 >Đơn hàng của tôi</Typography>
                             </Box>

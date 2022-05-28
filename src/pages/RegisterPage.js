@@ -87,7 +87,6 @@ function RegisterPage() {
         >
             <Box sx={{
                 display: "flex",
-                // width: { xs: "100%", md: "50%" },
                 flexDirection: { xs: "column", md: "row" },
                 justifyContent: "center",
             }}>
@@ -110,7 +109,7 @@ function RegisterPage() {
                     <Typography
                         sx={{
                             color: "white",
-                            fontSize: { xs: "1.1rem", md: "2.7rem" },
+                            fontSize: { xs: "1.5rem", md: "2.7rem" },
                         }}
                     >
                         Titus
@@ -134,7 +133,7 @@ function RegisterPage() {
                         < Stack >
                             {!!errors.responseError && (
                                 <Alert sx={{
-                                    fontSize: { xs: "0.6rem", md: "0.9rem" },
+                                    fontSize: { xs: "0.7rem", md: "0.9rem" },
                                     height: "35px",
                                     display: "flex",
                                     alignItems: "center",
@@ -143,7 +142,7 @@ function RegisterPage() {
                             )
                             }
                             < Alert sx={{
-                                fontSize: { xs: "0.6rem", md: "0.9rem" }, height: "35px",
+                                fontSize: { xs: "0.7rem", md: "0.9rem" }, height: "35px",
                                 display: "flex",
                                 alignItems: "center",
                                 mb: 2
@@ -209,7 +208,7 @@ function RegisterPage() {
                                 type="submit"
                                 variant="contained"
                                 loading={isSubmitting}
-                                sx={{ fontSize: { xs: "0.6rem", md: "1rem" }, mb: 2 }}
+                                sx={{ fontSize: { xs: "0.7rem", md: "1rem" }, mb: 2 }}
                             >
                                 Register
                             </LoadingButton>

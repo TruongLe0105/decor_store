@@ -30,7 +30,7 @@ function CheckoutSummary({ setActiveStep }) {
       <Typography
         sx={{
           textAlign: "center",
-          fontSize: { xs: "0.8rem", sm: "1.3rem", md: "1.6rem", },
+          fontSize: { xs: "1rem", sm: "1.3rem", md: "1.6rem", },
           fontWeight: "600",
           color: "#008e97",
           my: 1
@@ -53,12 +53,12 @@ function CheckoutSummary({ setActiveStep }) {
         >
           <LocationOnOutlinedIcon
             sx={{
-              fontSize: { xs: "0.7rem", sm: "1.3rem", md: "1.6rem", },
+              fontSize: { xs: "0.9rem", sm: "1.3rem", md: "1.6rem", },
             }}
           />
           <Typography
             sx={{
-              fontSize: { xs: "0.6rem", sm: "1.3rem", md: "1.6rem", },
+              fontSize: { xs: "0.9rem", sm: "1.3rem", md: "1.6rem", },
             }}
           >Địa chỉ nhận hàng</Typography>
         </Box>
@@ -79,26 +79,26 @@ function CheckoutSummary({ setActiveStep }) {
               <Typography
                 sx={{
                   mr: 1,
-                  fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                  fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
                   fontWeight: "600",
                 }}
               >{(delivery.receiver || user.fullName).toUpperCase()}</Typography>
               <Typography
                 sx={{
-                  fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                  fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
                 }}
               >{delivery.numberOfPhone || user.numberOfPhone}</Typography>
             </Box>
             <Typography
               sx={{
-                fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+                fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
                 // ml: 1
               }}
             >{delivery.address}</Typography>
           </Box>
           <Button
             sx={{
-              fontSize: { xs: "0.6rem", sm: "0.9rem", md: "1rem" },
+              fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
             }}
           >Thay đổi</Button>
         </Box>
@@ -162,8 +162,8 @@ function CheckoutSummary({ setActiveStep }) {
                     sx={{
                       cursor: "pointer",
                       borderRadius: { xs: 1, sm: 2 },
-                      width: { xs: "40px", sm: "70px", md: "100px" },
-                      height: { xs: "40px", sm: "70px", md: "100px" },
+                      width: { xs: "45px", sm: "70px", md: "100px" },
+                      height: { xs: "45px", sm: "70px", md: "100px" },
                       overflow: "hidden",
                     }}
                   >
@@ -176,7 +176,7 @@ function CheckoutSummary({ setActiveStep }) {
                   </Box>
                   <Typography
                     sx={{
-                      fontSize: { xs: "0.4rem", sm: "0.7rem", md: "1rem" },
+                      fontSize: { xs: "0.5rem", sm: "0.7rem", md: "1rem" },
                       ml: { xs: 0, md: 1 },
                       fontFamily: "monospace",
                     }}
@@ -188,14 +188,14 @@ function CheckoutSummary({ setActiveStep }) {
                     alignItems: "center",
                     justifyContent: { xs: "center", sm: "center", md: "center" },
                     width: { xs: "100%", sm: { xs: "100%", md: "20%" } },
-                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
+                    fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                   }} >
                   {quantity}
                 </TableCell>
                 <TableCell
                   align="right"
                   sx={{
-                    fontSize: { xs: "0.5rem", sm: "0.6rem", md: "0.8rem" },
+                    fontSize: { xs: "0.6rem", sm: "0.6rem", md: "0.8rem" },
                     alignItems: "center",
                     display: "flex",
                     width: { xs: "100%", md: "20%" }
@@ -204,7 +204,7 @@ function CheckoutSummary({ setActiveStep }) {
                 <TableCell
                   align="center"
                   sx={{
-                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                    fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                     alignItems: "center",
                     display: "flex",
                     justifyContent: "center",
@@ -225,14 +225,14 @@ function CheckoutSummary({ setActiveStep }) {
         >
           <Typography
             sx={{
-              fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+              fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
               ml: 1
             }}
           >Tổng cộng:</Typography>
           <Typography
             sx={{
               color: "#008e97",
-              fontSize: { xs: "0.7rem", sm: "1rem", md: "1.2rem" },
+              fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
               mr: { xs: 0, sm: 6, md: 3 },
               ml: { xs: 3, sm: 1, md: 6 }
             }}

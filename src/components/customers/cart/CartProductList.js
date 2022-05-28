@@ -109,7 +109,6 @@ function CartProductList({ cart, setActiveStep }) {
                                         display: "flex",
                                         flexDirection: { xs: "column", md: "row" },
                                         alignItems: { xs: "flex-start", md: "center" },
-                                        // bgcolor: "black"
                                     }}
                                 >
                                     <Box
@@ -117,8 +116,8 @@ function CartProductList({ cart, setActiveStep }) {
                                         sx={{
                                             cursor: "pointer",
                                             borderRadius: { xs: 1, sm: 2 },
-                                            width: { xs: "40px", sm: "70px", md: "100px" },
-                                            height: { xs: "40px", sm: "70px", md: "100px" },
+                                            width: { xs: "45px", sm: "70px", md: "100px" },
+                                            height: { xs: "45px", sm: "70px", md: "100px" },
                                             overflow: "hidden",
                                         }}
                                     >
@@ -131,7 +130,7 @@ function CartProductList({ cart, setActiveStep }) {
                                     </Box>
                                     <Typography
                                         sx={{
-                                            fontSize: { xs: "0.5rem", sm: "0.7rem", md: "1rem" },
+                                            fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
                                             ml: { xs: 0, md: 1 },
                                             fontFamily: "monospace",
                                         }}
@@ -152,14 +151,14 @@ function CartProductList({ cart, setActiveStep }) {
                                 </TableCell>
                                 <TableCell
                                     sx={{
-                                        fontSize: { xs: "0.5rem", sm: "0.6rem", md: "1rem" },
+                                        fontSize: { xs: "0.6rem", sm: "0.7rem", md: "1rem" },
                                         alignItems: "center",
                                         display: "flex",
                                         width: "100%"
                                     }}>{fCurrency(price)}đ</TableCell>
                                 <TableCell
                                     sx={{
-                                        fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                                        fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                         alignItems: "center",
                                         display: "flex",
                                         width: "100%",
@@ -170,7 +169,7 @@ function CartProductList({ cart, setActiveStep }) {
                                     <DeleteForeverIcon
                                         sx={{
                                             color: "red",
-                                            fontSize: { xs: "0.8rem", sm: "1.1rem", md: "1.5rem" },
+                                            fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.5rem" },
                                             ml: 1,
                                         }}
                                         onClick={() => handleDeleteProduct({ productId })} />
@@ -196,7 +195,7 @@ function CartProductList({ cart, setActiveStep }) {
                 <Typography
                     sx={{
                         color: "#008e97",
-                        fontSize: { xs: "0.7rem", sm: "1rem", md: "1.2rem" },
+                        fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
                         mr: { xs: 0, md: 3 },
                     }}
                 >{fCurrency(cart.totalPrice)}đ
@@ -212,7 +211,7 @@ function CartProductList({ cart, setActiveStep }) {
                 <Button
                     variant="contained"
                     sx={{
-                        fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
+                        fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
                         margin: { md: 4, xs: 1 }
                     }}
                     onClick={() => handleActiveStep()}
@@ -243,18 +242,18 @@ function QuantityCounter({ dispatch, quantity, productId, cartId }) {
             alignItems: "center",
         }}>
             <IndeterminateCheckBoxIcon sx={{
-                fontSize: { xs: "0.8rem", sm: "1rem", md: "1.5rem" },
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
                 color: "red",
                 display: "flex",
             }} onClick={() => handleDescQuantity()} />
             <Typography
                 sx={{
-                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" }
+                    fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" }
                 }}
             >{quantity}</Typography>
             <AddBoxIcon onClick={() => handleIncQuantity()}
                 sx={{
-                    fontSize: { xs: "0.8rem", sm: "1rem", md: "1.5rem" },
+                    fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
                     color: "green"
                 }}
             />

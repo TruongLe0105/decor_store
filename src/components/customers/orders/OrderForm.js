@@ -59,12 +59,12 @@ function OrderForm({ status, text, icon, contentBtn }) {
                                 sx={{
                                     color: "#4db6ac",
                                     mr: 1,
-                                    fontSize: { xs: "1rem", sm: "1.2rem", md: "1.3rem" }
+                                    fontSize: { xs: "1.1rem", sm: "1.2rem", md: "1.3rem" }
                                 }}
                             />
                             <Typography
                                 sx={{
-                                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                                    fontSize: { xs: "0.8rem", sm: "0.8rem", md: "1rem" },
                                     fontWeight: "600"
                                 }}
                             >TitusStore</Typography>
@@ -78,7 +78,7 @@ function OrderForm({ status, text, icon, contentBtn }) {
                             {icon}
                             <Typography
                                 sx={{
-                                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                                    fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                 }}
                             >
                                 {text}
@@ -128,19 +128,19 @@ function OrderForm({ status, text, icon, contentBtn }) {
                                     <Box>
                                         <Typography
                                             sx={{
-                                                fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                                                fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                             }}
                                         >{name}</Typography>
                                         <Typography
                                             sx={{
-                                                fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                                                fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                             }}
                                         >x{quantity}</Typography>
                                     </Box>
                                 </Box>
                                 <Box sx={{
                                     color: "#4db6ac",
-                                    fontSize: { xs: "0.5rem", sm: "0.8rem" },
+                                    fontSize: { xs: "0.6rem", sm: "0.8rem" },
                                     mr: 5
                                 }}>
                                     {fCurrency(price)}đ
@@ -158,7 +158,7 @@ function OrderForm({ status, text, icon, contentBtn }) {
                         <Box>
                             <Typography
                                 sx={{
-                                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                                    fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                     fontFamily: "cursive",
                                     opacity: "0.6"
                                 }}
@@ -172,7 +172,7 @@ function OrderForm({ status, text, icon, contentBtn }) {
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: { xs: "0.6rem", sm: "0.7rem", md: "1rem" },
+                                        fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                         mr: 1
                                     }}
                                 >{receiver.toUpperCase()}</Typography>
@@ -180,14 +180,14 @@ function OrderForm({ status, text, icon, contentBtn }) {
                                     sx={{
                                         opacity: "0.6",
                                         fontFamily: "cursive",
-                                        fontSize: { xs: "0.6rem", sm: "0.7rem", md: "1rem" },
+                                        fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                     }}
                                 >{numberOfPhone}</Typography>
                             </Box>
                             <Typography
                                 sx={{
                                     opacity: "0.6",
-                                    fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                                    fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                 }}
                             >{address}</Typography>
                         </Box>
@@ -212,12 +212,12 @@ function OrderForm({ status, text, icon, contentBtn }) {
                                 <Typography
                                     sx={{
                                         mr: 1,
-                                        fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
+                                        fontSize: { xs: "0.7rem", sm: "0.8rem", md: "1rem" },
                                     }}
                                 >Tổng tiền:</Typography>
                                 <Typography
                                     sx={{
-                                        fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1.1rem" },
+                                        fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1.1rem" },
                                         color: "#4db6ac"
                                     }}
                                 >{fCurrency(totalPrice)}đ</Typography>
@@ -265,14 +265,14 @@ function OrderForm({ status, text, icon, contentBtn }) {
                 >
                     <InventoryOutlinedIcon
                         sx={{
-                            fontSize: { xs: "1rem", sm: "1.2rem", md: "2rem" },
+                            fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2rem" },
                             color: "#4db6ac",
                         }}
                     />
                     <Typography
                         sx={{
                             mr: 1,
-                            fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1.3rem" },
+                            fontSize: { xs: "0.8rem", sm: "0.8rem", md: "1.3rem" },
                         }}
                     >Chưa có đơn hàng</Typography>
                 </Card>

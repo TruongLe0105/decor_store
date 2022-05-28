@@ -40,8 +40,8 @@ function CategoryPage() {
             }}>
                 <Typography
                     sx={{
-                        display: { xs: "block", sm: "none" },
-                        fontSize: { xs: "0.9rem", sm: "1.4rem", md: "1.7rem" },
+                        display: { xs: "flex", sm: "none" },
+                        fontSize: { xs: "1.1rem", sm: "1.5rem", md: "1.8rem" },
                         mb: 1,
                         mt: 1,
                         fontFamily: "cursive"

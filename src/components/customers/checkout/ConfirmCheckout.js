@@ -35,7 +35,7 @@ function ConfirmCheckout({ cartProducts, delivery, totalPrice, user }) {
                 onClick={handleClickOpen}
                 variant="contained"
                 sx={{
-                    fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
+                    fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
                 }}
             >
                 Thanh Toán
