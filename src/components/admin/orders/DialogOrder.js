@@ -113,7 +113,7 @@ function DialogOrder({ products, totalPrice }) {
                                     <Box>
                                         <Typography
                                             sx={{
-                                                fontSize: { md: "1.2rem", sm: "0.8rem", xs: "0.5rem" },
+                                                fontSize: { md: "1.2rem", sm: "0.8rem", xs: "0.6rem" },
                                                 mr: { xs: 3, sm: 0 },
                                                 opacity: 0.7,
                                                 fontFamily: "monospace"
@@ -137,7 +137,7 @@ function DialogOrder({ products, totalPrice }) {
                                 >
                                     <Typography
                                         sx={{
-                                            fontSize: { md: "1.1rem", sm: "0.7rem", xs: "0.5rem" },
+                                            fontSize: { md: "1.1rem", sm: "0.8rem", xs: "0.6rem" },
                                             opacity: 0.7
                                         }}
                                     >{fCurrency(price)}đ</Typography>
@@ -171,7 +171,7 @@ function DialogOrder({ products, totalPrice }) {
                         onClick={handleClose}
                         variant="contained"
                         sx={{
-                            fontSize: { xs: "0.5rem", sm: "0.8rem", md: "1rem" },
+                            fontSize: { xs: "0.6rem", sm: "0.8rem", md: "1rem" },
                             mb: 1,
                             mr: 1
                         }}

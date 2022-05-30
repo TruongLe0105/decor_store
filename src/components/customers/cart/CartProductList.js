@@ -28,6 +28,8 @@ function CartProductList({ cart, setActiveStep }) {
     const cartId = cart._id;
 
     const handleDeleteProduct = ({ productId }) => {
+        // cart.products.filter(product => product._id !== productId)
+        // console.log(cart.products)
         const quantity = -100;
         if (cartId) {
             dispatch(addProductsToCart({ productId, cartId, quantity }))
@@ -224,14 +226,17 @@ function CartProductList({ cart, setActiveStep }) {
 };
 
 function QuantityCounter({ dispatch, quantity, productId, cartId }) {
+    // const [value, setValue] = useState(quantity)
     const handleDescQuantity = () => {
         if (quantity !== 1) {
+            // setValue(value + 1)
             quantity = -1;
             if (cartId) dispatch(addProductsToCart({ productId, cartId, quantity }))
         }
     };
     const handleIncQuantity = () => {
         if (quantity < LIMIT_QUANTITY_PRODUCT) {
+            // setValue(value + 1)
             if (cartId) dispatch(addProductsToCart({ productId, cartId }))
         }
     }

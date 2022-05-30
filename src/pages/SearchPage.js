@@ -6,6 +6,7 @@ import DividerText from '../components/form/DividerText';
 import ProductCard from '../features/user/products/ProductCard';
 import { getProducts } from '../features/user/products/productSlice';
 import { useSearchParams } from 'react-router-dom';
+import Collections from '../components/collections/Collections';
 
 function SearchPage() {
     const dispatch = useDispatch();
@@ -25,9 +26,10 @@ function SearchPage() {
 
     return (
         <>
+            <Collections />
             <Container
                 sx={{
-                    mt: 1,
+                    mt: 6,
                     textAlign: "center"
                 }}>
                 <DividerText text="SẢN PHẨM NỔI BẬT" />

@@ -1,0 +1,6 @@
+from = "/http://localhost:3000"
+  to = "/https://home-decor-store.netlify.app/"
+  status = 301
+  force = false
+  query = {path = ":path"}
+  conditions = {Language = ["en"], Country = ["US"], Role = ["admin"]}
