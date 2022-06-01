@@ -36,7 +36,6 @@ function ProductCard({ product, admin }) {
     const { cart } = useSelector(state => state.cart);
     let productsCart = Object.keys(cart).length > 0 ? cart.products : [];
 
-
     const HandleAddToCart = () => {
         if (user) {
             const cartId = user.cartId;
@@ -65,12 +64,13 @@ function ProductCard({ product, admin }) {
                     <UpdateProduct product={product} />
                 </Box>
             )}
-            <Card sx={{
-                ...cardStyle,
-                position: "relative",
-                maxWidth: { xs: "200px", sm: "340px", },
-                minHeight: { xs: "250px", sm: "340px", md: "420px" },
-            }}>
+            <Card
+                sx={{
+                    ...cardStyle,
+                    position: "relative",
+                    maxWidth: { xs: "200px", sm: "340px", },
+                    minHeight: { xs: "250px", sm: "340px", md: "420px" },
+                }}>
                 <CardMedia
                     component="img"
                     image={product.imageUrl}

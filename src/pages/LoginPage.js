@@ -144,7 +144,7 @@ function LoginPage() {
                                     }} severity="error">{errors.responseError.message}</Alert>
                                 )}
                                 <Alert sx={{
-                                    fontSize: { xs: "0.8rem", md: "1.1rem" }, height: "35px",
+                                    fontSize: { xs: "0.8rem", md: "1rem" }, height: "35px",
                                     display: "flex",
                                     alignItems: "center",
                                     mb: 1

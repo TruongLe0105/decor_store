@@ -24,6 +24,7 @@ function Collections({ collection, status }) {
         handleMenuClose();
         navigate(`/products/categories/${categoryId}`);
     };
+
     const categoriesMenu = (
         <Menu
             id="menu-appbar"
@@ -40,9 +41,13 @@ function Collections({ collection, status }) {
             open={handleMenuOpen}
             onClose={handleMenuClose}
         >
-            <Box >
+            <Box>
                 {categories.length && categories.map((category, index) => (
-                    <MenuItem key={index} sx={{ fontSize: { xs: "0.8rem", sm: "1.1rem" } }} onClick={() => handleNavigateCategory(category)}>
+                    <MenuItem
+                        key={index}
+                        sx={{ fontSize: { xs: "0.8rem", sm: "1.1rem" } }}
+                        onClick={() => handleNavigateCategory(category)}
+                    >
                         {category}
                     </MenuItem>
                 ))}
@@ -86,9 +91,12 @@ function Collections({ collection, status }) {
                         }}
                         underline="none"
                         onClick={() => navigate("/")}>Trang Chủ</Link>
-                    <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+                    <Box
+                        sx={{ display: "flex", alignItems: "flex-end" }}
+
+                        onMouseOver={handleOpenMenuCategory}
+                    >
                         <Typography
-                            onClick={handleOpenMenuCategory}
                             sx={{
                                 fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.3rem" },
                                 cursor: "pointer"
@@ -110,10 +118,11 @@ function Collections({ collection, status }) {
                     >{collection}</Typography>
                 )}
                 {categoriesMenu}
-                <Box sx={{
-                    display: "flex",
-                    alignItems: "center"
-                }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItems: "center"
+                    }}>
                     <CartWidget />
                     {status !== "prevent" && <SortMenu />}
                 </Box>
