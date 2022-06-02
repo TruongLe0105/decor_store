@@ -14,6 +14,7 @@ function CategoryPage() {
     const dispatch = useDispatch();
     const params = useParams();
 
+    //Lấy tham số truy vấn từ url...
     const categories = params.category.split("-").join(" ");
     const limit = PRODUCTS_PER_PAGE;
 

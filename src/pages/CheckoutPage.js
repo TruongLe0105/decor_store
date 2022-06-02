@@ -93,7 +93,7 @@ function CheckoutPage() {
             </Box>
             <Container>
                 <Stack>
-
+                    { /* Các bước từ hiển thị cart đến nhập địa chỉ, cuối cùng là mua hàng */}
                     {activeStep === 0 && <CartProductList cart={cart} setActiveStep={setActiveStep} />}
                     {activeStep === 1 && <CheckoutDelivery cartId={cart._id} setActiveStep={setActiveStep} />}
                     {activeStep === 2 && <CheckoutSummary />}

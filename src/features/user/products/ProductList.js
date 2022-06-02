@@ -7,7 +7,7 @@ import DividerText from '../../../components/form/DividerText';
 import ProductCard from './ProductCard';
 import { getProducts } from './productSlice';
 
-
+//Ở trang chủ chia làm 2 danh mục là "sản phẩm nổi bật" và "mô hình trang trí"
 function ProductList() {
     const dispatch = useDispatch();
     const navigate = useNavigate();

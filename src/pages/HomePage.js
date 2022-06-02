@@ -16,7 +16,9 @@ function HomePage() {
             maxWidth: "100%"
         }}
         >
+            {/*Phần chỉ admin mới có thể tương tác.*/}
             {role === "admin" && <AdminRole admin={role} />}
+
             {role !== "admin" && (
                 <div>
                     <Collections />

@@ -100,7 +100,6 @@ function CheckoutDelivery({ setActiveStep }) {
           </LoadingButton>
         </Box>
       </FormProvider>
-      {/* <ArrowForwardIosIcon /> */}
     </Container>
   );
 }

@@ -1,8 +1,7 @@
-import { Container, Divider, Grid } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { PRODUCTS_HOME_PAGE } from '../app/config';
-import DividerText from '../components/form/DividerText';
 import ProductCard from '../features/user/products/ProductCard';
 import { getProducts } from '../features/user/products/productSlice';
 import { useSearchParams } from 'react-router-dom';
@@ -29,15 +28,9 @@ function SearchPage() {
             <Collections />
             <Container
                 sx={{
-                    mt: 6,
+                    mt: 14,
                     textAlign: "center"
                 }}>
-                <DividerText text="SẢN PHẨM NỔI BẬT" />
-                <Divider
-                    orientation="vertical"
-                    variant="middle"
-                    flexItem
-                />
                 <Grid container spacing={1}>
                     {products.length !== 0 && products.map(product => (
                         <Grid key={product._id} item xs={6} sm={4} md={3}>

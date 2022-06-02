@@ -27,9 +27,8 @@ function CartProductList({ cart, setActiveStep }) {
     const navigate = useNavigate();
     const cartId = cart._id;
 
+    //Xóa sản phẩm trong giỏ hàng
     const handleDeleteProduct = ({ productId }) => {
-        // cart.products.filter(product => product._id !== productId)
-        // console.log(cart.products)
         const quantity = -100;
         if (cartId) {
             dispatch(addProductsToCart({ productId, cartId, quantity }))
@@ -225,11 +224,10 @@ function CartProductList({ cart, setActiveStep }) {
     );
 };
 
+//Tăng giảm số lượng sản phẩm.
 function QuantityCounter({ dispatch, quantity, productId, cartId }) {
-    // const [value, setValue] = useState(quantity)
     const handleDescQuantity = () => {
         if (quantity !== 1) {
-            // setValue(value + 1)
             quantity = -1;
             if (cartId) dispatch(addProductsToCart({ productId, cartId, quantity }))
         }

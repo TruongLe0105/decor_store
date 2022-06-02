@@ -19,7 +19,7 @@ import useAuth from "../../../hooks/useAuth";
 import { fCurrency } from "../../../utils/numberFormat";
 import ConfirmCheckout from "./ConfirmCheckout";
 
-function CheckoutSummary({ setActiveStep }) {
+function CheckoutSummary() {
   const { cart, delivery } = useSelector(state => state.cart);
   const { user } = useAuth();
   const products = cart.products ? cart.products : [];
@@ -144,7 +144,7 @@ function CheckoutSummary({ setActiveStep }) {
             display: "flex",
             flexDirection: "column",
           }}>
-            {products.length > 0 && products.map(({ _id, name, price, quantity, imageUrl }) => (
+            {cart?.products?.map(({ _id, name, price, quantity, imageUrl }) => (
               <TableRow
                 key={_id}
                 sx={{
@@ -241,6 +241,7 @@ function CheckoutSummary({ setActiveStep }) {
         </Box>
       </Card>
       <Box sx={{ display: "flex", justifyContent: "flex-end", mt: { xs: 1, sm: 3 } }}>
+        {/* Cửa sổ xác nhận mua hàng */}
         <ConfirmCheckout
           cartProducts={products}
           delivery={delivery}

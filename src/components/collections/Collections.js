@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import CartWidget from '../customers/cart/CartWidget';
 import SortMenu from './SortMenu';
 
+// Phần danh mục nằm cố định đầu trang
 function Collections({ collection, status }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const navigate = useNavigate();
