@@ -24,6 +24,7 @@ const slice = createSlice({
         },
         resetOrderId(state) {
             state.orderId = "";
+            state.orders = [];
         },
         getListOrderSuccess(state, action) {
             state.isLoading = false;
