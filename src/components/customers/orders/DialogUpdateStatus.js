@@ -27,8 +27,8 @@ function DialogUpdateStatus({ orderId, content, newStatus }) {
     };
 
     const handleBuyAgain = () => {
-        navigate("/checkout");
-        dispatch(buyAgainOldOrder({ orderId }));
+        dispatch(buyAgainOldOrder({ orderId })).then(() => navigate("/checkout"));
+        // navigate("/checkout");
     }
 
     return (
